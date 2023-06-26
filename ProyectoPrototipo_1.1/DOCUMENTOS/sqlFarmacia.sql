@@ -55,32 +55,7 @@ VALUES
     (5, 3, 'Producto 5', 'Lote E', 7.99, 6.99, '2023-06-28', 0.3, 0.18);
 END
 
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Cliente')
-BEGIN
-    CREATE TABLE Cliente (
-        codigo_c INT PRIMARY KEY,
-        ruc_c BIGINT,
-        tipo_persona NVARCHAR(50),
-        nombres_c NVARCHAR(100),
-        apellidos_c NVARCHAR(100),
-        parroquia NVARCHAR(100),
-        direccion_c NVARCHAR(100),
-        email_c NVARCHAR(100),
-        telefono_c NVARCHAR(40),
-        fecha_nac DATE,
-        observaciones_c VARCHAR(200)
-    );
-	INSERT INTO Cliente (codigo_c, ruc_c, tipo_persona, nombres_c, apellidos_c, parroquia, direccion_c, email_c, telefono_c, fecha_nac, observaciones_c)
-VALUES
-    (1, 1234567890, 'Persona Natural', 'Juan', 'Pérez', 'Parroquia 1', 'Dirección 1', 'juan@example.com', '1234567890', '1990-01-01', 'Observaciones 1'),
-    (2, 9876543210, 'Persona Jurídica', 'Empresa A', 'S.A.', 'Parroquia 2', 'Dirección 2', 'empresaA@example.com', '0987654321', '1995-05-10', 'Observaciones 2'),
-    (3, 5678901234, 'Persona Natural', 'María', 'Gómez', 'Parroquia 3', 'Dirección 3', 'maria@example.com', '5678901234', '1988-12-15', 'Observaciones 3'),
-    (4, 4321098765, 'Persona Jurídica', 'Empresa B', 'C.A.', 'Parroquia 4', 'Dirección 4', 'empresaB@example.com', '0432109876', '2000-07-20', 'Observaciones 4'),
-    (5, 9999999999, 'Persona Natural', 'Pedro', 'López', 'Parroquia 5', 'Dirección 5', 'pedro@example.com', '9999999999', '1993-06-30', 'Observaciones 5');
-END
-
 
 
 select * from Proveedor;
 select * from Producto;
-select * from Cliente;
