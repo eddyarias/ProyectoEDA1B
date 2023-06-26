@@ -30,10 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Menu));
             bttModuloInventario = new Button();
-            bttModuloClientes = new Button();
             bttModuloProveedores = new Button();
-            bttModuloVentas = new Button();
-            bttModuloCompras = new Button();
             label1 = new Label();
             label2 = new Label();
             BSalir = new Button();
@@ -45,7 +42,7 @@
             // 
             // bttModuloInventario
             // 
-            bttModuloInventario.Location = new Point(118, 675);
+            bttModuloInventario.Location = new Point(118, 369);
             bttModuloInventario.Margin = new Padding(3, 4, 3, 4);
             bttModuloInventario.Name = "bttModuloInventario";
             bttModuloInventario.Size = new Size(143, 145);
@@ -54,20 +51,9 @@
             bttModuloInventario.UseVisualStyleBackColor = true;
             bttModuloInventario.Click += bttModuloInventario_Click;
             // 
-            // bttModuloClientes
-            // 
-            bttModuloClientes.Location = new Point(207, 358);
-            bttModuloClientes.Margin = new Padding(3, 4, 3, 4);
-            bttModuloClientes.Name = "bttModuloClientes";
-            bttModuloClientes.Size = new Size(145, 145);
-            bttModuloClientes.TabIndex = 1;
-            bttModuloClientes.Text = "MÓDULO DE CLIENTES";
-            bttModuloClientes.UseVisualStyleBackColor = true;
-            bttModuloClientes.Click += bttModuloClientes_Click;
-            // 
             // bttModuloProveedores
             // 
-            bttModuloProveedores.Location = new Point(207, 522);
+            bttModuloProveedores.Location = new Point(118, 559);
             bttModuloProveedores.Margin = new Padding(3, 4, 3, 4);
             bttModuloProveedores.Name = "bttModuloProveedores";
             bttModuloProveedores.Size = new Size(137, 145);
@@ -75,28 +61,6 @@
             bttModuloProveedores.Text = "MÓDULO DE PROVEEDORES";
             bttModuloProveedores.UseVisualStyleBackColor = true;
             bttModuloProveedores.Click += bttProveedores_Click;
-            // 
-            // bttModuloVentas
-            // 
-            bttModuloVentas.Location = new Point(32, 358);
-            bttModuloVentas.Margin = new Padding(3, 4, 3, 4);
-            bttModuloVentas.Name = "bttModuloVentas";
-            bttModuloVentas.Size = new Size(145, 145);
-            bttModuloVentas.TabIndex = 3;
-            bttModuloVentas.Text = "MÓDULO DE VENTAS";
-            bttModuloVentas.UseVisualStyleBackColor = true;
-            bttModuloVentas.Click += bttModuloVentas_Click;
-            // 
-            // bttModuloCompras
-            // 
-            bttModuloCompras.Location = new Point(32, 522);
-            bttModuloCompras.Margin = new Padding(3, 4, 3, 4);
-            bttModuloCompras.Name = "bttModuloCompras";
-            bttModuloCompras.Size = new Size(137, 145);
-            bttModuloCompras.TabIndex = 4;
-            bttModuloCompras.Text = "MÓDULO DE COMPRAS";
-            bttModuloCompras.UseVisualStyleBackColor = true;
-            bttModuloCompras.Click += bttModuloCompras_Click;
             // 
             // label1
             // 
@@ -143,10 +107,7 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(bttModuloInventario);
-            panel1.Controls.Add(bttModuloClientes);
             panel1.Controls.Add(bttModuloProveedores);
-            panel1.Controls.Add(bttModuloVentas);
-            panel1.Controls.Add(bttModuloCompras);
             panel1.Location = new Point(12, 13);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
@@ -179,10 +140,7 @@
         #endregion
 
         private Button bttModuloInventario;
-        private Button bttModuloClientes;
         private Button bttModuloProveedores;
-        private Button bttModuloVentas;
-        private Button bttModuloCompras;
         private Label label1;
         private Label label2;
         private Button BSalir;

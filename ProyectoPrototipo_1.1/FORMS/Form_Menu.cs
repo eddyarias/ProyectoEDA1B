@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -43,29 +44,6 @@ namespace ProyectoPrototipo_1._0
             form_Inventario.MdiParent = this;
             form_Inventario.Show();
         }
-
-        private void bttModuloClientes_Click(object sender, EventArgs e)
-        {
-            Form_Clientes form_Clientes = new Form_Clientes();
-            form_Clientes.MdiParent = this;
-            form_Clientes.Show();
-        }
-
-        private void bttModuloVentas_Click(object sender, EventArgs e)
-        {
-            Form_Ventas form_Ventas = new Form_Ventas();
-            form_Ventas.MdiParent = this;
-            form_Ventas.Show();
-        }
-
-        private void bttModuloCompras_Click(object sender, EventArgs e)
-        {
-            Form_Compras form_Compras = new Form_Compras();
-            form_Compras.MdiParent = this;
-            form_Compras.Show();
-        }
-
-
 
         private void BSalir_Click(object sender, EventArgs e)
         {
