@@ -57,25 +57,9 @@
             label10 = new Label();
             label11 = new Label();
             label14 = new Label();
-            tabPage4 = new TabPage();
-            button5 = new Button();
-            dataGridView2 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            label13 = new Label();
-            tabPage5 = new TabPage();
-            button6 = new Button();
-            richTextBox1 = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabControl2.SuspendLayout();
             tabPage3.SuspendLayout();
-            tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            tabPage5.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
@@ -93,8 +77,6 @@
             // tabControl2
             // 
             tabControl2.Controls.Add(tabPage3);
-            tabControl2.Controls.Add(tabPage4);
-            tabControl2.Controls.Add(tabPage5);
             tabControl2.Location = new Point(-1, -1);
             tabControl2.Margin = new Padding(3, 4, 3, 4);
             tabControl2.Name = "tabControl2";
@@ -158,6 +140,7 @@
             button1.TabIndex = 74;
             button1.Text = "Cancelar";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += BCancelar_Click;
             // 
             // label3
             // 
@@ -269,10 +252,11 @@
             BBuscar.TabIndex = 60;
             BBuscar.Text = "Buscar";
             BBuscar.UseVisualStyleBackColor = true;
+            BBuscar.Click += BBuscar_Click;
             // 
             // BActualizar
             // 
-            BActualizar.Location = new Point(579, 456);
+            BActualizar.Location = new Point(464, 451);
             BActualizar.Margin = new Padding(3, 4, 3, 4);
             BActualizar.Name = "BActualizar";
             BActualizar.Size = new Size(84, 38);
@@ -283,7 +267,7 @@
             // 
             // BEliminar
             // 
-            BEliminar.Location = new Point(437, 456);
+            BEliminar.Location = new Point(579, 451);
             BEliminar.Margin = new Padding(3, 4, 3, 4);
             BEliminar.Name = "BEliminar";
             BEliminar.Size = new Size(80, 38);
@@ -371,125 +355,6 @@
             label14.TabIndex = 3;
             label14.Text = "# Productos:";
             // 
-            // tabPage4
-            // 
-            tabPage4.Controls.Add(button5);
-            tabPage4.Controls.Add(dataGridView2);
-            tabPage4.Controls.Add(label13);
-            tabPage4.Location = new Point(4, 29);
-            tabPage4.Margin = new Padding(3, 4, 3, 4);
-            tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3, 4, 3, 4);
-            tabPage4.Size = new Size(902, 558);
-            tabPage4.TabIndex = 1;
-            tabPage4.Text = "Caducidad";
-            tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(410, 449);
-            button5.Margin = new Padding(3, 4, 3, 4);
-            button5.Name = "button5";
-            button5.Size = new Size(92, 44);
-            button5.TabIndex = 3;
-            button5.Text = "Refrescar";
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn6 });
-            dataGridView2.Location = new Point(56, 75);
-            dataGridView2.Margin = new Padding(3, 4, 3, 4);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.RowTemplate.Height = 24;
-            dataGridView2.Size = new Size(795, 352);
-            dataGridView2.TabIndex = 2;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "Código";
-            dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Cantidad";
-            dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Descripción";
-            dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Lote";
-            dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Precio";
-            dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Fec. cad";
-            dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.Width = 125;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(16, 28);
-            label13.Name = "label13";
-            label13.Size = new Size(657, 20);
-            label13.TabIndex = 1;
-            label13.Text = "Productos ordenados según su fecha de caducidad o productos que van a caducar próximamente.";
-            // 
-            // tabPage5
-            // 
-            tabPage5.Controls.Add(button6);
-            tabPage5.Controls.Add(richTextBox1);
-            tabPage5.Location = new Point(4, 29);
-            tabPage5.Margin = new Padding(3, 4, 3, 4);
-            tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3, 4, 3, 4);
-            tabPage5.Size = new Size(902, 558);
-            tabPage5.TabIndex = 2;
-            tabPage5.Text = "Historial";
-            tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            button6.Location = new Point(742, 438);
-            button6.Margin = new Padding(3, 4, 3, 4);
-            button6.Name = "button6";
-            button6.Size = new Size(99, 50);
-            button6.TabIndex = 4;
-            button6.Text = "Refrescar";
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Location = new Point(209, 20);
-            richTextBox1.Margin = new Padding(3, 4, 3, 4);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(517, 555);
-            richTextBox1.TabIndex = 0;
-            richTextBox1.Text = "Historial de operaciones realizadas en el inventario.";
-            // 
             // Form_Inventario
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -504,10 +369,6 @@
             tabControl2.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
-            tabPage4.ResumeLayout(false);
-            tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            tabPage5.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -516,13 +377,6 @@
         private DataGridView dataGridView1;
         private TabControl tabControl2;
         private TabPage tabPage3;
-        private TabPage tabPage4;
-        private Label label13;
-        private DataGridView dataGridView2;
-        private TabPage tabPage5;
-        private RichTextBox richTextBox1;
-        private Button button5;
-        private Button button6;
         private Label label14;
         private TextBox textBox15;
         private Label label15;
@@ -547,12 +401,6 @@
         private Label label11;
         private Label label3;
         private TextBox textBox1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private Button button1;
         private Button BAgregar;
     }

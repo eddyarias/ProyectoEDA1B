@@ -32,7 +32,7 @@ namespace ProyectoPrototipo_1._0
             dataGridView1.DataSource = inventario.productos;
         }
 
-        private void ClearTextFields()
+        private void ClearTextBoxes()
         {
             textBox1.Clear();
             textBox2.Clear();
@@ -163,11 +163,11 @@ namespace ProyectoPrototipo_1._0
             };
 
             // Agregar el nuevo producto al inventario
-            inventario.productos.Add(newProducto);
+            inventario.AgregarProducto(newProducto);
             MessageBox.Show("Producto creado exitosamente");
             // Actualizar el origen de datos del DataGridView con el inventario
             dataGridView1.DataSource = inventario.productos.ToList();
-            ClearTextFields();
+            ClearTextBoxes();
         }
 
         private void BActualizar_Click(object sender, EventArgs e)
@@ -193,7 +193,7 @@ namespace ProyectoPrototipo_1._0
             MessageBox.Show("Producto actualizado exitosamente");
             // Actualizar el origen de datos del DataGridView con el inventario
             dataGridView1.DataSource = inventario.productos.ToList();
-            ClearTextFields();
+            ClearTextBoxes();
         }
 
         private void BEliminar_Click(object sender, EventArgs e)
@@ -216,14 +216,45 @@ namespace ProyectoPrototipo_1._0
 
                     // Actualizar el DataGridView con la lista de productos del inventario
                     dataGridView1.DataSource = inventario.productos.ToList();
-                    ClearTextFields();
+                    ClearTextBoxes();
                 }
             }
             else
             {
                 MessageBox.Show("No se encontró el producto");
-                ClearTextFields();
+                ClearTextBoxes();
             }
+        }
+
+        private void BBuscar_Click(object sender, EventArgs e)
+        {
+            // Obtener los valores de los campos de búsqueda
+            int codigo;
+            int.TryParse(textBox11.Text, out codigo);
+
+            string descripcion = textBox10.Text.Trim();
+            string lote = textBox9.Text.Trim();
+            decimal pvp;
+            decimal.TryParse(textBox8.Text, out pvp);
+            decimal precioUnitario;
+            decimal.TryParse(textBox14.Text, out precioUnitario);
+            DateTime fechaCaducidad;
+            DateTime.TryParse(textBox7.Text, out fechaCaducidad);
+            decimal descuento;
+            decimal.TryParse(textBox2.Text, out descuento);
+            decimal iva;
+            decimal.TryParse(textBox15.Text, out iva);
+
+            IEnumerable<Class_Producto> productosEncontrados = inventario.BuscarProducto(codigo, descripcion, lote, pvp, precioUnitario, fechaCaducidad, descuento, iva);
+
+            // Mostrar los productos filtrados en el DataGridView
+            dataGridView1.DataSource = productosEncontrados.ToList();
+        }
+
+        private void BCancelar_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = inventario.productos.ToList();
+            ClearTextBoxes();
         }
     }
 }
