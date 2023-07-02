@@ -279,9 +279,9 @@ namespace ProyectoPrototipo_1._0
         private System.Windows.Forms.Button bttInicio;
         private System.Windows.Forms.Button bttFinal;
 
+
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //375; 489
             TabPage selectedTab = tabControl2.SelectedTab;
             // Verificar si el nombre del tab seleccionado es igual a "NombreDeseado"
             if (tabControl2.SelectedTab.Name == "tabPageLeerIndividual")
@@ -298,15 +298,19 @@ namespace ProyectoPrototipo_1._0
                 // Crear los botones
                 bttAnterior = new System.Windows.Forms.Button();
                 bttAnterior.Text = "ANTERIOR";
+                bttAnterior.Click += BttAnterior_Click;
 
                 bttSiguiente = new System.Windows.Forms.Button();
                 bttSiguiente.Text = "SIGUIENTE";
+                bttSiguiente.Click += BttSiguiente_Click;
 
                 bttInicio = new System.Windows.Forms.Button();
                 bttInicio.Text = "INICIO";
+                bttInicio.Click += BttInicio_Click;
 
                 bttFinal = new System.Windows.Forms.Button();
                 bttFinal.Text = "FINAL";
+                bttFinal.Click += BttFinal_Click;
 
                 // Crear el contenedor (Panel)
                 Panel panel = new Panel();
@@ -328,26 +332,25 @@ namespace ProyectoPrototipo_1._0
 
                panel.Controls.Add(dataGridView1);
 
-
                 bttAnterior.Width = 100;
-                bttAnterior.Height = 60;
+                bttAnterior.Height = 120;
                 bttSiguiente.Width = 100;
-                bttSiguiente.Height = 60;
+                bttSiguiente.Height = 120;
                 // Establecer la posición y tamaño de los botones dentro del Panel
                 bttAnterior.Location = new System.Drawing.Point(20, 200); // Ajustar la posición del botón izquierdo dentro del Panel
-                bttSiguiente.Location = new System.Drawing.Point(panel.Width - bttSiguiente.Width - 20, 200); // Ajustar la posición del botón derecho dentro del Panel
+                bttSiguiente.Location = new System.Drawing.Point(panel.Width - bttSiguiente.Width - 40, 200); // Ajustar la posición del botón derecho dentro del Panel
                 
                 panel.Controls.Add(bttAnterior);
                 panel.Controls.Add(bttSiguiente);
 
                 bttInicio.Width = 80;
-                bttInicio.Height = 30;
+                bttInicio.Height = 40;
                 bttFinal.Width = 80;
-                bttFinal.Height = 30;
+                bttFinal.Height = 40;
+
                 // Establecer la posición y tamaño de los botones inferiores dentro del Panel
                 bttInicio.Location = new System.Drawing.Point(350, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del primer botón inferior
-                bttFinal.Location = new System.Drawing.Point(bttInicio.Location.X + bttInicio.Width + 50, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del segundo botón inferior
-                
+                bttFinal.Location = new System.Drawing.Point(bttInicio.Location.X + bttInicio.Width + 50, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del segundo botón inferior                
                 
                 panel.Controls.Add(bttInicio);
                 panel.Controls.Add(bttFinal);
@@ -363,6 +366,25 @@ namespace ProyectoPrototipo_1._0
                 this.groupBox1.Visible = true;
                 tabControl2.Width = 375;
             }
+        }
+        private void BttAnterior_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BttSiguiente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BttInicio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BttFinal_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
