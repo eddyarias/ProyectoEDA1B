@@ -128,6 +128,8 @@ namespace ProyectoPrototipo_1._0.CLASES
                     return producto.codigo == Convert.ToInt32(valor);
                 case "Nombre":
                     return producto.nombre.IndexOf(valor, StringComparison.OrdinalIgnoreCase) >= 0;
+                case "Cantidad":
+                    return producto.cantidad == Convert.ToInt32(valor);
                 case "Tipo":
                     return producto.tipo.IndexOf(valor, StringComparison.OrdinalIgnoreCase) >= 0;
                 case "Lote":
