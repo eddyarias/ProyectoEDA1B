@@ -33,9 +33,10 @@ namespace ProyectoPrototipo_1._0
 
             //SI YA ESTA LISTO EL SQL SERVER, DESCOMENTEN ESTO Y MODIFIQUEN LA CLASE CONNECT:
 
-            string usuario = TBUsername.Text;
-            string pass = TBPassword.Text;
-
+            //string usuario = TBUsername.Text;
+            //string pass = TBPassword.Text;
+            string usuario = "jonathan";
+            string pass = "PJseverous75";
             Connect conexion = new Connect(usuario, pass);
             SqlConnection? connection = conexion.RealizarConexion();
 
