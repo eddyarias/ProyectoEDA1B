@@ -11,7 +11,6 @@ namespace ProyectoPrototipo_1._0.CLASES
 {
     public class FarmaciaDbContext : DbContext
     {
-        public DbSet<Class_Proveedor> Proveedor { get; set; }
         public DbSet<Class_Producto> Producto { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

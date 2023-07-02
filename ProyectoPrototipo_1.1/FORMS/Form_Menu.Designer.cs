@@ -50,17 +50,7 @@
             bttModuloInventario.Text = "MÓDULO DE INVENTARIO";
             bttModuloInventario.UseVisualStyleBackColor = true;
             bttModuloInventario.Click += bttModuloInventario_Click;
-            // 
-            // bttModuloProveedores
-            // 
-            bttModuloProveedores.Location = new Point(118, 559);
-            bttModuloProveedores.Margin = new Padding(3, 4, 3, 4);
-            bttModuloProveedores.Name = "bttModuloProveedores";
-            bttModuloProveedores.Size = new Size(137, 145);
-            bttModuloProveedores.TabIndex = 2;
-            bttModuloProveedores.Text = "MÓDULO DE PROVEEDORES";
-            bttModuloProveedores.UseVisualStyleBackColor = true;
-            bttModuloProveedores.Click += bttProveedores_Click;
+
             // 
             // label1
             // 

@@ -31,13 +31,6 @@ namespace ProyectoPrototipo_1._0
 
         }
 
-        private void bttProveedores_Click(object sender, EventArgs e)
-        {
-            Form_Proveedores form_Proveedores = new Form_Proveedores();
-            form_Proveedores.MdiParent = this;
-            form_Proveedores.Show();
-        }
-
         private void bttModuloInventario_Click(object sender, EventArgs e)
         {
             Form_Inventario form_Inventario = new Form_Inventario();
