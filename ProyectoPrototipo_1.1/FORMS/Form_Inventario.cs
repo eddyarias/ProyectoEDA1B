@@ -17,7 +17,6 @@ namespace ProyectoPrototipo_1._0
     {
         Class_Inventario inventario;
         ListaDoblementeEnlazada listaDoblementeEnlazada;
-        Nodo producto;
         public Form_Inventario()
         {
             this.inventario = new Class_Inventario();
@@ -302,7 +301,7 @@ namespace ProyectoPrototipo_1._0
             if (tabControl2.SelectedTab.Name == "tabPageLeerIndividual")
             {
                 listaDoblementeEnlazada = new ListaDoblementeEnlazada();
-                this.inventario.ExtraerElementos(listaDoblementeEnlazada);
+                listaDoblementeEnlazada= this.inventario.ExtraerElementos(listaDoblementeEnlazada);
 
 
                 this.dgvTablaInventario.Visible = false;
@@ -311,7 +310,7 @@ namespace ProyectoPrototipo_1._0
                 tabControl2.Width = 930;
 
                 dataGridView1 = new DataGridView();
-                dataGridView1.Width = 500; // Establecer el ancho deseado del DataGridView
+                dataGridView1.Width = 650; // Establecer el ancho deseado del DataGridView
                 dataGridView1.Height = 300; // Establecer la altura deseada del DataGridView
 
                 // Crear los botones
@@ -343,7 +342,7 @@ namespace ProyectoPrototipo_1._0
                 // Establecer la posición del Panel
                 panel.Location = new System.Drawing.Point(panelX, panelY);
 
-                int x = (panel.Width - dataGridView1.Width) / 2;
+                int x = ((panel.Width - dataGridView1.Width) / 2)-10;
                 // Calcular la posición vertical para centrar el DataGridView
                 int y = (panel.Height - dataGridView1.Height) / 2;
                 // Establecer la posición del DataGridView
@@ -377,6 +376,8 @@ namespace ProyectoPrototipo_1._0
                 // Agregar el Panel al TabControl
                 tabControl2.TabPages[3].Controls.Add(panel);
 
+
+                this.MostrarNodoEnDataGridView(listaDoblementeEnlazada.ObtenerPrimerNodo());
 
             }
             else
@@ -483,7 +484,7 @@ namespace ProyectoPrototipo_1._0
             dataTable.Columns.Add("Cantidad", typeof(int));
 
             // Agregar el nodo actual como una fila al DataTable
-            dataTable.Rows.Add(nodo.Valor.codigo, nodo.Valor.cantidad, nodo.Valor.cantidad);
+            dataTable.Rows.Add(nodo.Valor.codigo, nodo.Valor.nombre, nodo.Valor.cantidad);
 
             // Asignar el DataTable como origen de datos del DataGridView
             dataGridView1.DataSource = dataTable;

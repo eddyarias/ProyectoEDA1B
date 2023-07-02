@@ -101,11 +101,22 @@ namespace ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA
 
         public Nodo ObtenerNodoAnterior(Nodo nodo)
         {
-            return nodo.Anterior;
+            if (actual == cabeza) {
+                return cola;
+            }
+            else
+            {
+                return nodo.Anterior;
+            }
+            
         }
 
         public Nodo ObtenerNodoSiguiente(Nodo nodo)
         {
+            if(actual  == cola)
+            {
+                return cabeza;
+            }
             return nodo.Siguiente;
         }
 
@@ -118,5 +129,16 @@ namespace ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA
         {
             return cola;
         }
+        public void ImprimirLista()
+        {
+            Nodo actual = cabeza;
+
+            while (actual != null)
+            {
+                Console.WriteLine(actual.Valor); // Suponiendo que la clase Class_Producto tiene un método ToString() adecuado
+                actual = actual.Siguiente;
+            }
+        }
+
     }
 }
