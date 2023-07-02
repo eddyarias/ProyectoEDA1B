@@ -82,68 +82,41 @@ namespace ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA
             }
         }
 
-        public Nodo Presentar()
+        public Nodo BuscarNodoPorCodigo(int codigo)
         {
-            if (actual != null)
-            {
-                return actual;
-            }
-            else
-            {
-                return null;
-            }
-        }
+            Nodo actual = cabeza;
 
-        public Nodo PresentarSiguiente()
-        {
-            if (actual != null && actual.Siguiente != null)
+            while (actual != null)
             {
+                if (actual.Valor.codigo == codigo)
+                {
+                    return actual;
+                }
+
                 actual = actual.Siguiente;
-                return actual;
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
-        public Nodo PresentarAnterior()
+        public Nodo ObtenerNodoAnterior(Nodo nodo)
         {
-            if (actual != null && actual.Anterior != null)
-            {
-                actual = actual.Anterior;
-                return actual;
-            }
-            else
-            {
-                return null;
-            }
+            return nodo.Anterior;
         }
 
-        public Nodo PresentarInicio()
+        public Nodo ObtenerNodoSiguiente(Nodo nodo)
         {
-            if (cabeza != null)
-            {
-                actual = cabeza;
-                return actual;
-            }
-            else
-            {
-                return null;
-            }
+            return nodo.Siguiente;
         }
 
-        public Nodo PresentarFinal()
+        public Nodo ObtenerPrimerNodo()
         {
-            if (cola != null)
-            {
-                actual = cola;
-                return actual;
-            }
-            else
-            {
-                return null;
-            }
+            return cabeza;
+        }
+
+        public Nodo ObtenerUltimoNodo()
+        {
+            return cola;
         }
     }
 }

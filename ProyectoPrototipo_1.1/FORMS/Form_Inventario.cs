@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProyectoPrototipo_1._0.CLASES;
+using ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -15,6 +16,8 @@ namespace ProyectoPrototipo_1._0
     public partial class Form_Inventario : Form
     {
         Class_Inventario inventario;
+        ListaDoblementeEnlazada listaDoblementeEnlazada;
+        Nodo producto;
         public Form_Inventario()
         {
             this.inventario = new Class_Inventario();
@@ -286,6 +289,10 @@ namespace ProyectoPrototipo_1._0
             // Verificar si el nombre del tab seleccionado es igual a "NombreDeseado"
             if (tabControl2.SelectedTab.Name == "tabPageLeerIndividual")
             {
+                listaDoblementeEnlazada = new ListaDoblementeEnlazada();
+                this.inventario.ExtraerElementos(listaDoblementeEnlazada);
+
+                
                 this.dgvTablaInventario.Visible = false;
                 this.label5.Visible = false;
                 this.groupBox1.Visible = false;
@@ -369,22 +376,104 @@ namespace ProyectoPrototipo_1._0
         }
         private void BttAnterior_Click(object sender, EventArgs e)
         {
+            // Obtener el nodo actual seleccionado en el DataGridView
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Obtener el código del producto desde la fila seleccionada
+                int codigo = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Codigo"].Value);
 
+                // Buscar el nodo del producto en la lista doblemente enlazada
+                Nodo nodoProducto = listaDoblementeEnlazada.BuscarNodoPorCodigo(codigo);
+
+                // Obtener el nodo anterior al nodo actual
+                Nodo nodoAnterior = listaDoblementeEnlazada.ObtenerNodoAnterior(nodoProducto);
+
+                if (nodoAnterior != null)
+                {
+                    // Mostrar el nodo anterior en el DataGridView
+                    MostrarNodoEnDataGridView(nodoAnterior);
+                }
+                else
+                {
+                    MessageBox.Show("No hay nodos anteriores.");
+                }
+            }
         }
 
         private void BttSiguiente_Click(object sender, EventArgs e)
         {
+            // Obtener el nodo actual seleccionado en el DataGridView
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Obtener el código del producto desde la fila seleccionada
+                int codigo = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Codigo"].Value);
 
+                // Buscar el nodo del producto en la lista doblemente enlazada
+                Nodo nodoProducto = listaDoblementeEnlazada.BuscarNodoPorCodigo(codigo);
+
+                // Obtener el nodo siguiente al nodo actual
+                Nodo nodoSiguiente = listaDoblementeEnlazada.ObtenerNodoSiguiente(nodoProducto);
+
+                if (nodoSiguiente != null)
+                {
+                    // Mostrar el nodo siguiente en el DataGridView
+                    MostrarNodoEnDataGridView(nodoSiguiente);
+                }
+                else
+                {
+                    MessageBox.Show("No hay nodos siguientes.");
+                }
+            }
         }
 
         private void BttInicio_Click(object sender, EventArgs e)
         {
+            // Obtener el primer nodo de la lista doblemente enlazada
+            Nodo primerNodo = listaDoblementeEnlazada.ObtenerPrimerNodo();
 
+            if (primerNodo != null)
+            {
+                // Mostrar el primer nodo en el DataGridView
+                MostrarNodoEnDataGridView(primerNodo);
+            }
+            else
+            {
+                MessageBox.Show("La lista está vacía.");
+            }
         }
 
         private void BttFinal_Click(object sender, EventArgs e)
         {
+            // Obtener el último nodo de la lista doblemente enlazada
+            Nodo ultimoNodo = listaDoblementeEnlazada.ObtenerUltimoNodo();
 
+            if (ultimoNodo != null)
+            {
+                // Mostrar el último nodo en el DataGridView
+                MostrarNodoEnDataGridView(ultimoNodo);
+            }
+            else
+            {
+                MessageBox.Show("La lista está vacía.");
+            }
         }
+
+        private void MostrarNodoEnDataGridView(Nodo nodo)
+        {
+            // Crear una nueva instancia de DataTable
+            DataTable dataTable = new DataTable();
+
+            // Agregar las columnas al DataTable
+            dataTable.Columns.Add("Codigo", typeof(int));
+            dataTable.Columns.Add("Nombre", typeof(string));
+            dataTable.Columns.Add("Cantidad", typeof(int));
+
+            // Agregar el nodo actual como una fila al DataTable
+            dataTable.Rows.Add(nodo.Valor.codigo, nodo.Valor.cantidad, nodo.Valor.cantidad);
+
+            // Asignar el DataTable como origen de datos del DataGridView
+            dataGridView1.DataSource = dataTable;
+        }
+
     }
 }

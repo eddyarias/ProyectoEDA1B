@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -21,7 +22,15 @@ namespace ProyectoPrototipo_1._0.CLASES
             productos = dbContext.Producto.ToList();
         }
 
-        public void AgregarProducto(Class_Producto producto)
+        public void ExtraerElementos(ListaDoblementeEnlazada listaDobleEnlazada)
+        {
+            foreach (Class_Producto producto in productos)
+            {
+                listaDobleEnlazada.AgregarAlFinal(producto);
+            }
+        }
+
+            public void AgregarProducto(Class_Producto producto)
         {
             productos.Add(producto);
             dbContext.Producto.Add(producto);
