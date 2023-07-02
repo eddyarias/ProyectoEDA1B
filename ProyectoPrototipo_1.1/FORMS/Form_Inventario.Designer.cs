@@ -195,8 +195,10 @@
             // 
             // txtNumeroProductos
             // 
+            txtNumeroProductos.Enabled = false;
             txtNumeroProductos.Location = new Point(155, 525);
             txtNumeroProductos.Name = "txtNumeroProductos";
+            txtNumeroProductos.ReadOnly = true;
             txtNumeroProductos.Size = new Size(27, 27);
             txtNumeroProductos.TabIndex = 72;
             // 
