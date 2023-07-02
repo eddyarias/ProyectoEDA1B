@@ -23,8 +23,7 @@ namespace ProyectoPrototipo_1._0
             // Suscribirse al evento SelectedIndexChanged del TabControl
             tabControl2.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
 
-            
-
+         
         }
 
         private void Form_Inventario_Load(object sender, EventArgs e)
@@ -34,7 +33,7 @@ namespace ProyectoPrototipo_1._0
             this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - this.Width) / 2,
                                       (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2);
             // READ: inventario en el dataGridView1
-            dgvTablaInventario.DataSource = inventario.productosDB();
+            dgvTablaInventario.DataSource = inventario.productosDB;
         }
 
         private void ClearTextBoxes()
