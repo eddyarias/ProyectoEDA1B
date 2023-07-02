@@ -42,15 +42,32 @@ namespace ProyectoPrototipo_1._0
         {
             txtNumeroProductos.Clear();
             txtDescuentoCrear.Clear();
+            txtDescuentoActualizar.Clear();
+            txtDescuentoEliminar.Clear();
             txtFechaCaducidadCrear.Clear();
+            txtFechaCaducidadActualizar.Clear();
+            txtFechaCaducidadEliminar.Clear();
             txtPrecioUnidadCrear.Clear();
+            txtPrecioUnidadActualizar.Clear();
+            txtPrecioUnidadEliminar.Clear();
             txtLoteCrear.Clear();
+            txtLoteActualizar.Clear();
+            txtLoteEliminar.Clear();
             txtNombreCrear.Clear();
+            txtNombreActualizar.Clear();
+            txtNombreEliminar.Clear();
             txtCantidadCrear.Clear();
+            txtCantidadActualizar.Clear();
+            txtCantidadEliminar.Clear();
             txtCodigoCrear.Clear();
+            txtCodigoActualizar.Clear();
+            txtCodigoEliminar.Clear();
             txtPVPCrear.Clear();
-
-            //tabPage4.Text = string.Empty;
+            txtPVPActualizar.Clear();
+            txtPVPEliminar.Clear();
+            txtTipoCrear.Clear();
+            txtTipoActualizar.Clear();
+            txtTipoEliminar.Clear();
         }
         private void dgvTablaInventario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -182,9 +199,12 @@ namespace ProyectoPrototipo_1._0
 
             // Agregar el nuevo producto al inventario
             inventario.AgregarProducto(newProducto);
+
             MessageBox.Show("Producto creado exitosamente");
             // Actualizar el origen de datos del DataGridView con el inventario
-            dgvTablaInventario.DataSource = inventario.productos.ToList();
+
+            dgvTablaInventario.DataSource = inventario.productos;
+            //dgvTablaInventario.Refresh();
             ClearTextBoxes();
         }
 
@@ -210,7 +230,7 @@ namespace ProyectoPrototipo_1._0
             inventario.ActualizarProducto(codigo, productoActualizado);
             MessageBox.Show("Producto actualizado exitosamente");
             // Actualizar el origen de datos del DataGridView con el inventario
-            dgvTablaInventario.DataSource = inventario.productos.ToList();
+            dgvTablaInventario.DataSource = inventario.productos;
             ClearTextBoxes();
         }
 
@@ -233,7 +253,7 @@ namespace ProyectoPrototipo_1._0
                     MessageBox.Show("Producto eliminado exitosamente");
 
                     // Actualizar el DataGridView con la lista de productos del inventario
-                    dgvTablaInventario.DataSource = inventario.productos.ToList();
+                    dgvTablaInventario.DataSource = inventario.productos;
                     ClearTextBoxes();
                 }
             }
@@ -246,27 +266,19 @@ namespace ProyectoPrototipo_1._0
 
         private void BBuscar_Click(object sender, EventArgs e)
         {
-            // Obtener los valores de los campos de búsqueda
-            int codigo;
-            int.TryParse(txtBuscar.Text, out codigo);
+            string atributo = cmbBuscar.SelectedItem.ToString();
+            string valor = txtBuscar.Text;
 
-            string nombre = txtBuscar.Text.Trim();
-            string tipo = txtBuscar.Text.Trim();
-            string lote = txtBuscar.Text.Trim();
-            decimal pvp;
-            decimal.TryParse(txtBuscar.Text, out pvp);
-            decimal precioUnitario;
-            decimal.TryParse(txtBuscar.Text, out precioUnitario);
-            DateTime fechaCaducidad;
-            DateTime.TryParse(txtBuscar.Text, out fechaCaducidad);
-            decimal descuento;
-            decimal.TryParse(txtBuscar.Text, out descuento);
+            List<Class_Producto> productosEncontrados = inventario.BuscarProductoPorAtributo(atributo, valor);
 
-
-            IEnumerable<Class_Producto> productosEncontrados = inventario.BuscarProducto(codigo, nombre, tipo, lote, pvp, precioUnitario, fechaCaducidad, descuento);
-
-            // Mostrar los productos filtrados en el DataGridView
-            dgvTablaInventario.DataSource = productosEncontrados.ToList();
+            if (productosEncontrados.Count > 0)
+            {
+                dgvTablaInventario.DataSource = productosEncontrados;
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron productos.");
+            }
         }
 
         private void BCancelar_Click(object sender, EventArgs e)
@@ -292,7 +304,7 @@ namespace ProyectoPrototipo_1._0
                 listaDoblementeEnlazada = new ListaDoblementeEnlazada();
                 this.inventario.ExtraerElementos(listaDoblementeEnlazada);
 
-                
+
                 this.dgvTablaInventario.Visible = false;
                 this.label5.Visible = false;
                 this.groupBox1.Visible = false;
@@ -337,7 +349,7 @@ namespace ProyectoPrototipo_1._0
                 // Establecer la posición del DataGridView
                 dataGridView1.Location = new System.Drawing.Point(x, y);
 
-               panel.Controls.Add(dataGridView1);
+                panel.Controls.Add(dataGridView1);
 
                 bttAnterior.Width = 100;
                 bttAnterior.Height = 120;
@@ -346,7 +358,7 @@ namespace ProyectoPrototipo_1._0
                 // Establecer la posición y tamaño de los botones dentro del Panel
                 bttAnterior.Location = new System.Drawing.Point(20, 200); // Ajustar la posición del botón izquierdo dentro del Panel
                 bttSiguiente.Location = new System.Drawing.Point(panel.Width - bttSiguiente.Width - 40, 200); // Ajustar la posición del botón derecho dentro del Panel
-                
+
                 panel.Controls.Add(bttAnterior);
                 panel.Controls.Add(bttSiguiente);
 
@@ -358,16 +370,17 @@ namespace ProyectoPrototipo_1._0
                 // Establecer la posición y tamaño de los botones inferiores dentro del Panel
                 bttInicio.Location = new System.Drawing.Point(350, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del primer botón inferior
                 bttFinal.Location = new System.Drawing.Point(bttInicio.Location.X + bttInicio.Width + 50, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del segundo botón inferior                
-                
+
                 panel.Controls.Add(bttInicio);
                 panel.Controls.Add(bttFinal);
 
                 // Agregar el Panel al TabControl
                 tabControl2.TabPages[3].Controls.Add(panel);
-               
+
 
             }
-            else {
+            else
+            {
                 this.dgvTablaInventario.Visible = true;
                 this.dgvTablaInventario.Enabled = true;
                 this.label5.Visible = true;
@@ -476,5 +489,20 @@ namespace ProyectoPrototipo_1._0
             dataGridView1.DataSource = dataTable;
         }
 
+        private void btnOrdenar_Click(object sender, EventArgs e)
+        {
+            // Obtener el atributo seleccionado del ComboBox
+            string atributo = cmbBuscar.SelectedItem.ToString();
+
+            // Ordenar la lista de productos según el atributo seleccionado
+            inventario.OrdenarProductosPorAtributo(atributo);
+
+            // Asignar la lista ordenada al origen de datos del DataGridView
+            dgvTablaInventario.DataSource = inventario.productos.ToList();
+
+            // Actualizar la visualización del DataGridView
+            dgvTablaInventario.Refresh();
+
+        }
     }
 }
