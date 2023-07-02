@@ -30,12 +30,37 @@ namespace ProyectoPrototipo_1._0.CLASES
             }
         }
 
-            public void AgregarProducto(Class_Producto producto)
+
+        public void AgregarProducto(Class_Producto producto) //por InsercionLineal de acuerdo con el codigo
         {
-            productos.Add(producto);
-            dbContext.Producto.Add(producto);
-            dbContext.SaveChanges();
+            int n = productos.Count;
+            int i, j;
+            bool encontrado;
+            Class_Producto auxiliar;
+
+            for (i = 1; i < n; i++)
+            {
+                auxiliar = productos[i];
+                j = i - 1;
+                encontrado = false;
+
+                while (j >= 0 && !encontrado)
+                {
+                    if (productos[j].codigo > auxiliar.codigo)
+                    {
+                        productos[j + 1] = productos[j];
+                        j--;
+                    }
+                    else
+                    {
+                        encontrado = true;
+                    }
+                }
+
+                productos[j + 1] = auxiliar;
+            }
         }
+
 
         public List<Class_Producto> ObtenerProductos()
         {
