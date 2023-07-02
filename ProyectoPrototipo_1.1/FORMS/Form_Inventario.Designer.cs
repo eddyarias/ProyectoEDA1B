@@ -91,16 +91,17 @@
             label29 = new Label();
             label30 = new Label();
             btnEliminar = new Button();
+            tabPageLeerIndividual = new TabPage();
             btnCancelarBusqueda = new Button();
             label3 = new Label();
             txtNumeroProductos = new TextBox();
             btnBuscar = new Button();
             label14 = new Label();
             groupBox1 = new GroupBox();
+            btnOrdenar = new Button();
             txtBuscar = new TextBox();
             cmbBuscar = new ComboBox();
             label5 = new Label();
-            tabPageLeerIndividual = new TabPage();
             ((System.ComponentModel.ISupportInitialize)dgvTablaInventario).BeginInit();
             tabControl2.SuspendLayout();
             tabPageCrear.SuspendLayout();
@@ -111,6 +112,8 @@
             // 
             // dgvTablaInventario
             // 
+            dgvTablaInventario.AllowUserToAddRows = false;
+            dgvTablaInventario.AllowUserToDeleteRows = false;
             dgvTablaInventario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTablaInventario.Location = new Point(434, 32);
             dgvTablaInventario.Margin = new Padding(3, 4, 3, 4);
@@ -181,7 +184,7 @@
             txtTipoCrear.Margin = new Padding(3, 4, 3, 4);
             txtTipoCrear.Name = "txtTipoCrear";
             txtTipoCrear.Size = new Size(119, 27);
-            txtTipoCrear.TabIndex = 77;
+            txtTipoCrear.TabIndex = 56;
             // 
             // label6
             // 
@@ -197,7 +200,7 @@
             btnAgregar.Location = new Point(61, 368);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(94, 38);
-            btnAgregar.TabIndex = 75;
+            btnAgregar.TabIndex = 63;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += BAgregar_Click;
@@ -208,7 +211,7 @@
             txtPVPCrear.Margin = new Padding(3, 4, 3, 4);
             txtPVPCrear.Name = "txtPVPCrear";
             txtPVPCrear.Size = new Size(119, 27);
-            txtPVPCrear.TabIndex = 69;
+            txtPVPCrear.TabIndex = 59;
             // 
             // label1
             // 
@@ -225,7 +228,7 @@
             txtDescuentoCrear.Margin = new Padding(3, 4, 3, 4);
             txtDescuentoCrear.Name = "txtDescuentoCrear";
             txtDescuentoCrear.Size = new Size(119, 27);
-            txtDescuentoCrear.TabIndex = 66;
+            txtDescuentoCrear.TabIndex = 62;
             // 
             // txtFechaCaducidadCrear
             // 
@@ -233,7 +236,7 @@
             txtFechaCaducidadCrear.Margin = new Padding(3, 4, 3, 4);
             txtFechaCaducidadCrear.Name = "txtFechaCaducidadCrear";
             txtFechaCaducidadCrear.Size = new Size(119, 27);
-            txtFechaCaducidadCrear.TabIndex = 65;
+            txtFechaCaducidadCrear.TabIndex = 61;
             // 
             // txtPrecioUnidadCrear
             // 
@@ -241,7 +244,7 @@
             txtPrecioUnidadCrear.Margin = new Padding(3, 4, 3, 4);
             txtPrecioUnidadCrear.Name = "txtPrecioUnidadCrear";
             txtPrecioUnidadCrear.Size = new Size(119, 27);
-            txtPrecioUnidadCrear.TabIndex = 64;
+            txtPrecioUnidadCrear.TabIndex = 60;
             // 
             // txtLoteCrear
             // 
@@ -249,7 +252,7 @@
             txtLoteCrear.Margin = new Padding(3, 4, 3, 4);
             txtLoteCrear.Name = "txtLoteCrear";
             txtLoteCrear.Size = new Size(119, 27);
-            txtLoteCrear.TabIndex = 63;
+            txtLoteCrear.TabIndex = 58;
             // 
             // label8
             // 
@@ -284,7 +287,7 @@
             txtNombreCrear.Margin = new Padding(3, 4, 3, 4);
             txtNombreCrear.Name = "txtNombreCrear";
             txtNombreCrear.Size = new Size(119, 27);
-            txtNombreCrear.TabIndex = 56;
+            txtNombreCrear.TabIndex = 55;
             // 
             // txtCantidadCrear
             // 
@@ -292,7 +295,7 @@
             txtCantidadCrear.Margin = new Padding(3, 4, 3, 4);
             txtCantidadCrear.Name = "txtCantidadCrear";
             txtCantidadCrear.Size = new Size(119, 27);
-            txtCantidadCrear.TabIndex = 55;
+            txtCantidadCrear.TabIndex = 57;
             // 
             // txtCodigoCrear
             // 
@@ -373,7 +376,7 @@
             txtTipoActualizar.Margin = new Padding(3, 4, 3, 4);
             txtTipoActualizar.Name = "txtTipoActualizar";
             txtTipoActualizar.Size = new Size(119, 27);
-            txtTipoActualizar.TabIndex = 95;
+            txtTipoActualizar.TabIndex = 84;
             // 
             // label12
             // 
@@ -390,7 +393,7 @@
             txtPVPActualizar.Margin = new Padding(3, 4, 3, 4);
             txtPVPActualizar.Name = "txtPVPActualizar";
             txtPVPActualizar.Size = new Size(119, 27);
-            txtPVPActualizar.TabIndex = 93;
+            txtPVPActualizar.TabIndex = 87;
             // 
             // label13
             // 
@@ -407,7 +410,7 @@
             txtDescuentoActualizar.Margin = new Padding(3, 4, 3, 4);
             txtDescuentoActualizar.Name = "txtDescuentoActualizar";
             txtDescuentoActualizar.Size = new Size(119, 27);
-            txtDescuentoActualizar.TabIndex = 91;
+            txtDescuentoActualizar.TabIndex = 90;
             // 
             // txtFechaCaducidadActualizar
             // 
@@ -415,7 +418,7 @@
             txtFechaCaducidadActualizar.Margin = new Padding(3, 4, 3, 4);
             txtFechaCaducidadActualizar.Name = "txtFechaCaducidadActualizar";
             txtFechaCaducidadActualizar.Size = new Size(119, 27);
-            txtFechaCaducidadActualizar.TabIndex = 90;
+            txtFechaCaducidadActualizar.TabIndex = 89;
             // 
             // txtPrecioUnidadActualizar
             // 
@@ -423,7 +426,7 @@
             txtPrecioUnidadActualizar.Margin = new Padding(3, 4, 3, 4);
             txtPrecioUnidadActualizar.Name = "txtPrecioUnidadActualizar";
             txtPrecioUnidadActualizar.Size = new Size(119, 27);
-            txtPrecioUnidadActualizar.TabIndex = 89;
+            txtPrecioUnidadActualizar.TabIndex = 88;
             // 
             // txtLoteActualizar
             // 
@@ -431,7 +434,7 @@
             txtLoteActualizar.Margin = new Padding(3, 4, 3, 4);
             txtLoteActualizar.Name = "txtLoteActualizar";
             txtLoteActualizar.Size = new Size(119, 27);
-            txtLoteActualizar.TabIndex = 88;
+            txtLoteActualizar.TabIndex = 86;
             // 
             // label15
             // 
@@ -466,7 +469,7 @@
             txtNombreActualizar.Margin = new Padding(3, 4, 3, 4);
             txtNombreActualizar.Name = "txtNombreActualizar";
             txtNombreActualizar.Size = new Size(119, 27);
-            txtNombreActualizar.TabIndex = 84;
+            txtNombreActualizar.TabIndex = 83;
             // 
             // txtCantidadActualizar
             // 
@@ -474,7 +477,7 @@
             txtCantidadActualizar.Margin = new Padding(3, 4, 3, 4);
             txtCantidadActualizar.Name = "txtCantidadActualizar";
             txtCantidadActualizar.Size = new Size(119, 27);
-            txtCantidadActualizar.TabIndex = 83;
+            txtCantidadActualizar.TabIndex = 85;
             // 
             // txtCodigoActualizar
             // 
@@ -528,7 +531,7 @@
             btnActualizar.Margin = new Padding(3, 4, 3, 4);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(84, 38);
-            btnActualizar.TabIndex = 59;
+            btnActualizar.TabIndex = 91;
             btnActualizar.Text = "Actualizar";
             btnActualizar.UseVisualStyleBackColor = true;
             btnActualizar.Click += BActualizar_Click;
@@ -743,9 +746,19 @@
             btnEliminar.UseVisualStyleBackColor = true;
             btnEliminar.Click += BEliminar_Click;
             // 
+            // tabPageLeerIndividual
+            // 
+            tabPageLeerIndividual.Location = new Point(4, 29);
+            tabPageLeerIndividual.Name = "tabPageLeerIndividual";
+            tabPageLeerIndividual.Padding = new Padding(3);
+            tabPageLeerIndividual.Size = new Size(367, 456);
+            tabPageLeerIndividual.TabIndex = 3;
+            tabPageLeerIndividual.Text = "Leer individual";
+            tabPageLeerIndividual.UseVisualStyleBackColor = true;
+            // 
             // btnCancelarBusqueda
             // 
-            btnCancelarBusqueda.Location = new Point(234, 89);
+            btnCancelarBusqueda.Location = new Point(294, 90);
             btnCancelarBusqueda.Name = "btnCancelarBusqueda";
             btnCancelarBusqueda.Size = new Size(94, 29);
             btnCancelarBusqueda.TabIndex = 74;
@@ -774,7 +787,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(97, 80);
+            btnBuscar.Location = new Point(163, 81);
             btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(88, 38);
@@ -795,6 +808,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnOrdenar);
             groupBox1.Controls.Add(txtBuscar);
             groupBox1.Controls.Add(cmbBuscar);
             groupBox1.Controls.Add(btnBuscar);
@@ -806,6 +820,16 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Buscar";
             // 
+            // btnOrdenar
+            // 
+            btnOrdenar.Location = new Point(29, 81);
+            btnOrdenar.Name = "btnOrdenar";
+            btnOrdenar.Size = new Size(94, 34);
+            btnOrdenar.TabIndex = 77;
+            btnOrdenar.Text = "Ordenar";
+            btnOrdenar.UseVisualStyleBackColor = true;
+            btnOrdenar.Click += btnOrdenar_Click;
+            // 
             // txtBuscar
             // 
             txtBuscar.Location = new Point(224, 36);
@@ -816,7 +840,7 @@
             // cmbBuscar
             // 
             cmbBuscar.FormattingEnabled = true;
-            cmbBuscar.Items.AddRange(new object[] { "Código", "Nombre", "Tipo", "Cantidad", "Lote", "PVP", "Precio unitario", "Fecha caducidad", "Descuento" });
+            cmbBuscar.Items.AddRange(new object[] { "Código", "Nombre", "Tipo", "Cantidad", "Lote", "PVP", "Precio Unitario", "Fecha de Caducidad", "Descuento" });
             cmbBuscar.Location = new Point(20, 36);
             cmbBuscar.Name = "cmbBuscar";
             cmbBuscar.Size = new Size(151, 28);
@@ -830,16 +854,6 @@
             label5.Size = new Size(466, 20);
             label5.TabIndex = 76;
             label5.Text = "Selecciona el tipo de atributo y el dato que deseas buscar en la tabla";
-            // 
-            // tabPageLeerIndividual
-            // 
-            tabPageLeerIndividual.Location = new Point(4, 29);
-            tabPageLeerIndividual.Name = "tabPageLeerIndividual";
-            tabPageLeerIndividual.Padding = new Padding(3);
-            tabPageLeerIndividual.Size = new Size(367, 456);
-            tabPageLeerIndividual.TabIndex = 3;
-            tabPageLeerIndividual.Text = "Leer individual";
-            tabPageLeerIndividual.UseVisualStyleBackColor = true;
             // 
             // Form_Inventario
             // 
@@ -946,5 +960,6 @@
         private Label label30;
         private Button btnLimpiar;
         private TabPage tabPageLeerIndividual;
+        private Button btnOrdenar;
     }
 }
