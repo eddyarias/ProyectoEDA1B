@@ -37,6 +37,16 @@ END
 
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Producto')
 BEGIN
+/*        [Key]
+        public int codigo { get; set; }
+        public string nombre { get; set; }
+        public string tipo { get; set; }
+        public int cantidad { get; set; }
+        public string lote { get; set; }
+        public decimal PVP { get; set; }
+        public decimal precio_unitario { get; set; }
+        public DateTime fecha_cad { get; set; }
+        public decimal descuento { get; set; }*/
     CREATE TABLE Producto (
         codigo INT PRIMARY KEY,
         cantidad INT,
