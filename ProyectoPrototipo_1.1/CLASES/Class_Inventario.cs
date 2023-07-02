@@ -40,31 +40,23 @@ namespace ProyectoPrototipo_1._0.CLASES
 
             if (productoExistente != null && productoExistenteBD != null)
             {
-                /*productoExistente.cantidad = productoActualizado.cantidad;
-                productoExistente.descripcion = productoActualizado.descripcion;
-                productoExistente.lote = productoActualizado.lote;
-                productoExistente.PVP = productoActualizado.PVP;
-                productoExistente.precio_unitario = productoActualizado.precio_unitario;
-                productoExistente.fecha_cad = productoActualizado.fecha_cad;
-                productoExistente.descuento = productoActualizado.descuento;
-                productoExistente.iva = productoActualizado.iva;*/
 
                 // Actualiza las propiedades del producto existente con los valores del producto actualizado
                 productoExistenteBD.cantidad = productoActualizado.cantidad;
-                productoExistenteBD.descripcion = productoActualizado.descripcion;
+                productoExistenteBD.nombre = productoActualizado.nombre;
+                productoExistenteBD.tipo = productoActualizado.tipo;
                 productoExistenteBD.lote = productoActualizado.lote;
                 productoExistenteBD.PVP = productoActualizado.PVP;
                 productoExistenteBD.precio_unitario = productoActualizado.precio_unitario;
-                productoExistenteBD.fecha_cad = productoActualizado.fecha_cad;
+                productoExistenteBD.fecha_caducidad = productoActualizado.fecha_caducidad;
                 productoExistenteBD.descuento = productoActualizado.descuento;
-                productoExistenteBD.iva = productoActualizado.iva;
 
                 // Guarda los cambios en la base de datos
                 dbContext.SaveChanges();
             }
         }
 
-        public IEnumerable<Class_Producto> BuscarProducto(int codigo, string descripcion, string lote, decimal pvp, decimal precioUnitario, DateTime fechaCaducidad, decimal descuento, decimal iva)
+        public IEnumerable<Class_Producto> BuscarProducto(int codigo, string nombre, string tipo, string lote, decimal pvp, decimal precioUnitario, DateTime fechaCaducidad, decimal descuento)
         {
             var filteredProductos = productos.AsQueryable();
 
@@ -73,9 +65,13 @@ namespace ProyectoPrototipo_1._0.CLASES
                 filteredProductos = filteredProductos.Where(p => p.codigo == codigo);
             }
 
-            if (!string.IsNullOrEmpty(descripcion))
+            if (!string.IsNullOrEmpty(nombre))
             {
-                filteredProductos = filteredProductos.Where(p => p.descripcion.Contains(descripcion));
+                filteredProductos = filteredProductos.Where(p => p.nombre.Contains(nombre));
+            }
+            if (!string.IsNullOrEmpty(tipo))
+            {
+                filteredProductos = filteredProductos.Where(p => p.tipo.Contains(tipo));
             }
 
             if (!string.IsNullOrEmpty(lote))
@@ -95,17 +91,12 @@ namespace ProyectoPrototipo_1._0.CLASES
 
             if (fechaCaducidad != DateTime.MinValue)
             {
-                filteredProductos = filteredProductos.Where(p => p.fecha_cad == fechaCaducidad);
+                filteredProductos = filteredProductos.Where(p => p.fecha_caducidad == fechaCaducidad);
             }
 
             if (descuento != 0)
             {
                 filteredProductos = filteredProductos.Where(p => p.descuento == descuento);
-            }
-
-            if (iva != 0)
-            {
-                filteredProductos = filteredProductos.Where(p => p.iva == iva);
             }
 
             return filteredProductos;

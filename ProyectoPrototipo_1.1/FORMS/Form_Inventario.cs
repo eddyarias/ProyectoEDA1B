@@ -43,10 +43,10 @@ namespace ProyectoPrototipo_1._0
             txtCantidadCrear.Clear();
             txtCodigoCrear.Clear();
             txtPVPCrear.Clear();
-            textBox15.Clear();
+
             //tabPage4.Text = string.Empty;
         }
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvTablaInventario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
@@ -58,18 +58,30 @@ namespace ProyectoPrototipo_1._0
 
                 if (productoToUpdate != null)
                 {
-                    txtCodigoCrear.Text = productoToUpdate.codigo.ToString();
-                    txtCantidadCrear.Text = productoToUpdate.cantidad.ToString();
-                    txtNombreCrear.Text = productoToUpdate.descripcion;
-                    txtLoteCrear.Text = productoToUpdate.lote;
-                    txtPVPCrear.Text = productoToUpdate.PVP.ToString();
-                    txtPrecioUnidadCrear.Text = productoToUpdate.precio_unitario.ToString();
-                    txtFechaCaducidadCrear.Text = productoToUpdate.fecha_cad.ToString();
-                    txtDescuentoCrear.Text = productoToUpdate.descuento.ToString();
-                    textBox15.Text = productoToUpdate.iva.ToString();
+                    txtCodigoActualizar.Text = productoToUpdate.codigo.ToString();
+                    txtNombreActualizar.Text = productoToUpdate.nombre;
+                    txtTipoActualizar.Text = productoToUpdate.tipo;
+                    txtCantidadActualizar.Text = productoToUpdate.cantidad.ToString();
+                    txtLoteActualizar.Text = productoToUpdate.lote;
+                    txtPVPActualizar.Text = productoToUpdate.PVP.ToString();
+                    txtPrecioUnidadActualizar.Text = productoToUpdate.precio_unitario.ToString();
+                    txtFechaCaducidadActualizar.Text = productoToUpdate.fecha_caducidad.ToString();
+                    txtDescuentoActualizar.Text = productoToUpdate.descuento.ToString();
+
+                    txtCodigoEliminar.Text = productoToUpdate.codigo.ToString();
+                    txtNombreEliminar.Text = productoToUpdate.nombre;
+                    txtTipoEliminar.Text = productoToUpdate.tipo;
+                    txtCantidadEliminar.Text = productoToUpdate.cantidad.ToString();
+                    txtLoteEliminar.Text = productoToUpdate.lote;
+                    txtPVPEliminar.Text = productoToUpdate.PVP.ToString();
+                    txtPrecioUnidadEliminar.Text = productoToUpdate.precio_unitario.ToString();
+                    txtFechaCaducidadEliminar.Text = productoToUpdate.fecha_caducidad.ToString();
+                    txtDescuentoEliminar.Text = productoToUpdate.descuento.ToString();
+
                 }
             }
         }
+
         private void BAgregar_Click(object sender, EventArgs e)
         {
             // Obtener los datos ingresados por el usuario
@@ -87,8 +99,8 @@ namespace ProyectoPrototipo_1._0
                 return; // Salir del método sin crear el producto
             }
 
-            string descripcion = txtNombreCrear.Text.Trim();
-            if (string.IsNullOrEmpty(descripcion))
+            string nombre = txtNombreCrear.Text.Trim();
+            if (string.IsNullOrEmpty(nombre))
             {
                 MessageBox.Show("Ingrese una descripción válida.");
                 return; // Salir del método sin crear el producto
@@ -129,10 +141,10 @@ namespace ProyectoPrototipo_1._0
                 return; // Salir del método sin crear el producto
             }
 
-            decimal iva;
-            if (!decimal.TryParse(textBox15.Text, out iva))
+            string tipo = txtTipoCrear.Text.Trim(); ;
+            if (string.IsNullOrEmpty(tipo))
             {
-                MessageBox.Show("Ingrese un IVA válido.");
+                MessageBox.Show("Ingrese un tipo válido.");
                 return; // Salir del método sin crear el producto
             }
 
@@ -153,13 +165,13 @@ namespace ProyectoPrototipo_1._0
             {
                 codigo = codigo,
                 cantidad = cantidad,
-                descripcion = descripcion,
+                nombre = nombre,
                 lote = lote,
                 PVP = pvp,
                 precio_unitario = precioUnitario,
-                fecha_cad = fechaCaducidad,
+                fecha_caducidad = fechaCaducidad,
                 descuento = descuento,
-                iva = iva
+                tipo = tipo,
             };
 
             // Agregar el nuevo producto al inventario
@@ -173,19 +185,19 @@ namespace ProyectoPrototipo_1._0
         private void BActualizar_Click(object sender, EventArgs e)
         {
             // Obtener el código del producto a actualizar
-            int codigo = int.Parse(txtCodigoCrear.Text);
+            int codigo = int.Parse(txtCodigoActualizar.Text);
 
             // Crear una instancia de Class_Producto con los datos actualizados
             Class_Producto productoActualizado = new Class_Producto
             {
-                cantidad = int.Parse(txtCantidadCrear.Text),
-                descripcion = txtNombreCrear.Text,
-                lote = txtLoteCrear.Text,
-                PVP = decimal.Parse(txtPVPCrear.Text),
-                precio_unitario = decimal.Parse(txtPrecioUnidadCrear.Text),
-                fecha_cad = DateTime.Parse(txtFechaCaducidadCrear.Text),
-                descuento = decimal.Parse(txtDescuentoCrear.Text),
-                iva = decimal.Parse(textBox15.Text)
+                cantidad = int.Parse(txtCantidadActualizar.Text),
+                nombre = txtNombreActualizar.Text,
+                lote = txtLoteActualizar.Text,
+                PVP = decimal.Parse(txtPVPActualizar.Text),
+                precio_unitario = decimal.Parse(txtPrecioUnidadActualizar.Text),
+                fecha_caducidad = DateTime.Parse(txtFechaCaducidadActualizar.Text),
+                descuento = decimal.Parse(txtDescuentoActualizar.Text),
+                tipo = txtTipoActualizar.Text
             };
 
             // Llamar al método ActualizarProducto del inventario
@@ -199,7 +211,7 @@ namespace ProyectoPrototipo_1._0
         private void BEliminar_Click(object sender, EventArgs e)
         {
             // Obtener el código del producto desde el TextBox
-            int codigo = Convert.ToInt32(txtCodigoCrear.Text);
+            int codigo = Convert.ToInt32(txtCodigoEliminar.Text);
 
             // Verificar si el código de producto existe en el inventario
             bool codigoExists = inventario.productos.Any(p => p.codigo == codigo);
@@ -230,22 +242,22 @@ namespace ProyectoPrototipo_1._0
         {
             // Obtener los valores de los campos de búsqueda
             int codigo;
-            int.TryParse(txtCodigoCrear.Text, out codigo);
+            int.TryParse(txtBuscar.Text, out codigo);
 
-            string descripcion = txtCantidadCrear.Text.Trim();
-            string lote = txtNombreCrear.Text.Trim();
+            string nombre = txtBuscar.Text.Trim();
+            string tipo = txtBuscar.Text.Trim();
+            string lote = txtBuscar.Text.Trim();
             decimal pvp;
-            decimal.TryParse(txtLoteCrear.Text, out pvp);
+            decimal.TryParse(txtBuscar.Text, out pvp);
             decimal precioUnitario;
-            decimal.TryParse(txtPVPCrear.Text, out precioUnitario);
+            decimal.TryParse(txtBuscar.Text, out precioUnitario);
             DateTime fechaCaducidad;
-            DateTime.TryParse(txtPrecioUnidadCrear.Text, out fechaCaducidad);
+            DateTime.TryParse(txtBuscar.Text, out fechaCaducidad);
             decimal descuento;
-            decimal.TryParse(txtDescuentoCrear.Text, out descuento);
-            decimal iva;
-            decimal.TryParse(textBox15.Text, out iva);
+            decimal.TryParse(txtBuscar.Text, out descuento);
 
-            IEnumerable<Class_Producto> productosEncontrados = inventario.BuscarProducto(codigo, descripcion, lote, pvp, precioUnitario, fechaCaducidad, descuento, iva);
+
+            IEnumerable<Class_Producto> productosEncontrados = inventario.BuscarProducto(codigo, nombre, tipo, lote, pvp, precioUnitario, fechaCaducidad, descuento);
 
             // Mostrar los productos filtrados en el DataGridView
             dgvTablaInventario.DataSource = productosEncontrados.ToList();
@@ -256,5 +268,6 @@ namespace ProyectoPrototipo_1._0
             dgvTablaInventario.DataSource = inventario.productos.ToList();
             ClearTextBoxes();
         }
+
     }
 }

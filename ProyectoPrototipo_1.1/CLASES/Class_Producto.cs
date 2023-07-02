@@ -17,7 +17,7 @@ namespace ProyectoPrototipo_1._0.CLASES
         public string lote { get; set; }
         public decimal PVP { get; set; }
         public decimal precio_unitario { get; set; }
-        public DateTime fecha_cad { get; set; }
+        public DateTime fecha_caducidad { get; set; }
         public decimal descuento { get; set; }      
     }
 

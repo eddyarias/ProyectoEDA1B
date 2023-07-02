@@ -31,10 +31,10 @@
             dgvTablaInventario = new DataGridView();
             tabControl2 = new TabControl();
             tabPageCrear = new TabPage();
+            btnLimpiar = new Button();
+            txtTipoCrear = new TextBox();
+            label6 = new Label();
             btnAgregar = new Button();
-            btnCancelarBusqueda = new Button();
-            label3 = new Label();
-            txtNumeroProductos = new TextBox();
             txtPVPCrear = new TextBox();
             label1 = new Label();
             txtDescuentoCrear = new TextBox();
@@ -43,9 +43,6 @@
             txtLoteCrear = new TextBox();
             label8 = new Label();
             label7 = new Label();
-            btnBuscar = new Button();
-            btnActualizar = new Button();
-            btnEliminar = new Button();
             label2 = new Label();
             txtNombreCrear = new TextBox();
             txtCantidadCrear = new TextBox();
@@ -54,20 +51,12 @@
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
-            label14 = new Label();
             tabPageActualizar = new TabPage();
-            tabPageEliminar = new TabPage();
-            groupBox1 = new GroupBox();
-            cmbBuscar = new ComboBox();
-            txtBuscar = new TextBox();
-            label5 = new Label();
-            txtTipoCrear = new TextBox();
-            label6 = new Label();
             txtTipoActualizar = new TextBox();
             label12 = new Label();
             txtPVPActualizar = new TextBox();
             label13 = new Label();
-            txtDescuntoActualizar = new TextBox();
+            txtDescuentoActualizar = new TextBox();
             txtFechaCaducidadActualizar = new TextBox();
             txtPrecioUnidadActualizar = new TextBox();
             txtLoteActualizar = new TextBox();
@@ -81,6 +70,8 @@
             label19 = new Label();
             label20 = new Label();
             label21 = new Label();
+            btnActualizar = new Button();
+            tabPageEliminar = new TabPage();
             txtTipoEliminar = new TextBox();
             label22 = new Label();
             txtPVPEliminar = new TextBox();
@@ -99,7 +90,16 @@
             label28 = new Label();
             label29 = new Label();
             label30 = new Label();
-            btnLimpiar = new Button();
+            btnEliminar = new Button();
+            btnCancelarBusqueda = new Button();
+            label3 = new Label();
+            txtNumeroProductos = new TextBox();
+            btnBuscar = new Button();
+            label14 = new Label();
+            groupBox1 = new GroupBox();
+            txtBuscar = new TextBox();
+            cmbBuscar = new ComboBox();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvTablaInventario).BeginInit();
             tabControl2.SuspendLayout();
             tabPageCrear.SuspendLayout();
@@ -118,7 +118,7 @@
             dgvTablaInventario.RowTemplate.Height = 24;
             dgvTablaInventario.Size = new Size(466, 351);
             dgvTablaInventario.TabIndex = 0;
-            dgvTablaInventario.CellClick += dataGridView1_CellClick;
+            dgvTablaInventario.CellClick += dgvTablaInventario_CellClick;
             // 
             // tabControl2
             // 
@@ -163,6 +163,32 @@
             tabPageCrear.Text = "Crear";
             tabPageCrear.UseVisualStyleBackColor = true;
             // 
+            // btnLimpiar
+            // 
+            btnLimpiar.Location = new Point(185, 368);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(94, 38);
+            btnLimpiar.TabIndex = 78;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            // 
+            // txtTipoCrear
+            // 
+            txtTipoCrear.Location = new Point(127, 119);
+            txtTipoCrear.Margin = new Padding(3, 4, 3, 4);
+            txtTipoCrear.Name = "txtTipoCrear";
+            txtTipoCrear.Size = new Size(119, 27);
+            txtTipoCrear.TabIndex = 77;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(78, 119);
+            label6.Name = "label6";
+            label6.Size = new Size(39, 20);
+            label6.TabIndex = 76;
+            label6.Text = "Tipo";
+            // 
             // btnAgregar
             // 
             btnAgregar.Location = new Point(61, 368);
@@ -172,35 +198,6 @@
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += BAgregar_Click;
-            // 
-            // btnCancelarBusqueda
-            // 
-            btnCancelarBusqueda.Location = new Point(234, 89);
-            btnCancelarBusqueda.Name = "btnCancelarBusqueda";
-            btnCancelarBusqueda.Size = new Size(94, 29);
-            btnCancelarBusqueda.TabIndex = 74;
-            btnCancelarBusqueda.Text = "Cancelar";
-            btnCancelarBusqueda.UseVisualStyleBackColor = true;
-            btnCancelarBusqueda.Click += BCancelar_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(188, 528);
-            label3.Name = "label3";
-            label3.Size = new Size(61, 20);
-            label3.TabIndex = 73;
-            label3.Text = "/2000 ";
-            // 
-            // txtNumeroProductos
-            // 
-            txtNumeroProductos.Enabled = false;
-            txtNumeroProductos.Location = new Point(155, 525);
-            txtNumeroProductos.Name = "txtNumeroProductos";
-            txtNumeroProductos.ReadOnly = true;
-            txtNumeroProductos.Size = new Size(27, 27);
-            txtNumeroProductos.TabIndex = 72;
             // 
             // txtPVPCrear
             // 
@@ -268,39 +265,6 @@
             label7.Size = new Size(68, 20);
             label7.TabIndex = 61;
             label7.Text = "Fec. cad.:";
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Location = new Point(97, 80);
-            btnBuscar.Margin = new Padding(3, 4, 3, 4);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(88, 38);
-            btnBuscar.TabIndex = 60;
-            btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += BBuscar_Click;
-            // 
-            // btnActualizar
-            // 
-            btnActualizar.Location = new Point(129, 368);
-            btnActualizar.Margin = new Padding(3, 4, 3, 4);
-            btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(84, 38);
-            btnActualizar.TabIndex = 59;
-            btnActualizar.Text = "Actualizar";
-            btnActualizar.UseVisualStyleBackColor = true;
-            btnActualizar.Click += BActualizar_Click;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.Location = new Point(134, 368);
-            btnEliminar.Margin = new Padding(3, 4, 3, 4);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(80, 38);
-            btnEliminar.TabIndex = 58;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
-            btnEliminar.Click += BEliminar_Click;
             // 
             // label2
             // 
@@ -371,23 +335,13 @@
             label11.TabIndex = 50;
             label11.Text = "Código: (*)";
             // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label14.Location = new Point(33, 529);
-            label14.Name = "label14";
-            label14.Size = new Size(116, 20);
-            label14.TabIndex = 3;
-            label14.Text = "# Productos:";
-            // 
             // tabPageActualizar
             // 
             tabPageActualizar.Controls.Add(txtTipoActualizar);
             tabPageActualizar.Controls.Add(label12);
             tabPageActualizar.Controls.Add(txtPVPActualizar);
             tabPageActualizar.Controls.Add(label13);
-            tabPageActualizar.Controls.Add(txtDescuntoActualizar);
+            tabPageActualizar.Controls.Add(txtDescuentoActualizar);
             tabPageActualizar.Controls.Add(txtFechaCaducidadActualizar);
             tabPageActualizar.Controls.Add(txtPrecioUnidadActualizar);
             tabPageActualizar.Controls.Add(txtLoteActualizar);
@@ -409,89 +363,6 @@
             tabPageActualizar.TabIndex = 1;
             tabPageActualizar.Text = "Actualizar";
             tabPageActualizar.UseVisualStyleBackColor = true;
-            // 
-            // tabPageEliminar
-            // 
-            tabPageEliminar.Controls.Add(txtTipoEliminar);
-            tabPageEliminar.Controls.Add(label22);
-            tabPageEliminar.Controls.Add(txtPVPEliminar);
-            tabPageEliminar.Controls.Add(label23);
-            tabPageEliminar.Controls.Add(txtDescuentoEliminar);
-            tabPageEliminar.Controls.Add(txtFechaCaducidadEliminar);
-            tabPageEliminar.Controls.Add(txtPrecioUnidadEliminar);
-            tabPageEliminar.Controls.Add(txtLoteEliminar);
-            tabPageEliminar.Controls.Add(label24);
-            tabPageEliminar.Controls.Add(label25);
-            tabPageEliminar.Controls.Add(label26);
-            tabPageEliminar.Controls.Add(txtNombreEliminar);
-            tabPageEliminar.Controls.Add(txtCantidadEliminar);
-            tabPageEliminar.Controls.Add(txtCodigoEliminar);
-            tabPageEliminar.Controls.Add(label27);
-            tabPageEliminar.Controls.Add(label28);
-            tabPageEliminar.Controls.Add(label29);
-            tabPageEliminar.Controls.Add(label30);
-            tabPageEliminar.Controls.Add(btnEliminar);
-            tabPageEliminar.Location = new Point(4, 29);
-            tabPageEliminar.Name = "tabPageEliminar";
-            tabPageEliminar.Size = new Size(367, 456);
-            tabPageEliminar.TabIndex = 2;
-            tabPageEliminar.Text = "Eliminar";
-            tabPageEliminar.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(txtBuscar);
-            groupBox1.Controls.Add(cmbBuscar);
-            groupBox1.Controls.Add(btnBuscar);
-            groupBox1.Controls.Add(btnCancelarBusqueda);
-            groupBox1.Location = new Point(459, 440);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(418, 125);
-            groupBox1.TabIndex = 75;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Buscar";
-            // 
-            // cmbBuscar
-            // 
-            cmbBuscar.FormattingEnabled = true;
-            cmbBuscar.Items.AddRange(new object[] { "Código", "Nombre", "Tipo", "Cantidad", "Lote", "PVP", "Precio unitario", "Fecha caducidad", "Descuento" });
-            cmbBuscar.Location = new Point(20, 36);
-            cmbBuscar.Name = "cmbBuscar";
-            cmbBuscar.Size = new Size(151, 28);
-            cmbBuscar.TabIndex = 75;
-            // 
-            // txtBuscar
-            // 
-            txtBuscar.Location = new Point(224, 36);
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(125, 27);
-            txtBuscar.TabIndex = 76;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(434, 405);
-            label5.Name = "label5";
-            label5.Size = new Size(466, 20);
-            label5.TabIndex = 76;
-            label5.Text = "Selecciona el tipo de atributo y el dato que deseas buscar en la tabla";
-            // 
-            // txtTipoCrear
-            // 
-            txtTipoCrear.Location = new Point(127, 119);
-            txtTipoCrear.Margin = new Padding(3, 4, 3, 4);
-            txtTipoCrear.Name = "txtTipoCrear";
-            txtTipoCrear.Size = new Size(119, 27);
-            txtTipoCrear.TabIndex = 77;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(78, 119);
-            label6.Name = "label6";
-            label6.Size = new Size(39, 20);
-            label6.TabIndex = 76;
-            label6.Text = "Tipo";
             // 
             // txtTipoActualizar
             // 
@@ -527,13 +398,13 @@
             label13.TabIndex = 92;
             label13.Text = "P.V.P:";
             // 
-            // txtDescuntoActualizar
+            // txtDescuentoActualizar
             // 
-            txtDescuntoActualizar.Location = new Point(128, 316);
-            txtDescuntoActualizar.Margin = new Padding(3, 4, 3, 4);
-            txtDescuntoActualizar.Name = "txtDescuntoActualizar";
-            txtDescuntoActualizar.Size = new Size(119, 27);
-            txtDescuntoActualizar.TabIndex = 91;
+            txtDescuentoActualizar.Location = new Point(128, 316);
+            txtDescuentoActualizar.Margin = new Padding(3, 4, 3, 4);
+            txtDescuentoActualizar.Name = "txtDescuentoActualizar";
+            txtDescuentoActualizar.Size = new Size(119, 27);
+            txtDescuentoActualizar.TabIndex = 91;
             // 
             // txtFechaCaducidadActualizar
             // 
@@ -647,6 +518,45 @@
             label21.Size = new Size(81, 20);
             label21.TabIndex = 78;
             label21.Text = "Código: (*)";
+            // 
+            // btnActualizar
+            // 
+            btnActualizar.Location = new Point(129, 368);
+            btnActualizar.Margin = new Padding(3, 4, 3, 4);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(84, 38);
+            btnActualizar.TabIndex = 59;
+            btnActualizar.Text = "Actualizar";
+            btnActualizar.UseVisualStyleBackColor = true;
+            btnActualizar.Click += BActualizar_Click;
+            // 
+            // tabPageEliminar
+            // 
+            tabPageEliminar.Controls.Add(txtTipoEliminar);
+            tabPageEliminar.Controls.Add(label22);
+            tabPageEliminar.Controls.Add(txtPVPEliminar);
+            tabPageEliminar.Controls.Add(label23);
+            tabPageEliminar.Controls.Add(txtDescuentoEliminar);
+            tabPageEliminar.Controls.Add(txtFechaCaducidadEliminar);
+            tabPageEliminar.Controls.Add(txtPrecioUnidadEliminar);
+            tabPageEliminar.Controls.Add(txtLoteEliminar);
+            tabPageEliminar.Controls.Add(label24);
+            tabPageEliminar.Controls.Add(label25);
+            tabPageEliminar.Controls.Add(label26);
+            tabPageEliminar.Controls.Add(txtNombreEliminar);
+            tabPageEliminar.Controls.Add(txtCantidadEliminar);
+            tabPageEliminar.Controls.Add(txtCodigoEliminar);
+            tabPageEliminar.Controls.Add(label27);
+            tabPageEliminar.Controls.Add(label28);
+            tabPageEliminar.Controls.Add(label29);
+            tabPageEliminar.Controls.Add(label30);
+            tabPageEliminar.Controls.Add(btnEliminar);
+            tabPageEliminar.Location = new Point(4, 29);
+            tabPageEliminar.Name = "tabPageEliminar";
+            tabPageEliminar.Size = new Size(367, 456);
+            tabPageEliminar.TabIndex = 2;
+            tabPageEliminar.Text = "Eliminar";
+            tabPageEliminar.UseVisualStyleBackColor = true;
             // 
             // txtTipoEliminar
             // 
@@ -819,14 +729,104 @@
             label30.TabIndex = 96;
             label30.Text = "Código: (*)";
             // 
-            // btnLimpiar
+            // btnEliminar
             // 
-            btnLimpiar.Location = new Point(185, 368);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(94, 38);
-            btnLimpiar.TabIndex = 78;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = true;
+            btnEliminar.Location = new Point(134, 368);
+            btnEliminar.Margin = new Padding(3, 4, 3, 4);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(80, 38);
+            btnEliminar.TabIndex = 58;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += BEliminar_Click;
+            // 
+            // btnCancelarBusqueda
+            // 
+            btnCancelarBusqueda.Location = new Point(234, 89);
+            btnCancelarBusqueda.Name = "btnCancelarBusqueda";
+            btnCancelarBusqueda.Size = new Size(94, 29);
+            btnCancelarBusqueda.TabIndex = 74;
+            btnCancelarBusqueda.Text = "Cancelar";
+            btnCancelarBusqueda.UseVisualStyleBackColor = true;
+            btnCancelarBusqueda.Click += BCancelar_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(188, 528);
+            label3.Name = "label3";
+            label3.Size = new Size(61, 20);
+            label3.TabIndex = 73;
+            label3.Text = "/2000 ";
+            // 
+            // txtNumeroProductos
+            // 
+            txtNumeroProductos.Enabled = false;
+            txtNumeroProductos.Location = new Point(155, 525);
+            txtNumeroProductos.Name = "txtNumeroProductos";
+            txtNumeroProductos.ReadOnly = true;
+            txtNumeroProductos.Size = new Size(27, 27);
+            txtNumeroProductos.TabIndex = 72;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Location = new Point(97, 80);
+            btnBuscar.Margin = new Padding(3, 4, 3, 4);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(88, 38);
+            btnBuscar.TabIndex = 60;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += BBuscar_Click;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label14.Location = new Point(33, 529);
+            label14.Name = "label14";
+            label14.Size = new Size(116, 20);
+            label14.TabIndex = 3;
+            label14.Text = "# Productos:";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(txtBuscar);
+            groupBox1.Controls.Add(cmbBuscar);
+            groupBox1.Controls.Add(btnBuscar);
+            groupBox1.Controls.Add(btnCancelarBusqueda);
+            groupBox1.Location = new Point(459, 440);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(418, 125);
+            groupBox1.TabIndex = 75;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Buscar";
+            // 
+            // txtBuscar
+            // 
+            txtBuscar.Location = new Point(224, 36);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(125, 27);
+            txtBuscar.TabIndex = 76;
+            // 
+            // cmbBuscar
+            // 
+            cmbBuscar.FormattingEnabled = true;
+            cmbBuscar.Items.AddRange(new object[] { "Código", "Nombre", "Tipo", "Cantidad", "Lote", "PVP", "Precio unitario", "Fecha caducidad", "Descuento" });
+            cmbBuscar.Location = new Point(20, 36);
+            cmbBuscar.Name = "cmbBuscar";
+            cmbBuscar.Size = new Size(151, 28);
+            cmbBuscar.TabIndex = 75;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(434, 405);
+            label5.Name = "label5";
+            label5.Size = new Size(466, 20);
+            label5.TabIndex = 76;
+            label5.Text = "Selecciona el tipo de atributo y el dato que deseas buscar en la tabla";
             // 
             // Form_Inventario
             // 
@@ -899,7 +899,7 @@
         private Label label12;
         private TextBox txtPVPActualizar;
         private Label label13;
-        private TextBox txtDescuntoActualizar;
+        private TextBox txtDescuentoActualizar;
         private TextBox txtFechaCaducidadActualizar;
         private TextBox txtPrecioUnidadActualizar;
         private TextBox txtLoteActualizar;
