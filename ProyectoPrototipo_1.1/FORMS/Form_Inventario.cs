@@ -364,6 +364,7 @@ namespace ProyectoPrototipo_1._0
 
                 // Agregar el Panel al TabControl
                 tabControl2.TabPages[3].Controls.Add(panel);
+               
 
             }
             else {
