@@ -256,5 +256,10 @@ namespace ProyectoPrototipo_1._0
             dataGridView1.DataSource = inventario.productos.ToList();
             ClearTextBoxes();
         }
+
+        private void bttAnterior_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

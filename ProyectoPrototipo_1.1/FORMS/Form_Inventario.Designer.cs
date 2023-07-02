@@ -57,9 +57,17 @@
             label10 = new Label();
             label11 = new Label();
             label14 = new Label();
+            tabPage1 = new TabPage();
+            bttUltimo = new Button();
+            bttInicio = new Button();
+            bttSiguiente = new Button();
+            bttAnterior = new Button();
+            dataGridView2 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabControl2.SuspendLayout();
             tabPage3.SuspendLayout();
+            tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
@@ -77,6 +85,7 @@
             // tabControl2
             // 
             tabControl2.Controls.Add(tabPage3);
+            tabControl2.Controls.Add(tabPage1);
             tabControl2.Location = new Point(-1, -1);
             tabControl2.Margin = new Padding(3, 4, 3, 4);
             tabControl2.Name = "tabControl2";
@@ -355,6 +364,69 @@
             label14.TabIndex = 3;
             label14.Text = "# Productos:";
             // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(bttUltimo);
+            tabPage1.Controls.Add(bttInicio);
+            tabPage1.Controls.Add(bttSiguiente);
+            tabPage1.Controls.Add(bttAnterior);
+            tabPage1.Controls.Add(dataGridView2);
+            tabPage1.Location = new Point(4, 29);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(902, 558);
+            tabPage1.TabIndex = 1;
+            tabPage1.Text = "Leer Individual";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // bttUltimo
+            // 
+            bttUltimo.Location = new Point(542, 466);
+            bttUltimo.Name = "bttUltimo";
+            bttUltimo.Size = new Size(131, 85);
+            bttUltimo.TabIndex = 5;
+            bttUltimo.Text = "FINAL";
+            bttUltimo.UseVisualStyleBackColor = true;
+            // 
+            // bttInicio
+            // 
+            bttInicio.Location = new Point(257, 466);
+            bttInicio.Name = "bttInicio";
+            bttInicio.Size = new Size(130, 85);
+            bttInicio.TabIndex = 4;
+            bttInicio.Text = "INICIO";
+            bttInicio.UseVisualStyleBackColor = true;
+            // 
+            // bttSiguiente
+            // 
+            bttSiguiente.Location = new Point(749, 182);
+            bttSiguiente.Name = "bttSiguiente";
+            bttSiguiente.Size = new Size(93, 138);
+            bttSiguiente.TabIndex = 3;
+            bttSiguiente.Text = "SIGUIENTE";
+            bttSiguiente.UseVisualStyleBackColor = true;
+            // 
+            // bttAnterior
+            // 
+            bttAnterior.Location = new Point(24, 182);
+            bttAnterior.Name = "bttAnterior";
+            bttAnterior.Size = new Size(97, 138);
+            bttAnterior.TabIndex = 2;
+            bttAnterior.Text = "ANTERIOR";
+            bttAnterior.UseVisualStyleBackColor = true;
+            bttAnterior.Click += bttAnterior_Click;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(127, 34);
+            dataGridView2.Margin = new Padding(3, 4, 3, 4);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersWidth = 51;
+            dataGridView2.RowTemplate.Height = 24;
+            dataGridView2.Size = new Size(616, 425);
+            dataGridView2.TabIndex = 1;
+            // 
             // Form_Inventario
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -369,6 +441,8 @@
             tabControl2.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
@@ -403,5 +477,11 @@
         private TextBox textBox1;
         private Button button1;
         private Button BAgregar;
+        private TabPage tabPage1;
+        private DataGridView dataGridView2;
+        private Button bttUltimo;
+        private Button bttInicio;
+        private Button bttSiguiente;
+        private Button bttAnterior;
     }
 }
