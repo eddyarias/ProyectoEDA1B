@@ -59,8 +59,10 @@ namespace ProyectoPrototipo_1._0.CLASES
 
                 productos[j + 1] = auxiliar;
             }
-            dbContext.Producto.Add(producto);
-            dbContext.SaveChanges();
+                dbContext.Producto.Add(producto);
+                dbContext.SaveChanges();
+                productos = dbContext.Producto.ToList();
+
         }
 
 
