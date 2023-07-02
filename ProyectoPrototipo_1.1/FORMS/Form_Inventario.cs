@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProyectoPrototipo_1._0.CLASES;
+using ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -22,6 +23,9 @@ namespace ProyectoPrototipo_1._0
             // Suscribirse al evento SelectedIndexChanged del TabControl
             tabControl2.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
 
+            // READ: inventario en el dataGridView1
+            dgvTablaInventario.DataSource = inventario.GetProductosDB();
+
         }
 
         private void Form_Inventario_Load(object sender, EventArgs e)
@@ -30,9 +34,6 @@ namespace ProyectoPrototipo_1._0
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - this.Width) / 2,
                                       (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2);
-
-            // READ: inventario en el dataGridView1
-            dgvTablaInventario.DataSource = inventario.productos;
         }
 
         private void ClearTextBoxes()
@@ -57,7 +58,7 @@ namespace ProyectoPrototipo_1._0
                 int codigo = Convert.ToInt32(dgvTablaInventario.Rows[e.RowIndex].Cells["Codigo"].Value);
 
                 // Buscar el producto en la lista de productos del inventario
-                Class_Producto? productoToUpdate = inventario.productos.FirstOrDefault(p => p.codigo == codigo);
+                Class_Producto? productoToUpdate = inventario.productosDB.FirstOrDefault(p => p.codigo == codigo);
 
                 if (productoToUpdate != null)
                 {
@@ -154,7 +155,7 @@ namespace ProyectoPrototipo_1._0
             // Verificar si el código de producto ya existe en la base de datos
             /*bool codigoExists = dbContext.Producto.Any(p => p.codigo == codigo);*/
 
-            bool codigoExists = inventario.productos.Any(p => p.codigo == codigo);
+            bool codigoExists = inventario.productosDB.Any(p => p.codigo == codigo);
 
             if (codigoExists)
             {
@@ -178,10 +179,10 @@ namespace ProyectoPrototipo_1._0
             };
 
             // Agregar el nuevo producto al inventario
-            inventario.AgregarProducto(newProducto);
+            inventario.AgregarAlFinal(newProducto);
             MessageBox.Show("Producto creado exitosamente");
             // Actualizar el origen de datos del DataGridView con el inventario
-            dgvTablaInventario.DataSource = inventario.productos.ToList();
+            dgvTablaInventario.DataSource = inventario.productosDB.ToList();
             ClearTextBoxes();
         }
 
@@ -205,9 +206,10 @@ namespace ProyectoPrototipo_1._0
 
             // Llamar al método ActualizarProducto del inventario
             inventario.ActualizarProducto(codigo, productoActualizado);
+
             MessageBox.Show("Producto actualizado exitosamente");
             // Actualizar el origen de datos del DataGridView con el inventario
-            dgvTablaInventario.DataSource = inventario.productos.ToList();
+            dgvTablaInventario.DataSource = inventario.productosDB.ToList();
             ClearTextBoxes();
         }
 
@@ -216,21 +218,21 @@ namespace ProyectoPrototipo_1._0
             // Obtener el código del producto desde el TextBox
             int codigo = Convert.ToInt32(txtCodigoEliminar.Text);
 
-            // Verificar si el código de producto existe en el inventario
-            bool codigoExists = inventario.productos.Any(p => p.codigo == codigo);
+            // Buscar el producto en el inventario por su código
+            Class_Producto producto = inventario.productosDB.FirstOrDefault(p => p.codigo == codigo);
 
-            if (codigoExists)
+            if (producto != null)
             {
                 // Mostrar el diálogo de confirmación
                 DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar el producto?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     // Eliminar el producto del inventario
-                    inventario.EliminarProducto(codigo);
+                    inventario.Eliminar(producto);
                     MessageBox.Show("Producto eliminado exitosamente");
 
                     // Actualizar el DataGridView con la lista de productos del inventario
-                    dgvTablaInventario.DataSource = inventario.productos.ToList();
+                    dgvTablaInventario.DataSource = inventario.productosDB.ToList();
                     ClearTextBoxes();
                 }
             }
@@ -241,51 +243,84 @@ namespace ProyectoPrototipo_1._0
             }
         }
 
+
         private void BBuscar_Click(object sender, EventArgs e)
         {
-            // Obtener los valores de los campos de búsqueda
-            int codigo;
-            int.TryParse(txtBuscar.Text, out codigo);
+            string atributoSeleccionado = cmbBuscar.SelectedItem.ToString();
+            string valorSeleccionado = txtBuscar.Text;
 
-            string nombre = txtBuscar.Text.Trim();
-            string tipo = txtBuscar.Text.Trim();
-            string lote = txtBuscar.Text.Trim();
-            decimal pvp;
-            decimal.TryParse(txtBuscar.Text, out pvp);
-            decimal precioUnitario;
-            decimal.TryParse(txtBuscar.Text, out precioUnitario);
-            DateTime fechaCaducidad;
-            DateTime.TryParse(txtBuscar.Text, out fechaCaducidad);
-            decimal descuento;
-            decimal.TryParse(txtBuscar.Text, out descuento);
+            Func<Class_Producto, string> atributoString = null;
+            Func<Class_Producto, int> atributoInt = null;
 
+            if (atributoSeleccionado == "Nombre")
+            {
+                atributoString = p => p.nombre;
+            }
+            else if (atributoSeleccionado == "Tipo")
+            {
+                atributoString = p => p.tipo;
+            }
+            else if (atributoSeleccionado == "Lote")
+            {
+                atributoString = p => p.lote;
+            }
+            else if (atributoSeleccionado == "Código")
+            {
+                atributoInt = p => p.codigo;
+            }
 
+            List<Class_Producto> productosEncontrados = new List<Class_Producto>();
+
+            if (atributoString != null)
+            {
+                string valorString = cmbBuscar.Text;
+                var nodoEncontrado = inventario.BuscarNodoPorAtributo(atributoString, valorString);
+                if (nodoEncontrado != null)
+                {
+                    productosEncontrados.Add(nodoEncontrado.Valor);
+                }
+            }
+            else if (atributoInt != null)
+            {
+                int valorInt = int.Parse(cmbBuscar.Text);
+                var nodoEncontrado = inventario.BuscarNodoPorAtributo(atributoInt, valorInt);
+                if (nodoEncontrado != null)
+                {
+                    productosEncontrados.Add(nodoEncontrado.Valor);
+                }
+            }
+
+            // Mostrar los productos encontrados en el DataGridView
+            dgvTablaInventario.DataSource = productosEncontrados;
+        }
+
+        /*
             IEnumerable<Class_Producto> productosEncontrados = inventario.BuscarProducto(codigo, nombre, tipo, lote, pvp, precioUnitario, fechaCaducidad, descuento);
 
-            // Mostrar los productos filtrados en el DataGridView
-            dgvTablaInventario.DataSource = productosEncontrados.ToList();
-        }
+        // Mostrar los productos filtrados en el DataGridView
+        dgvTablaInventario.DataSource = productosEncontrados.ToList();*/
 
-        private void BCancelar_Click(object sender, EventArgs e)
-        {
-            dgvTablaInventario.DataSource = inventario.productos.ToList();
-            ClearTextBoxes();
-        }
 
+        /*
         private DataGridView dataGridView1;
 
         private System.Windows.Forms.Button bttAnterior;
         private System.Windows.Forms.Button bttSiguiente;
         private System.Windows.Forms.Button bttInicio;
         private System.Windows.Forms.Button bttFinal;
-
+        */
 
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /*
             TabPage selectedTab = tabControl2.SelectedTab;
             // Verificar si el nombre del tab seleccionado es igual a "NombreDeseado"
             if (tabControl2.SelectedTab.Name == "tabPageLeerIndividual")
             {
+                listaDoblementeEnlazada = new ListaDoblementeEnlazada();
+                this.inventario.ExtraerElementos(listaDoblementeEnlazada);
+
+
                 this.dgvTablaInventario.Visible = false;
                 this.label5.Visible = false;
                 this.groupBox1.Visible = false;
@@ -339,7 +374,7 @@ namespace ProyectoPrototipo_1._0
                 // Establecer la posición y tamaño de los botones dentro del Panel
                 bttAnterior.Location = new System.Drawing.Point(20, 200); // Ajustar la posición del botón izquierdo dentro del Panel
                 bttSiguiente.Location = new System.Drawing.Point(panel.Width - bttSiguiente.Width - 40, 200); // Ajustar la posición del botón derecho dentro del Panel
-                
+
                 panel.Controls.Add(bttAnterior);
                 panel.Controls.Add(bttSiguiente);
 
@@ -351,12 +386,13 @@ namespace ProyectoPrototipo_1._0
                 // Establecer la posición y tamaño de los botones inferiores dentro del Panel
                 bttInicio.Location = new System.Drawing.Point(350, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del primer botón inferior
                 bttFinal.Location = new System.Drawing.Point(bttInicio.Location.X + bttInicio.Width + 50, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del segundo botón inferior                
-                
+
                 panel.Controls.Add(bttInicio);
                 panel.Controls.Add(bttFinal);
 
                 // Agregar el Panel al TabControl
                 tabControl2.TabPages[3].Controls.Add(panel);
+
 
             }
             else {
@@ -366,25 +402,121 @@ namespace ProyectoPrototipo_1._0
                 this.groupBox1.Visible = true;
                 tabControl2.Width = 375;
             }
+            */
         }
         private void BttAnterior_Click(object sender, EventArgs e)
         {
+            /*
+            // Obtener el nodo actual seleccionado en el DataGridView
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Obtener el código del producto desde la fila seleccionada
+                int codigo = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Codigo"].Value);
 
+                // Buscar el nodo del producto en la lista doblemente enlazada
+                Nodo nodoProducto = listaDoblementeEnlazada.BuscarNodoPorCodigo(codigo);
+
+                // Obtener el nodo anterior al nodo actual
+                Nodo nodoAnterior = listaDoblementeEnlazada.ObtenerNodoAnterior(nodoProducto);
+
+                if (nodoAnterior != null)
+                {
+                    // Mostrar el nodo anterior en el DataGridView
+                    MostrarNodoEnDataGridView(nodoAnterior);
+                }
+                else
+                {
+                    MessageBox.Show("No hay nodos anteriores.");
+                }
+            }*/
         }
 
         private void BttSiguiente_Click(object sender, EventArgs e)
         {
+            /*
+            // Obtener el nodo actual seleccionado en el DataGridView
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Obtener el código del producto desde la fila seleccionada
+                int codigo = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Codigo"].Value);
 
+                // Buscar el nodo del producto en la lista doblemente enlazada
+                Nodo nodoProducto = listaDoblementeEnlazada.BuscarNodoPorCodigo(codigo);
+
+                // Obtener el nodo siguiente al nodo actual
+                Nodo nodoSiguiente = listaDoblementeEnlazada.ObtenerNodoSiguiente(nodoProducto);
+
+                if (nodoSiguiente != null)
+                {
+                    // Mostrar el nodo siguiente en el DataGridView
+                    MostrarNodoEnDataGridView(nodoSiguiente);
+                }
+                else
+                {
+                    MessageBox.Show("No hay nodos siguientes.");
+                }
+            }
+            */
         }
 
         private void BttInicio_Click(object sender, EventArgs e)
         {
+            /*
+            // Obtener el primer nodo de la lista doblemente enlazada
+            Nodo primerNodo = listaDoblementeEnlazada.ObtenerPrimerNodo();
 
+            if (primerNodo != null)
+            {
+                // Mostrar el primer nodo en el DataGridView
+                MostrarNodoEnDataGridView(primerNodo);
+            }
+            else
+            {
+                MessageBox.Show("La lista está vacía.");
+            }
+            */
         }
 
         private void BttFinal_Click(object sender, EventArgs e)
         {
+            /*
+            // Obtener el último nodo de la lista doblemente enlazada
+            Nodo ultimoNodo = listaDoblementeEnlazada.ObtenerUltimoNodo();
 
+            if (ultimoNodo != null)
+            {
+                // Mostrar el último nodo en el DataGridView
+                MostrarNodoEnDataGridView(ultimoNodo);
+            }
+            else
+            {
+                MessageBox.Show("La lista está vacía.");
+            }
+            */
+        }
+
+        private void MostrarNodoEnDataGridView(Nodo nodo)
+        {
+            /*
+                // Crear una nueva instancia de DataTable
+                DataTable dataTable = new DataTable();
+
+                // Agregar las columnas al DataTable
+                dataTable.Columns.Add("Codigo", typeof(int));
+                dataTable.Columns.Add("Nombre", typeof(string));
+                dataTable.Columns.Add("Cantidad", typeof(int));
+
+                // Agregar el nodo actual como una fila al DataTable
+                dataTable.Rows.Add(nodo.Valor.codigo, nodo.Valor.cantidad, nodo.Valor.cantidad);
+
+                // Asignar el DataTable como origen de datos del DataGridView
+                dgvTablaInventario.DataSource = dataTable;
+            */
+        }
+        private void BCancelar_Click(object sender, EventArgs e)
+        {
+            dgvTablaInventario.DataSource = inventario.productosDB.ToList();
+            ClearTextBoxes();
         }
     }
 }
