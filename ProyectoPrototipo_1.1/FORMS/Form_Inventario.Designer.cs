@@ -100,6 +100,7 @@
             txtBuscar = new TextBox();
             cmbBuscar = new ComboBox();
             label5 = new Label();
+            tabPageLeerIndividual = new TabPage();
             ((System.ComponentModel.ISupportInitialize)dgvTablaInventario).BeginInit();
             tabControl2.SuspendLayout();
             tabPageCrear.SuspendLayout();
@@ -125,12 +126,14 @@
             tabControl2.Controls.Add(tabPageCrear);
             tabControl2.Controls.Add(tabPageActualizar);
             tabControl2.Controls.Add(tabPageEliminar);
+            tabControl2.Controls.Add(tabPageLeerIndividual);
             tabControl2.Location = new Point(-1, -1);
             tabControl2.Margin = new Padding(3, 4, 3, 4);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
             tabControl2.Size = new Size(375, 489);
             tabControl2.TabIndex = 3;
+            tabControl2.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
             // 
             // tabPageCrear
             // 
@@ -828,6 +831,16 @@
             label5.TabIndex = 76;
             label5.Text = "Selecciona el tipo de atributo y el dato que deseas buscar en la tabla";
             // 
+            // tabPageLeerIndividual
+            // 
+            tabPageLeerIndividual.Location = new Point(4, 29);
+            tabPageLeerIndividual.Name = "tabPageLeerIndividual";
+            tabPageLeerIndividual.Padding = new Padding(3);
+            tabPageLeerIndividual.Size = new Size(367, 456);
+            tabPageLeerIndividual.TabIndex = 3;
+            tabPageLeerIndividual.Text = "Leer individual";
+            tabPageLeerIndividual.UseVisualStyleBackColor = true;
+            // 
             // Form_Inventario
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -932,5 +945,6 @@
         private Label label29;
         private Label label30;
         private Button btnLimpiar;
+        private TabPage tabPageLeerIndividual;
     }
 }
