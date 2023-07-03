@@ -26,10 +26,10 @@ namespace ProyectoPrototipo_1._0
             // Suscribirse al evento SelectedIndexChanged del TabControl
             tabControlCrud.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
 
-            tabControlCrud.Width = 930;
+            tabControlCrud.Width = 1428;
 
             dataGridView1 = new DataGridView();
-            dataGridView1.Width = 650; // Establecer el ancho deseado del DataGridView
+            dataGridView1.Width = 1178; // Establecer el ancho deseado del DataGridView
             dataGridView1.Height = 200; // Establecer la altura deseada del DataGridView
 
             // Crear los botones
@@ -51,7 +51,7 @@ namespace ProyectoPrototipo_1._0
 
             // Crear el contenedor (Panel)
             Panel panel = new Panel();
-            panel.Width = 930; // Establecer el ancho deseado del Panel
+            panel.Width = 1428; // Establecer el ancho deseado del Panel
             panel.Height = 489; // Establecer la altura deseada del Panel
 
             // Calcular la posición horizontal para centrar el Panel
@@ -74,8 +74,8 @@ namespace ProyectoPrototipo_1._0
             bttSiguiente.Width = 100;
             bttSiguiente.Height = 150;
             // Establecer la posición y tamaño de los botones dentro del Panel
-            bttAnterior.Location = new System.Drawing.Point(20, 200); // Ajustar la posición del botón izquierdo dentro del Panel
-            bttSiguiente.Location = new System.Drawing.Point(panel.Width - bttSiguiente.Width - 40, 200); // Ajustar la posición del botón derecho dentro del Panel
+            bttAnterior.Location = new System.Drawing.Point(10, 200); // Ajustar la posición del botón izquierdo dentro del Panel
+            bttSiguiente.Location = new System.Drawing.Point(panel.Width - bttSiguiente.Width - 30, 200); // Ajustar la posición del botón derecho dentro del Panel
 
             panel.Controls.Add(bttAnterior);
             panel.Controls.Add(bttSiguiente);
@@ -86,7 +86,7 @@ namespace ProyectoPrototipo_1._0
             bttFinal.Height = 90;
 
             // Establecer la posición y tamaño de los botones inferiores dentro del Panel
-            bttInicio.Location = new System.Drawing.Point(300, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del primer botón inferior
+            bttInicio.Location = new System.Drawing.Point(500, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del primer botón inferior
             bttFinal.Location = new System.Drawing.Point(bttInicio.Location.X + bttInicio.Width + 80, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del segundo botón inferior                
 
             panel.Controls.Add(bttInicio);
@@ -396,7 +396,7 @@ namespace ProyectoPrototipo_1._0
                 List<Class_Producto> listaAux = inventario.productos;
                 listaDoblementeEnlazada = this.inventario.ExtraerElementos(listaAux, listaDoblementeEnlazada);
 
-                tabControlCrud.Width = 930;
+                tabControlCrud.Width = 1428;
                 this.dgvTablaInventario.Visible = false;
                 this.label5.Visible = false;
                 this.groupBox1.Visible = false;
@@ -510,7 +510,6 @@ namespace ProyectoPrototipo_1._0
 
             // Asignar el DataTable como origen de datos del DataGridView
             dataGridView1.DataSource = dataTable;
-            dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
             dataGridView1.Refresh();
         }
