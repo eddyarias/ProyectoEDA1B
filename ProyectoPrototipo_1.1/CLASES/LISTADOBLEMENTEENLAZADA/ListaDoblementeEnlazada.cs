@@ -28,6 +28,8 @@ namespace ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA
                 nuevoNodo.Siguiente = cabeza;
                 cabeza.Anterior = nuevoNodo;
                 cabeza = nuevoNodo;
+                cabeza.Anterior = cola;
+                cola.Siguiente = cabeza;
             }
         }
 
@@ -46,6 +48,8 @@ namespace ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA
                 nuevoNodo.Anterior = cola;
                 cola.Siguiente = nuevoNodo;
                 cola = nuevoNodo;
+                cola.Siguiente = cabeza;
+                cabeza.Anterior = cola;
             }
         }
 
@@ -64,6 +68,8 @@ namespace ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA
                     else
                     {
                         cabeza = actual.Siguiente;
+                        cabeza.Anterior = cola;
+                        cola.Siguiente = cabeza;
                     }
 
                     if (actual.Siguiente != null)
@@ -73,6 +79,8 @@ namespace ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA
                     else
                     {
                         cola = actual.Anterior;
+                        cola.Siguiente = cabeza;
+                        cabeza.Anterior = cola;
                     }
 
                     break;
@@ -82,42 +90,25 @@ namespace ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA
             }
         }
 
-        public Nodo BuscarNodoPorCodigo(int codigo)
-        {
-            Nodo actual = cabeza;
-
-            while (actual != null)
-            {
-                if (actual.Valor.codigo == codigo)
-                {
-                    return actual;
-                }
-
-                actual = actual.Siguiente;
-            }
-
-            return null;
-        }
-
         public Nodo ObtenerNodoAnterior(Nodo nodo)
         {
-            if (actual == cabeza) {
-                return cola;
-            }
-            else
-            {
+            //if (nodo.Anterior == null) {
+            //    return cola;
+            //}
+            //else
+            //{
                 return nodo.Anterior;
-            }
+            //}
             
         }
 
         public Nodo ObtenerNodoSiguiente(Nodo nodo)
         {
-            if(actual  == cola)
-            {
-                return cabeza;
-            }
+            //if (nodo.Siguiente == null) {
+            //    return cabeza;
+            //}else{
             return nodo.Siguiente;
+            //}
         }
 
         public Nodo ObtenerPrimerNodo()

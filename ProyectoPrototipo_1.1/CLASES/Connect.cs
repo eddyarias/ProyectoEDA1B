@@ -29,8 +29,8 @@ namespace ProyectoPrototipo_1._0
         {
             this.usuario = usuario;
             this.pass = pass;
-            server = "LAPTOP-S7D8N62P\\MSSQLSERVER10";//cambiar a su nombre de servidor
-            //server = "DESKTOP-2H7CHF4";//cambiar a su nombre de servidor
+            //server = "LAPTOP-S7D8N62P\\MSSQLSERVER10";//cambiar a su nombre de servidor
+            server = "DESKTOP-2H7CHF4";//cambiar a su nombre de servidor
             bd = "db_farmacia"; //poner nombre de su base de datos, en DOCUMENTOS está el .sql que pueden ejecutar en su sql server para las tener las tablas
 
             //con = "Server=" + server + ";Database=" + bd + ";User Id=" + usuario + ";Password=" + pass;
