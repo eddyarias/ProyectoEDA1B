@@ -344,7 +344,7 @@ namespace ProyectoPrototipo_1._0
                 // Establecer la posición del Panel
                 panel.Location = new System.Drawing.Point(panelX, panelY);
 
-                int x = ((panel.Width - dataGridView1.Width) / 2)-10;
+                int x = ((panel.Width - dataGridView1.Width) / 2) - 10;
                 // Calcular la posición vertical para centrar el DataGridView
                 int y = (panel.Height - dataGridView1.Height) / 2;
                 // Establecer la posición del DataGridView
@@ -396,18 +396,18 @@ namespace ProyectoPrototipo_1._0
         {
 
 
-                // Obtener el nodo anterior al nodo actual
-                Nodo nodoAnterior = listaDoblementeEnlazada.ObtenerNodoAnterior(actual);
+            // Obtener el nodo anterior al nodo actual
+            Nodo nodoAnterior = listaDoblementeEnlazada.ObtenerNodoAnterior(actual);
 
-                if (nodoAnterior != null)
-                {
-                    // Mostrar el nodo anterior en el DataGridView
-                    MostrarNodoEnDataGridView(nodoAnterior);
-                }
-                else
-                {
-                    MessageBox.Show("No hay nodos anteriores.");
-                }
+            if (nodoAnterior != null)
+            {
+                // Mostrar el nodo anterior en el DataGridView
+                MostrarNodoEnDataGridView(nodoAnterior);
+            }
+            else
+            {
+                MessageBox.Show("No hay nodos anteriores.");
+            }
 
         }
 
@@ -416,12 +416,11 @@ namespace ProyectoPrototipo_1._0
 
             // Obtener el nodo siguiente al nodo actual
             Nodo nodoSiguiente = listaDoblementeEnlazada.ObtenerNodoSiguiente(actual);
-            Nodo nodoSig = actual.Siguiente;
 
             if (nodoSiguiente != null)
             {
                 // Mostrar el nodo siguiente en el DataGridView
-                MostrarNodoEnDataGridView(nodoSig);
+                MostrarNodoEnDataGridView(nodoSiguiente);
             }
             else
             {
@@ -462,7 +461,7 @@ namespace ProyectoPrototipo_1._0
                 MessageBox.Show("La lista está vacía.");
             }
         }
-        
+
         private void MostrarNodoEnDataGridView(Nodo nodo)
         {
             // Crear una nueva instancia de DataTable
@@ -480,7 +479,7 @@ namespace ProyectoPrototipo_1._0
             dataTable.Columns.Add("descuento", typeof(string));
 
             // Agregar el nodo actual como una fila al DataTable
-            dataTable.Rows.Add(nodo.Valor.codigo, nodo.Valor.nombre, nodo.Valor.tipo ,nodo.Valor.cantidad, nodo.Valor.lote, nodo.Valor.PVP, nodo.Valor.precio_unitario, nodo.Valor.fecha_caducidad, nodo.Valor.descuento);
+            dataTable.Rows.Add(nodo.Valor.codigo, nodo.Valor.nombre, nodo.Valor.tipo, nodo.Valor.cantidad, nodo.Valor.lote, nodo.Valor.PVP, nodo.Valor.precio_unitario, nodo.Valor.fecha_caducidad, nodo.Valor.descuento);
 
             // Asignar el DataTable como origen de datos del DataGridView
             dataGridView1.DataSource = dataTable;
