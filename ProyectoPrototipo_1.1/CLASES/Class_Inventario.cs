@@ -28,7 +28,6 @@ namespace ProyectoPrototipo_1._0.CLASES
             foreach (var producto in productillos)
             {
                 listaDobleEnlazada.AgregarAlFinal(producto);
-                //Console.WriteLine(producto.ToString());
             }
             return listaDobleEnlazada;
         }

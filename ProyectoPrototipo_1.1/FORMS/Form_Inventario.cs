@@ -27,11 +27,10 @@ namespace ProyectoPrototipo_1._0
             // Suscribirse al evento SelectedIndexChanged del TabControl
             tabControlCrud.SelectedIndexChanged += tabControlCrud_SelectedIndexChanged;
 
-            tabControlCrud.Width = 930;
-
-            dataGridViewInventarioSelec = new DataGridView();
-            dataGridViewInventarioSelec.Width = 650; // Establecer el ancho deseado del DataGridView
-            dataGridViewInventarioSelec.Height = 200; // Establecer la altura deseada del DataGridView
+            tabControlCrud.Width = 1428;
+            dataGridView1 = new DataGridView();
+            dataGridView1.Width = 1178; // Establecer el ancho deseado del DataGridView
+            dataGridView1.Height = 200; // Establecer la altura deseada del DataGridView
 
             // Crear los botones
             bttAnterior = new System.Windows.Forms.Button();
@@ -52,7 +51,7 @@ namespace ProyectoPrototipo_1._0
 
             // Crear el contenedor (Panel)
             Panel panel = new Panel();
-            panel.Width = 930; // Establecer el ancho deseado del Panel
+            panel.Width = 1428; // Establecer el ancho deseado del Panel
             panel.Height = 489; // Establecer la altura deseada del Panel
 
             // Calcular la posición horizontal para centrar el Panel
@@ -75,8 +74,8 @@ namespace ProyectoPrototipo_1._0
             bttSiguiente.Width = 100;
             bttSiguiente.Height = 150;
             // Establecer la posición y tamaño de los botones dentro del Panel
-            bttAnterior.Location = new System.Drawing.Point(20, 200); // Ajustar la posición del botón izquierdo dentro del Panel
-            bttSiguiente.Location = new System.Drawing.Point(panel.Width - bttSiguiente.Width - 40, 200); // Ajustar la posición del botón derecho dentro del Panel
+            bttAnterior.Location = new System.Drawing.Point(10, 200); // Ajustar la posición del botón izquierdo dentro del Panel
+            bttSiguiente.Location = new System.Drawing.Point(panel.Width - bttSiguiente.Width - 30, 200); // Ajustar la posición del botón derecho dentro del Panel
 
             panel.Controls.Add(bttAnterior);
             panel.Controls.Add(bttSiguiente);
@@ -87,8 +86,9 @@ namespace ProyectoPrototipo_1._0
             bttFinal.Height = 90;
 
             // Establecer la posición y tamaño de los botones inferiores dentro del Panel
-            bttInicio.Location = new System.Drawing.Point(300, dataGridViewInventarioSelec.Location.Y + dataGridViewInventarioSelec.Height + 10); // Ajustar la posición del primer botón inferior
-            bttFinal.Location = new System.Drawing.Point(bttInicio.Location.X + bttInicio.Width + 80, dataGridViewInventarioSelec.Location.Y + dataGridViewInventarioSelec.Height + 10); // Ajustar la posición del segundo botón inferior                
+            bttInicio.Location = new System.Drawing.Point(500, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del primer botón inferior
+            bttFinal.Location = new System.Drawing.Point(bttInicio.Location.X + bttInicio.Width + 80, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del segundo botón inferior                
+
 
             panel.Controls.Add(bttInicio);
             panel.Controls.Add(bttFinal);
@@ -386,17 +386,22 @@ namespace ProyectoPrototipo_1._0
             // Verificar si el nombre del tab seleccionado es igual a "NombreDeseado"
             if (tabControlCrud.SelectedTab.Name == "tabPageLeerIndividual")
             {
-                listaDoblementeEnlazada = new ListaDoblementeEnlazada();
-                List<Class_Producto> listaAux = inventario.productos;
-                listaDoblementeEnlazada = this.inventario.ExtraerElementos(listaAux, listaDoblementeEnlazada);
 
-                tabControlCrud.Width = 930;
+                tabControlCrud.Width = 1428;
                 this.dgvTablaInventario.Visible = false;
                 this.label5.Visible = false;
+
                 this.groupBoxBuscar.Visible = false;
                 this.groupBoxOrdenar.Visible = false;
 
+                //Crea la lista doblemente enlazada
+                listaDoblementeEnlazada = new ListaDoblementeEnlazada();
+                //Extrae los elementos de la lista productos
+                listaDoblementeEnlazada = this.inventario.ExtraerElementos(inventario.productos, listaDoblementeEnlazada);               
+                //Nodo actual con el primer nodo
                 actual = listaDoblementeEnlazada.ObtenerPrimerNodo();
+                
+                //Mostrar el nodo actual en Data Grid view
                 this.MostrarNodoEnDataGridView(actual);
 
             }
@@ -497,8 +502,9 @@ namespace ProyectoPrototipo_1._0
             dataTable.Rows.Add(nodo.Valor.codigo, nodo.Valor.nombre, nodo.Valor.tipo, nodo.Valor.cantidad, nodo.Valor.lote, nodo.Valor.PVP, nodo.Valor.precio_unitario, nodo.Valor.fecha_caducidad, nodo.Valor.descuento);
 
             // Asignar el DataTable como origen de datos del DataGridView
-            dataGridViewInventarioSelec.DataSource = dataTable;
-            dataGridViewInventarioSelec.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            dataGridView1.DataSource = dataTable;
+
 
             dataGridViewInventarioSelec.Refresh();
         }
