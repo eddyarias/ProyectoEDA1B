@@ -172,6 +172,7 @@ namespace ProyectoPrototipo_1._0.CLASES
             }
         }
 
+        //ORDENAR POR QUICKSORT
         public void OrdenarProductosPorAtributo(string atributo)
         {
             Quicksort(productos, 0, productos.Count - 1, atributo);
