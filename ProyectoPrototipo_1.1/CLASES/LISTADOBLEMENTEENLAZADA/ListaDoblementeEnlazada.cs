@@ -13,26 +13,6 @@ namespace ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA
         private Nodo cola;
         private Nodo actual;
 
-        public void AgregarAlInicio(Class_Producto valor)
-        {
-            var nuevoNodo = new Nodo { Valor = valor };
-
-            if (cabeza == null)
-            {
-                cabeza = nuevoNodo;
-                cola = nuevoNodo;
-                actual = nuevoNodo;
-            }
-            else
-            {
-                nuevoNodo.Siguiente = cabeza;
-                cabeza.Anterior = nuevoNodo;
-                cabeza = nuevoNodo;
-                cabeza.Anterior = cola;
-                cola.Siguiente = cabeza;
-            }
-        }
-
         public void AgregarAlFinal(Class_Producto valor)
         {
             var nuevoNodo = new Nodo { Valor = valor };
