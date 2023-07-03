@@ -34,7 +34,7 @@ namespace ProyectoPrototipo_1._0.CLASES
         }
 
 
-        public void AgregarProducto(Class_Producto producto) //ordenamiento por inserción
+        public void AgregarProducto(Class_Producto producto) //ordenamiento por inserción. 
         {
             int n = productos.Count;
             int i;
