@@ -244,14 +244,15 @@ namespace ProyectoPrototipo_1._0
             if (codigoExists)
             {
                 // Mostrar el diálogo de confirmación
-                DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar el producto?", "Confirmación", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("¿Está seguro de que desea " +
+                    "eliminar el producto?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     // Eliminar el producto del inventario
                     inventario.EliminarProducto(codigo);
                     MessageBox.Show("Producto eliminado exitosamente");
 
-                    // Actualizar el DataGridView con la lista de productos del inventario
+                    // Actualizar el DataGridView con la lista de productos 
                     dgvTablaInventario.DataSource = inventario.productos;
                     ClearTextBoxes();
                 }
@@ -301,7 +302,7 @@ namespace ProyectoPrototipo_1._0
             if (tabControl2.SelectedTab.Name == "tabPageLeerIndividual")
             {
                 listaDoblementeEnlazada = new ListaDoblementeEnlazada();
-                listaDoblementeEnlazada= this.inventario.ExtraerElementos(listaDoblementeEnlazada);
+                listaDoblementeEnlazada = this.inventario.ExtraerElementos(listaDoblementeEnlazada);
 
 
                 this.dgvTablaInventario.Visible = false;
@@ -342,7 +343,7 @@ namespace ProyectoPrototipo_1._0
                 // Establecer la posición del Panel
                 panel.Location = new System.Drawing.Point(panelX, panelY);
 
-                int x = ((panel.Width - dataGridView1.Width) / 2)-10;
+                int x = ((panel.Width - dataGridView1.Width) / 2) - 10;
                 // Calcular la posición vertical para centrar el DataGridView
                 int y = (panel.Height - dataGridView1.Height) / 2;
                 // Establecer la posición del DataGridView

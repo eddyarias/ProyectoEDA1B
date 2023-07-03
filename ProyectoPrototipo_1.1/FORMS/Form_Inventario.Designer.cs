@@ -758,9 +758,9 @@
             // 
             // btnCancelarBusqueda
             // 
-            btnCancelarBusqueda.Location = new Point(294, 90);
+            btnCancelarBusqueda.Location = new Point(297, 81);
             btnCancelarBusqueda.Name = "btnCancelarBusqueda";
-            btnCancelarBusqueda.Size = new Size(94, 29);
+            btnCancelarBusqueda.Size = new Size(94, 31);
             btnCancelarBusqueda.TabIndex = 74;
             btnCancelarBusqueda.Text = "Cancelar";
             btnCancelarBusqueda.UseVisualStyleBackColor = true;
@@ -787,10 +787,10 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(163, 81);
+            btnBuscar.Location = new Point(163, 83);
             btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(88, 38);
+            btnBuscar.Size = new Size(88, 31);
             btnBuscar.TabIndex = 60;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
