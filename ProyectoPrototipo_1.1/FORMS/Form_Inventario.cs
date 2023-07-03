@@ -321,14 +321,15 @@ namespace ProyectoPrototipo_1._0
             if (codigoExists)
             {
                 // Mostrar el diálogo de confirmación
-                DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar el producto?", "Confirmación", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("¿Está seguro de que desea " +
+                    "eliminar el producto?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     // Eliminar el producto del inventario
                     inventario.EliminarProducto(codigo);
                     MessageBox.Show("Producto eliminado exitosamente");
 
-                    // Actualizar el DataGridView con la lista de productos del inventario
+                    // Actualizar el DataGridView con la lista de productos 
                     dgvTablaInventario.DataSource = inventario.productos;
                     ClearTextBoxes();
                 }

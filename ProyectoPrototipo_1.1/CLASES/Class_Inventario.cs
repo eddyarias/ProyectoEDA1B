@@ -121,7 +121,7 @@ namespace ProyectoPrototipo_1._0.CLASES
             return productosEncontrados;
         }
 
-
+        //método de validación para los productos
         private bool EsAtributoIgual(Class_Producto producto, string atributo, string valor)
         {
             switch (atributo)
