@@ -1,6 +1,8 @@
 --drop database db_farmacia;
 --drop table Producto
 
+DROP DATABASE db_farmacy
+DROP TABLE PROFUCTO
 
 IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'db_farmacia')
 BEGIN

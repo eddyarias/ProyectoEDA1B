@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using ProyectoPrototipo_1._0.CLASES;
 using ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA;
 using System;
@@ -17,17 +18,16 @@ namespace ProyectoPrototipo_1._0
     {
         Class_Inventario inventario;
         ListaDoblementeEnlazada listaDoblementeEnlazada;
-        public DataGridView dataGridView1;
+        public DataGridView dataGridViewInventarioSelec;
         Nodo actual;
         public Form_Inventario()
         {
             this.inventario = new Class_Inventario();
             InitializeComponent();
             // Suscribirse al evento SelectedIndexChanged del TabControl
-            tabControlCrud.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
+            tabControlCrud.SelectedIndexChanged += tabControlCrud_SelectedIndexChanged;
 
             tabControlCrud.Width = 1428;
-
             dataGridView1 = new DataGridView();
             dataGridView1.Width = 1178; // Establecer el ancho deseado del DataGridView
             dataGridView1.Height = 200; // Establecer la altura deseada del DataGridView
@@ -61,13 +61,13 @@ namespace ProyectoPrototipo_1._0
             // Establecer la posición del Panel
             panel.Location = new System.Drawing.Point(panelX, panelY);
 
-            int x = ((panel.Width - dataGridView1.Width) / 2) - 10;
+            int x = ((panel.Width - dataGridViewInventarioSelec.Width) / 2) - 10;
             // Calcular la posición vertical para centrar el DataGridView
-            int y = (panel.Height - dataGridView1.Height) / 2;
+            int y = (panel.Height - dataGridViewInventarioSelec.Height) / 2;
             // Establecer la posición del DataGridView
-            dataGridView1.Location = new System.Drawing.Point(x, y);
+            dataGridViewInventarioSelec.Location = new System.Drawing.Point(x, y);
 
-            panel.Controls.Add(dataGridView1);
+            panel.Controls.Add(dataGridViewInventarioSelec);
 
             bttAnterior.Width = 100;
             bttAnterior.Height = 150;
@@ -89,6 +89,7 @@ namespace ProyectoPrototipo_1._0
             bttInicio.Location = new System.Drawing.Point(500, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del primer botón inferior
             bttFinal.Location = new System.Drawing.Point(bttInicio.Location.X + bttInicio.Width + 80, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del segundo botón inferior                
 
+
             panel.Controls.Add(bttInicio);
             panel.Controls.Add(bttFinal);
 
@@ -98,11 +99,12 @@ namespace ProyectoPrototipo_1._0
             this.dgvTablaInventario.Visible = true;
             this.dgvTablaInventario.Enabled = true;
             this.label5.Visible = true;
-            this.groupBox1.Visible = true;
+            this.groupBoxBuscar.Visible = true;
             tabControlCrud.Width = 375;
 
             txtNumeroProductos.Text = inventario.numProductos().ToString(); //Numero de productos
-
+            cmbBuscar.SelectedIndex = 0;
+            cmbOrdenar.SelectedIndex = 0;
         }
 
         private void Form_Inventario_Load(object sender, EventArgs e)
@@ -114,8 +116,7 @@ namespace ProyectoPrototipo_1._0
 
             // READ: inventario en el dataGridView1
             dgvTablaInventario.DataSource = inventario.productos;
-            dgvTablaInventario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+            dgvTablaInventario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; //ajustar las columnas
         }
 
         private void ClearTextBoxes()
@@ -179,24 +180,13 @@ namespace ProyectoPrototipo_1._0
                     txtPrecioUnidadEliminar.Text = productoToUpdate.precio_unitario.ToString();
                     txtFechaCaducidadEliminar.Text = productoToUpdate.fecha_caducidad.ToString();
                     txtDescuentoEliminar.Text = productoToUpdate.descuento.ToString();
-
-                    txtCodigoCrear.Text = productoToUpdate.codigo.ToString();
-                    txtNombreCrear.Text = productoToUpdate.nombre;
-                    txtTipoCrear.Text = productoToUpdate.tipo;
-                    txtCantidadCrear.Text = productoToUpdate.cantidad.ToString();
-                    txtLoteCrear.Text = productoToUpdate.lote;
-                    txtPVPCrear.Text = productoToUpdate.PVP.ToString();
-                    txtPrecioUnidadCrear.Text = productoToUpdate.precio_unitario.ToString();
-                    txtFechaCaducidadCrear.Text = productoToUpdate.fecha_caducidad.ToString();
-                    txtDescuentoCrear.Text = productoToUpdate.descuento.ToString();
-
                 }
             }
         }
 
         private void BAgregar_Click(object sender, EventArgs e)
         {
-            // Obtener los datos ingresados por el usuario y validacion de datos
+            // Obtener y validar datos
             int codigo, cantidad;
             string nombre = txtNombreCrear.Text.Trim();
             string lote = txtLoteCrear.Text.Trim();
@@ -268,7 +258,6 @@ namespace ProyectoPrototipo_1._0
                 MessageBox.Show("El código de producto ya existe. Ingrese un código único.");
                 return; // Salir del método sin crear el producto
             }
-
 
             // Crear una nueva instancia de Producto y asignar los valores
             Class_Producto newProducto = new Class_Producto
@@ -360,22 +349,27 @@ namespace ProyectoPrototipo_1._0
             string atributo = cmbBuscar.SelectedItem.ToString();
             string valor = txtBuscar.Text;
 
-            List<Class_Producto> productosEncontrados = inventario.BuscarProductoPorAtributo(atributo, valor);
+            if (!valor.IsNullOrEmpty())
+            {
+                List<Class_Producto> productosEncontrados = inventario.BuscarProductoPorAtributo(atributo, valor);
 
-            if (productosEncontrados.Count > 0)
-            {
-                dgvTablaInventario.DataSource = productosEncontrados;
-            }
-            else
-            {
-                MessageBox.Show("No se encontraron productos.");
+                if (productosEncontrados.Count > 0)
+                {
+                    dgvTablaInventario.DataSource = productosEncontrados;
+                    groupBoxOrdenar.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron productos.");
+                }
             }
         }
 
         private void BCancelar_Click(object sender, EventArgs e)
         {
             dgvTablaInventario.DataSource = inventario.productos.ToList();
-            ClearTextBoxes();
+            txtBuscar.Clear();
+            groupBoxOrdenar.Enabled = true;
         }
 
 
@@ -386,39 +380,38 @@ namespace ProyectoPrototipo_1._0
         private System.Windows.Forms.Button bttFinal;
 
 
-        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabControlCrud_SelectedIndexChanged(object sender, EventArgs e)
         {
             TabPage selectedTab = tabControlCrud.SelectedTab;
             // Verificar si el nombre del tab seleccionado es igual a "NombreDeseado"
             if (tabControlCrud.SelectedTab.Name == "tabPageLeerIndividual")
             {
-                listaDoblementeEnlazada = new ListaDoblementeEnlazada();
-                List<Class_Producto> listaAux = inventario.productos;
-                listaDoblementeEnlazada = this.inventario.ExtraerElementos(listaAux, listaDoblementeEnlazada);
 
                 tabControlCrud.Width = 1428;
                 this.dgvTablaInventario.Visible = false;
                 this.label5.Visible = false;
-                this.groupBox1.Visible = false;
+
+                this.groupBoxBuscar.Visible = false;
+                this.groupBoxOrdenar.Visible = false;
 
                 //Crea la lista doblemente enlazada
                 listaDoblementeEnlazada = new ListaDoblementeEnlazada();
-                
                 //Extrae los elementos de la lista productos
-                listaDoblementeEnlazada = this.inventario.ExtraerElementos(inventario.productos, listaDoblementeEnlazada);
-                          
+                listaDoblementeEnlazada = this.inventario.ExtraerElementos(inventario.productos, listaDoblementeEnlazada);               
                 //Nodo actual con el primer nodo
                 actual = listaDoblementeEnlazada.ObtenerPrimerNodo();
                 
                 //Mostrar el nodo actual en Data Grid view
                 this.MostrarNodoEnDataGridView(actual);
+
             }
             else
             {
                 this.dgvTablaInventario.Visible = true;
                 this.dgvTablaInventario.Enabled = true;
-                this.label5.Visible = true;
-                this.groupBox1.Visible = true;
+                //this.label5.Visible = true;
+                this.groupBoxBuscar.Visible = true;
+                this.groupBoxOrdenar.Visible = true;
                 tabControlCrud.Width = 375;
             }
         }
@@ -509,15 +502,17 @@ namespace ProyectoPrototipo_1._0
             dataTable.Rows.Add(nodo.Valor.codigo, nodo.Valor.nombre, nodo.Valor.tipo, nodo.Valor.cantidad, nodo.Valor.lote, nodo.Valor.PVP, nodo.Valor.precio_unitario, nodo.Valor.fecha_caducidad, nodo.Valor.descuento);
 
             // Asignar el DataTable como origen de datos del DataGridView
+
             dataGridView1.DataSource = dataTable;
 
-            dataGridView1.Refresh();
+
+            dataGridViewInventarioSelec.Refresh();
         }
 
         private void btnOrdenar_Click(object sender, EventArgs e)
         {
             // Obtener el atributo seleccionado del ComboBox
-            string atributo = cmbBuscar.SelectedItem.ToString();
+            string atributo = cmbOrdenar.SelectedItem.ToString();
 
             // Ordenar la lista de productos según el atributo seleccionado
             inventario.OrdenarProductosPorAtributo(atributo);
@@ -528,6 +523,11 @@ namespace ProyectoPrototipo_1._0
             // Actualizar la visualización del DataGridView
             dgvTablaInventario.Refresh();
 
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            ClearTextBoxes();
         }
     }
 }

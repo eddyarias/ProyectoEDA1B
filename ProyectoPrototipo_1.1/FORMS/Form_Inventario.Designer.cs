@@ -97,17 +97,20 @@
             txtNumeroProductos = new TextBox();
             btnBuscar = new Button();
             label14 = new Label();
-            groupBox1 = new GroupBox();
-            btnOrdenar = new Button();
+            groupBoxBuscar = new GroupBox();
             txtBuscar = new TextBox();
             cmbBuscar = new ComboBox();
+            btnOrdenar = new Button();
             label5 = new Label();
+            groupBoxOrdenar = new GroupBox();
+            cmbOrdenar = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvTablaInventario).BeginInit();
             tabControlCrud.SuspendLayout();
             tabPageCrear.SuspendLayout();
             tabPageActualizar.SuspendLayout();
             tabPageEliminar.SuspendLayout();
-            groupBox1.SuspendLayout();
+            groupBoxBuscar.SuspendLayout();
+            groupBoxOrdenar.SuspendLayout();
             SuspendLayout();
             // 
             // dgvTablaInventario
@@ -136,7 +139,7 @@
             tabControlCrud.SelectedIndex = 0;
             tabControlCrud.Size = new Size(375, 489);
             tabControlCrud.TabIndex = 3;
-            tabControlCrud.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
+            tabControlCrud.SelectedIndexChanged += tabControlCrud_SelectedIndexChanged;
             // 
             // tabPageCrear
             // 
@@ -177,6 +180,7 @@
             btnLimpiar.TabIndex = 78;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // txtTipoCrear
             // 
@@ -758,7 +762,7 @@
             // 
             // btnCancelarBusqueda
             // 
-            btnCancelarBusqueda.Location = new Point(318, 81);
+            btnCancelarBusqueda.Location = new Point(203, 81);
             btnCancelarBusqueda.Name = "btnCancelarBusqueda";
             btnCancelarBusqueda.Size = new Size(94, 31);
             btnCancelarBusqueda.TabIndex = 74;
@@ -787,7 +791,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(190, 81);
+            btnBuscar.Location = new Point(67, 81);
             btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(88, 31);
@@ -806,29 +810,18 @@
             label14.TabIndex = 3;
             label14.Text = "# Productos:";
             // 
-            // groupBox1
+            // groupBoxBuscar
             // 
-            groupBox1.Controls.Add(btnOrdenar);
-            groupBox1.Controls.Add(txtBuscar);
-            groupBox1.Controls.Add(cmbBuscar);
-            groupBox1.Controls.Add(btnBuscar);
-            groupBox1.Controls.Add(btnCancelarBusqueda);
-            groupBox1.Location = new Point(701, 412);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(418, 125);
-            groupBox1.TabIndex = 75;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Buscar y Ordenar";
-            // 
-            // btnOrdenar
-            // 
-            btnOrdenar.Location = new Point(55, 78);
-            btnOrdenar.Name = "btnOrdenar";
-            btnOrdenar.Size = new Size(94, 34);
-            btnOrdenar.TabIndex = 77;
-            btnOrdenar.Text = "Ordenar";
-            btnOrdenar.UseVisualStyleBackColor = true;
-            btnOrdenar.Click += btnOrdenar_Click;
+            groupBoxBuscar.Controls.Add(txtBuscar);
+            groupBoxBuscar.Controls.Add(cmbBuscar);
+            groupBoxBuscar.Controls.Add(btnBuscar);
+            groupBoxBuscar.Controls.Add(btnCancelarBusqueda);
+            groupBoxBuscar.Location = new Point(536, 405);
+            groupBoxBuscar.Name = "groupBoxBuscar";
+            groupBoxBuscar.Size = new Size(362, 125);
+            groupBoxBuscar.TabIndex = 75;
+            groupBoxBuscar.TabStop = false;
+            groupBoxBuscar.Text = "Buscar";
             // 
             // txtBuscar
             // 
@@ -847,6 +840,16 @@
             cmbBuscar.Size = new Size(151, 28);
             cmbBuscar.TabIndex = 75;
             // 
+            // btnOrdenar
+            // 
+            btnOrdenar.Location = new Point(198, 51);
+            btnOrdenar.Name = "btnOrdenar";
+            btnOrdenar.Size = new Size(94, 34);
+            btnOrdenar.TabIndex = 77;
+            btnOrdenar.Text = "Ordenar";
+            btnOrdenar.UseVisualStyleBackColor = true;
+            btnOrdenar.Click += btnOrdenar_Click;
+            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -855,13 +858,35 @@
             label5.Size = new Size(0, 20);
             label5.TabIndex = 76;
             // 
+            // groupBoxOrdenar
+            // 
+            groupBoxOrdenar.Controls.Add(btnOrdenar);
+            groupBoxOrdenar.Controls.Add(cmbOrdenar);
+            groupBoxOrdenar.Location = new Point(994, 415);
+            groupBoxOrdenar.Name = "groupBoxOrdenar";
+            groupBoxOrdenar.Size = new Size(315, 115);
+            groupBoxOrdenar.TabIndex = 77;
+            groupBoxOrdenar.TabStop = false;
+            groupBoxOrdenar.Text = "Ordenar";
+            // 
+            // cmbOrdenar
+            // 
+            cmbOrdenar.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbOrdenar.FormattingEnabled = true;
+            cmbOrdenar.Items.AddRange(new object[] { "Código", "Nombre", "Tipo", "Cantidad", "Lote", "PVP", "Precio Unitario", "Fecha de Caducidad", "Descuento" });
+            cmbOrdenar.Location = new Point(19, 55);
+            cmbOrdenar.Name = "cmbOrdenar";
+            cmbOrdenar.Size = new Size(151, 28);
+            cmbOrdenar.TabIndex = 76;
+            // 
             // Form_Inventario
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1410, 564);
+            Controls.Add(groupBoxOrdenar);
             Controls.Add(label5);
-            Controls.Add(groupBox1);
+            Controls.Add(groupBoxBuscar);
             Controls.Add(tabControlCrud);
             Controls.Add(label3);
             Controls.Add(label14);
@@ -879,8 +904,9 @@
             tabPageActualizar.PerformLayout();
             tabPageEliminar.ResumeLayout(false);
             tabPageEliminar.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            groupBoxBuscar.ResumeLayout(false);
+            groupBoxBuscar.PerformLayout();
+            groupBoxOrdenar.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -916,7 +942,7 @@
         private Button btnAgregar;
         private TabPage tabPageActualizar;
         private TabPage tabPageEliminar;
-        private GroupBox groupBox1;
+        private GroupBox groupBoxBuscar;
         private ComboBox cmbBuscar;
         private TextBox txtBuscar;
         private Label label5;
@@ -961,5 +987,7 @@
         private Button btnLimpiar;
         private TabPage tabPageLeerIndividual;
         private Button btnOrdenar;
+        private GroupBox groupBoxOrdenar;
+        private ComboBox cmbOrdenar;
     }
 }
