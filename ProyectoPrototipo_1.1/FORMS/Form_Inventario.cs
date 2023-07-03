@@ -28,9 +28,9 @@ namespace ProyectoPrototipo_1._0
             tabControlCrud.SelectedIndexChanged += tabControlCrud_SelectedIndexChanged;
 
             tabControlCrud.Width = 1428;
-            dataGridView1 = new DataGridView();
-            dataGridView1.Width = 1178; // Establecer el ancho deseado del DataGridView
-            dataGridView1.Height = 200; // Establecer la altura deseada del DataGridView
+            dataGridViewInventarioSelec = new DataGridView();
+            dataGridViewInventarioSelec.Width = 1178; // Establecer el ancho deseado del DataGridView
+            dataGridViewInventarioSelec.Height = 200; // Establecer la altura deseada del DataGridView
 
             // Crear los botones
             bttAnterior = new System.Windows.Forms.Button();
@@ -86,8 +86,8 @@ namespace ProyectoPrototipo_1._0
             bttFinal.Height = 90;
 
             // Establecer la posición y tamaño de los botones inferiores dentro del Panel
-            bttInicio.Location = new System.Drawing.Point(500, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del primer botón inferior
-            bttFinal.Location = new System.Drawing.Point(bttInicio.Location.X + bttInicio.Width + 80, dataGridView1.Location.Y + dataGridView1.Height + 10); // Ajustar la posición del segundo botón inferior                
+            bttInicio.Location = new System.Drawing.Point(500, dataGridViewInventarioSelec.Location.Y + dataGridViewInventarioSelec.Height + 10); // Ajustar la posición del primer botón inferior
+            bttFinal.Location = new System.Drawing.Point(bttInicio.Location.X + bttInicio.Width + 80, dataGridViewInventarioSelec.Location.Y + dataGridViewInventarioSelec.Height + 10); // Ajustar la posición del segundo botón inferior                
 
 
             panel.Controls.Add(bttInicio);
@@ -503,7 +503,7 @@ namespace ProyectoPrototipo_1._0
 
             // Asignar el DataTable como origen de datos del DataGridView
 
-            dataGridView1.DataSource = dataTable;
+            dataGridViewInventarioSelec.DataSource = dataTable;
 
 
             dataGridViewInventarioSelec.Refresh();
