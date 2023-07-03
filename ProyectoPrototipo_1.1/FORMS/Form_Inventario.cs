@@ -378,15 +378,21 @@ namespace ProyectoPrototipo_1._0
             // Verificar si el nombre del tab seleccionado es igual a "NombreDeseado"
             if (tabControl2.SelectedTab.Name == "tabPageLeerIndividual")
             {
-                listaDoblementeEnlazada = new ListaDoblementeEnlazada();
-                List<Class_Producto> listaAux = inventario.productos;
-                listaDoblementeEnlazada = this.inventario.ExtraerElementos(listaAux, listaDoblementeEnlazada);
-
                 tabControl2.Width = 930;
                 this.dgvTablaInventario.Visible = false;
                 this.label5.Visible = false;
                 this.groupBox1.Visible = false;
+
+                //Crea la lista doblemente enlazada
+                listaDoblementeEnlazada = new ListaDoblementeEnlazada();
+                
+                //Extrae los elementos de la lista productos
+                listaDoblementeEnlazada = this.inventario.ExtraerElementos(inventario.productos, listaDoblementeEnlazada);
+                          
+                //Nodo actual con el primer nodo
                 actual = listaDoblementeEnlazada.ObtenerPrimerNodo();
+                
+                //Mostrar el nodo actual en Data Grid view
                 this.MostrarNodoEnDataGridView(actual);
             }
             else
