@@ -17,6 +17,7 @@ namespace ProyectoPrototipo_1._0
     {
         Class_Inventario inventario;
         ListaDoblementeEnlazada listaDoblementeEnlazada;
+        Nodo actual;
         public Form_Inventario()
         {
             this.inventario = new Class_Inventario();
@@ -301,7 +302,8 @@ namespace ProyectoPrototipo_1._0
             if (tabControl2.SelectedTab.Name == "tabPageLeerIndividual")
             {
                 listaDoblementeEnlazada = new ListaDoblementeEnlazada();
-                listaDoblementeEnlazada= this.inventario.ExtraerElementos(listaDoblementeEnlazada);
+                List<Class_Producto> listaAux = inventario.productos;
+                listaDoblementeEnlazada = this.inventario.ExtraerElementos(listaAux, listaDoblementeEnlazada);
 
 
                 this.dgvTablaInventario.Visible = false;
@@ -378,6 +380,7 @@ namespace ProyectoPrototipo_1._0
 
 
                 this.MostrarNodoEnDataGridView(listaDoblementeEnlazada.ObtenerPrimerNodo());
+                actual = listaDoblementeEnlazada.ObtenerPrimerNodo();
 
             }
             else
@@ -391,17 +394,10 @@ namespace ProyectoPrototipo_1._0
         }
         private void BttAnterior_Click(object sender, EventArgs e)
         {
-            // Obtener el nodo actual seleccionado en el DataGridView
-            if (dataGridView1.CurrentRow != null)
-            {
-                // Obtener el código del producto desde la fila seleccionada
-                int codigo = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Codigo"].Value);
 
-                // Buscar el nodo del producto en la lista doblemente enlazada
-                Nodo nodoProducto = listaDoblementeEnlazada.BuscarNodoPorCodigo(codigo);
 
                 // Obtener el nodo anterior al nodo actual
-                Nodo nodoAnterior = listaDoblementeEnlazada.ObtenerNodoAnterior(nodoProducto);
+                Nodo nodoAnterior = listaDoblementeEnlazada.ObtenerNodoAnterior(actual);
 
                 if (nodoAnterior != null)
                 {
@@ -412,33 +408,27 @@ namespace ProyectoPrototipo_1._0
                 {
                     MessageBox.Show("No hay nodos anteriores.");
                 }
-            }
+
         }
 
         private void BttSiguiente_Click(object sender, EventArgs e)
         {
-            // Obtener el nodo actual seleccionado en el DataGridView
-            if (dataGridView1.CurrentRow != null)
+
+            // Obtener el nodo siguiente al nodo actual
+            Nodo nodoSiguiente = listaDoblementeEnlazada.ObtenerNodoSiguiente(actual);
+            Nodo nodoSig = actual.Siguiente;
+
+            if (nodoSiguiente != null)
             {
-                // Obtener el código del producto desde la fila seleccionada
-                int codigo = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Codigo"].Value);
-
-                // Buscar el nodo del producto en la lista doblemente enlazada
-                Nodo nodoProducto = listaDoblementeEnlazada.BuscarNodoPorCodigo(codigo);
-
-                // Obtener el nodo siguiente al nodo actual
-                Nodo nodoSiguiente = listaDoblementeEnlazada.ObtenerNodoSiguiente(nodoProducto);
-
-                if (nodoSiguiente != null)
-                {
-                    // Mostrar el nodo siguiente en el DataGridView
-                    MostrarNodoEnDataGridView(nodoSiguiente);
-                }
-                else
-                {
-                    MessageBox.Show("No hay nodos siguientes.");
-                }
+                // Mostrar el nodo siguiente en el DataGridView
+                MostrarNodoEnDataGridView(nodoSig);
             }
+            else
+            {
+                MessageBox.Show("No hay nodos siguientes.");
+            }
+
+
         }
 
         private void BttInicio_Click(object sender, EventArgs e)
@@ -472,7 +462,7 @@ namespace ProyectoPrototipo_1._0
                 MessageBox.Show("La lista está vacía.");
             }
         }
-
+        
         private void MostrarNodoEnDataGridView(Nodo nodo)
         {
             // Crear una nueva instancia de DataTable
@@ -481,13 +471,20 @@ namespace ProyectoPrototipo_1._0
             // Agregar las columnas al DataTable
             dataTable.Columns.Add("Codigo", typeof(int));
             dataTable.Columns.Add("Nombre", typeof(string));
+            dataTable.Columns.Add("Tipo", typeof(string));
             dataTable.Columns.Add("Cantidad", typeof(int));
+            dataTable.Columns.Add("Lote", typeof(string));
+            dataTable.Columns.Add("PVP", typeof(string));
+            dataTable.Columns.Add("precio unitario", typeof(string));
+            dataTable.Columns.Add("fecha caducidad", typeof(string));
+            dataTable.Columns.Add("descuento", typeof(string));
 
             // Agregar el nodo actual como una fila al DataTable
-            dataTable.Rows.Add(nodo.Valor.codigo, nodo.Valor.nombre, nodo.Valor.cantidad);
+            dataTable.Rows.Add(nodo.Valor.codigo, nodo.Valor.nombre, nodo.Valor.tipo ,nodo.Valor.cantidad, nodo.Valor.lote, nodo.Valor.PVP, nodo.Valor.precio_unitario, nodo.Valor.fecha_caducidad, nodo.Valor.descuento);
 
             // Asignar el DataTable como origen de datos del DataGridView
             dataGridView1.DataSource = dataTable;
+            dataGridView1.Refresh();
         }
 
         private void btnOrdenar_Click(object sender, EventArgs e)
