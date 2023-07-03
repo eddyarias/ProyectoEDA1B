@@ -34,7 +34,7 @@ namespace ProyectoPrototipo_1._0.CLASES
         }
 
 
-        public void AgregarProducto(Class_Producto producto)
+        public void AgregarProducto(Class_Producto producto) //ordenamiento por inserción
         {
             int n = productos.Count;
             int i;
@@ -59,19 +59,11 @@ namespace ProyectoPrototipo_1._0.CLASES
             // Insertar el nuevo producto en la posición correcta
             productos[i] = producto;
 
-            foreach (var producto1 in productos)
-            {
-                Debug.WriteLine(producto1.codigo);
-            }
-
             //Reiniciar la tabla
             dbContext.Producto.RemoveRange(dbContext.Producto);
             dbContext.SaveChanges();
-            foreach (var producto1 in productos)
-            {
-                dbContext.Producto.Add(producto1);
-                dbContext.SaveChanges();
-            }
+            dbContext.Producto.AddRange(productos);
+            dbContext.SaveChanges();
 
             productos = dbContext.Producto.ToList();
         }
@@ -182,6 +174,7 @@ namespace ProyectoPrototipo_1._0.CLASES
         //ORDENAR POR QUICKSORT
         public void OrdenarProductosPorAtributo(string atributo)
         {
+            
             Quicksort(productos, 0, productos.Count - 1, atributo);
         }
 
