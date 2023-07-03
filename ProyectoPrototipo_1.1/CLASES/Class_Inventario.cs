@@ -22,11 +22,12 @@ namespace ProyectoPrototipo_1._0.CLASES
             productos = dbContext.Producto.ToList();
         }
 
-        public ListaDoblementeEnlazada ExtraerElementos(ListaDoblementeEnlazada listaDobleEnlazada)
+        public ListaDoblementeEnlazada ExtraerElementos(List<Class_Producto> productillos, ListaDoblementeEnlazada listaDobleEnlazada)
         {
-            foreach (var producto in productos)
+            foreach (var producto in productillos)
             {
                 listaDobleEnlazada.AgregarAlFinal(producto);
+                //Console.WriteLine(producto.ToString());
             }
             return listaDobleEnlazada;
         }
