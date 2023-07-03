@@ -90,27 +90,6 @@ namespace ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA
             }
         }
 
-        public Nodo ObtenerNodoAnterior(Nodo nodo)
-        {
-            //if (nodo.Anterior == null) {
-            //    return cola;
-            //}
-            //else
-            //{
-                return nodo.Anterior;
-            //}
-            
-        }
-
-        public Nodo ObtenerNodoSiguiente(Nodo nodo)
-        {
-            //if (nodo.Siguiente == null) {
-            //    return cabeza;
-            //}else{
-            return nodo.Siguiente;
-            //}
-        }
-
         public Nodo ObtenerPrimerNodo()
         {
             return cabeza;
@@ -119,16 +98,6 @@ namespace ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA
         public Nodo ObtenerUltimoNodo()
         {
             return cola;
-        }
-        public void ImprimirLista()
-        {
-            Nodo actual = cabeza;
-
-            while (actual != null)
-            {
-                Console.WriteLine(actual.Valor); // Suponiendo que la clase Class_Producto tiene un método ToString() adecuado
-                actual = actual.Siguiente;
-            }
         }
 
     }

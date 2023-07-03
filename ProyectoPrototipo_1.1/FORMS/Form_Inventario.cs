@@ -388,8 +388,6 @@ namespace ProyectoPrototipo_1._0
                 this.groupBox1.Visible = false;
                 actual = listaDoblementeEnlazada.ObtenerPrimerNodo();
                 this.MostrarNodoEnDataGridView(actual);
-
-
             }
             else
             {
@@ -402,8 +400,6 @@ namespace ProyectoPrototipo_1._0
         }
         private void BttAnterior_Click(object sender, EventArgs e)
         {
-
-
             // Obtener el nodo anterior al nodo actual
             Nodo nodoAnterior = actual.Anterior;
 
@@ -435,8 +431,6 @@ namespace ProyectoPrototipo_1._0
             {
                 MessageBox.Show("No hay nodos siguientes.");
             }
-
-
         }
 
         private void BttInicio_Click(object sender, EventArgs e)
