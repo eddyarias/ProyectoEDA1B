@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             dgvTablaInventario = new DataGridView();
-            tabControl2 = new TabControl();
+            tabControlCrud = new TabControl();
             tabPageCrear = new TabPage();
             btnLimpiar = new Button();
             txtTipoCrear = new TextBox();
@@ -103,7 +103,7 @@
             cmbBuscar = new ComboBox();
             label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvTablaInventario).BeginInit();
-            tabControl2.SuspendLayout();
+            tabControlCrud.SuspendLayout();
             tabPageCrear.SuspendLayout();
             tabPageActualizar.SuspendLayout();
             tabPageEliminar.SuspendLayout();
@@ -120,23 +120,23 @@
             dgvTablaInventario.Name = "dgvTablaInventario";
             dgvTablaInventario.RowHeadersWidth = 51;
             dgvTablaInventario.RowTemplate.Height = 24;
-            dgvTablaInventario.Size = new Size(466, 351);
+            dgvTablaInventario.Size = new Size(915, 351);
             dgvTablaInventario.TabIndex = 0;
             dgvTablaInventario.CellClick += dgvTablaInventario_CellClick;
             // 
-            // tabControl2
+            // tabControlCrud
             // 
-            tabControl2.Controls.Add(tabPageCrear);
-            tabControl2.Controls.Add(tabPageActualizar);
-            tabControl2.Controls.Add(tabPageEliminar);
-            tabControl2.Controls.Add(tabPageLeerIndividual);
-            tabControl2.Location = new Point(-1, -1);
-            tabControl2.Margin = new Padding(3, 4, 3, 4);
-            tabControl2.Name = "tabControl2";
-            tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(375, 489);
-            tabControl2.TabIndex = 3;
-            tabControl2.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
+            tabControlCrud.Controls.Add(tabPageCrear);
+            tabControlCrud.Controls.Add(tabPageActualizar);
+            tabControlCrud.Controls.Add(tabPageEliminar);
+            tabControlCrud.Controls.Add(tabPageLeerIndividual);
+            tabControlCrud.Location = new Point(-1, -1);
+            tabControlCrud.Margin = new Padding(3, 4, 3, 4);
+            tabControlCrud.Name = "tabControlCrud";
+            tabControlCrud.SelectedIndex = 0;
+            tabControlCrud.Size = new Size(375, 489);
+            tabControlCrud.TabIndex = 3;
+            tabControlCrud.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
             // 
             // tabPageCrear
             // 
@@ -758,7 +758,7 @@
             // 
             // btnCancelarBusqueda
             // 
-            btnCancelarBusqueda.Location = new Point(297, 81);
+            btnCancelarBusqueda.Location = new Point(318, 81);
             btnCancelarBusqueda.Name = "btnCancelarBusqueda";
             btnCancelarBusqueda.Size = new Size(94, 31);
             btnCancelarBusqueda.TabIndex = 74;
@@ -770,7 +770,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(188, 528);
+            label3.Location = new Point(185, 517);
             label3.Name = "label3";
             label3.Size = new Size(61, 20);
             label3.TabIndex = 73;
@@ -779,7 +779,7 @@
             // txtNumeroProductos
             // 
             txtNumeroProductos.Enabled = false;
-            txtNumeroProductos.Location = new Point(155, 525);
+            txtNumeroProductos.Location = new Point(152, 514);
             txtNumeroProductos.Name = "txtNumeroProductos";
             txtNumeroProductos.ReadOnly = true;
             txtNumeroProductos.Size = new Size(27, 27);
@@ -787,7 +787,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(163, 83);
+            btnBuscar.Location = new Point(190, 81);
             btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(88, 31);
@@ -800,7 +800,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label14.Location = new Point(33, 529);
+            label14.Location = new Point(30, 518);
             label14.Name = "label14";
             label14.Size = new Size(116, 20);
             label14.TabIndex = 3;
@@ -813,16 +813,16 @@
             groupBox1.Controls.Add(cmbBuscar);
             groupBox1.Controls.Add(btnBuscar);
             groupBox1.Controls.Add(btnCancelarBusqueda);
-            groupBox1.Location = new Point(459, 440);
+            groupBox1.Location = new Point(701, 412);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(418, 125);
             groupBox1.TabIndex = 75;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Buscar";
+            groupBox1.Text = "Buscar y Ordenar";
             // 
             // btnOrdenar
             // 
-            btnOrdenar.Location = new Point(29, 81);
+            btnOrdenar.Location = new Point(55, 78);
             btnOrdenar.Name = "btnOrdenar";
             btnOrdenar.Size = new Size(94, 34);
             btnOrdenar.TabIndex = 77;
@@ -839,6 +839,7 @@
             // 
             // cmbBuscar
             // 
+            cmbBuscar.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbBuscar.FormattingEnabled = true;
             cmbBuscar.Items.AddRange(new object[] { "Código", "Nombre", "Tipo", "Cantidad", "Lote", "PVP", "Precio Unitario", "Fecha de Caducidad", "Descuento" });
             cmbBuscar.Location = new Point(20, 36);
@@ -851,18 +852,17 @@
             label5.AutoSize = true;
             label5.Location = new Point(434, 405);
             label5.Name = "label5";
-            label5.Size = new Size(466, 20);
+            label5.Size = new Size(0, 20);
             label5.TabIndex = 76;
-            label5.Text = "Selecciona el tipo de atributo y el dato que deseas buscar en la tabla";
             // 
             // Form_Inventario
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(912, 591);
+            ClientSize = new Size(1410, 564);
             Controls.Add(label5);
             Controls.Add(groupBox1);
-            Controls.Add(tabControl2);
+            Controls.Add(tabControlCrud);
             Controls.Add(label3);
             Controls.Add(label14);
             Controls.Add(txtNumeroProductos);
@@ -872,7 +872,7 @@
             Text = "Inventario";
             Load += Form_Inventario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvTablaInventario).EndInit();
-            tabControl2.ResumeLayout(false);
+            tabControlCrud.ResumeLayout(false);
             tabPageCrear.ResumeLayout(false);
             tabPageCrear.PerformLayout();
             tabPageActualizar.ResumeLayout(false);
@@ -888,7 +888,7 @@
         #endregion
 
         private DataGridView dgvTablaInventario;
-        private TabControl tabControl2;
+        private TabControl tabControlCrud;
         private TabPage tabPageCrear;
         private Label label14;
         private TextBox txtPVPCrear;

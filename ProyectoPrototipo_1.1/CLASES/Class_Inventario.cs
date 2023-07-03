@@ -3,6 +3,7 @@ using ProyectoPrototipo_1._1.CLASES.LISTADOBLEMENTEENLAZADA;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace ProyectoPrototipo_1._0.CLASES
         public Class_Inventario()
         {
             dbContext = new FarmaciaDbContext();
-            productos = new List<Class_Producto>();
+            //productos = new List<Class_Producto>();
             productos = dbContext.Producto.ToList();
         }
 
@@ -34,48 +35,54 @@ namespace ProyectoPrototipo_1._0.CLASES
 
         public void AgregarProducto(Class_Producto producto)
         {
-            /*int n = productos.Count;
-            int i, j;
-            bool encontrado;
-            Class_Producto auxiliar;
+            int n = productos.Count;
+            int i;
 
-            for (i = 1; i < n; i++)
+            // Encontrar la posición de inserción del nuevo producto
+            for (i = 0; i < n; i++)
             {
-                auxiliar = productos[i];
-                j = i - 1;
-                encontrado = false;
-
-                while (j >= 0 && !encontrado)
+                if (productos[i].codigo > producto.codigo)
                 {
-                    if (productos[j].codigo > auxiliar.codigo)
-                    {
-                        productos[j + 1] = productos[j];
-                        j--;
-                    }
-                    else
-                    {
-                        encontrado = true;
-                    }
-                }
-
-                productos[j + 1] = auxiliar;
-
-                if (producto.codigo > auxiliar.codigo)
-                {
-                    productos[j + 1] = producto;
                     break;
                 }
             }
 
-            var existingProducts = dbContext.Producto.Select(prod => prod.codigo).ToList();
-            var newProducts = productos.Where(prod => !existingProducts.Contains(prod.codigo)).ToList();*/
-            dbContext.Producto.Add(producto);
+            // Desplazar los elementos mayores hacia la derecha
+            productos.Add(null); // Agregar un espacio adicional al final de la lista
+
+            for (int j = n; j > i; j--)
+            {
+                productos[j] = productos[j - 1];
+            }
+
+            // Insertar el nuevo producto en la posición correcta
+            productos[i] = producto;
+
+            foreach (var producto1 in productos)
+            {
+                Debug.WriteLine(producto1.codigo);
+            }
+
+            //Reiniciar la tabla
+            dbContext.Producto.RemoveRange(dbContext.Producto);
             dbContext.SaveChanges();
+            foreach (var producto1 in productos)
+            {
+                dbContext.Producto.Add(producto1);
+                dbContext.SaveChanges();
+            }
 
             productos = dbContext.Producto.ToList();
         }
 
-
+        public int numProductos() {
+            int num = 0;
+            foreach (var producto in productos)
+            {
+                num += producto.cantidad;
+            }
+            return num;
+        }
 
         public List<Class_Producto> ObtenerProductos()
         {

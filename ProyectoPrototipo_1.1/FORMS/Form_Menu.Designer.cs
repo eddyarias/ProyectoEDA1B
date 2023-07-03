@@ -42,7 +42,7 @@
             // 
             // bttModuloInventario
             // 
-            bttModuloInventario.Location = new Point(118, 369);
+            bttModuloInventario.Location = new Point(491, 50);
             bttModuloInventario.Margin = new Padding(3, 4, 3, 4);
             bttModuloInventario.Name = "bttModuloInventario";
             bttModuloInventario.Size = new Size(143, 145);
@@ -50,7 +50,13 @@
             bttModuloInventario.Text = "MÓDULO DE INVENTARIO";
             bttModuloInventario.UseVisualStyleBackColor = true;
             bttModuloInventario.Click += bttModuloInventario_Click;
-
+            // 
+            // bttModuloProveedores
+            // 
+            bttModuloProveedores.Location = new Point(0, 0);
+            bttModuloProveedores.Name = "bttModuloProveedores";
+            bttModuloProveedores.Size = new Size(75, 23);
+            bttModuloProveedores.TabIndex = 12;
             // 
             // label1
             // 
@@ -72,7 +78,7 @@
             // 
             // BSalir
             // 
-            BSalir.Location = new Point(159, 891);
+            BSalir.Location = new Point(1465, 891);
             BSalir.Margin = new Padding(3, 4, 3, 4);
             BSalir.Name = "BSalir";
             BSalir.Size = new Size(88, 49);
@@ -84,10 +90,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(32, 4);
+            pictureBox1.Location = new Point(32, 8);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(320, 336);
+            pictureBox1.Size = new Size(220, 228);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
@@ -98,10 +104,10 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(bttModuloInventario);
             panel1.Controls.Add(bttModuloProveedores);
-            panel1.Location = new Point(12, 13);
+            panel1.Location = new Point(12, 14);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(381, 861);
+            panel1.Size = new Size(867, 249);
             panel1.TabIndex = 13;
             // 
             // Form_Menu
