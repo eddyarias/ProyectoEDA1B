@@ -24,9 +24,9 @@ namespace ProyectoPrototipo_1._0
             this.inventario = new Class_Inventario();
             InitializeComponent();
             // Suscribirse al evento SelectedIndexChanged del TabControl
-            tabControl2.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
+            tabControlCrud.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
 
-            tabControl2.Width = 930;
+            tabControlCrud.Width = 930;
 
             dataGridView1 = new DataGridView();
             dataGridView1.Width = 650; // Establecer el ancho deseado del DataGridView
@@ -55,9 +55,9 @@ namespace ProyectoPrototipo_1._0
             panel.Height = 489; // Establecer la altura deseada del Panel
 
             // Calcular la posición horizontal para centrar el Panel
-            int panelX = (tabControl2.Width - panel.Width) / 2;
+            int panelX = (tabControlCrud.Width - panel.Width) / 2;
             // Calcular la posición vertical para centrar el Panel
-            int panelY = (tabControl2.Height - panel.Height) / 2;
+            int panelY = (tabControlCrud.Height - panel.Height) / 2;
             // Establecer la posición del Panel
             panel.Location = new System.Drawing.Point(panelX, panelY);
 
@@ -93,13 +93,15 @@ namespace ProyectoPrototipo_1._0
             panel.Controls.Add(bttFinal);
 
             // Agregar el Panel al TabControl
-            tabControl2.TabPages[3].Controls.Add(panel);
+            tabControlCrud.TabPages[3].Controls.Add(panel);
 
             this.dgvTablaInventario.Visible = true;
             this.dgvTablaInventario.Enabled = true;
             this.label5.Visible = true;
             this.groupBox1.Visible = true;
-            tabControl2.Width = 375;
+            tabControlCrud.Width = 375;
+
+            txtNumeroProductos.Text = inventario.numProductos().ToString(); //Numero de productos
 
         }
 
@@ -107,16 +109,17 @@ namespace ProyectoPrototipo_1._0
         {
             // Centrar el formulario en la pantalla
             this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - this.Width) / 2,
-                                      (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2);
+            this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - this.Width) / 6,
+                                      (Screen.PrimaryScreen.Bounds.Height - this.Height + 80) / 2);
 
             // READ: inventario en el dataGridView1
             dgvTablaInventario.DataSource = inventario.productos;
+            dgvTablaInventario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
         }
 
         private void ClearTextBoxes()
         {
-            txtNumeroProductos.Clear();
             txtDescuentoCrear.Clear();
             txtDescuentoActualizar.Clear();
             txtDescuentoEliminar.Clear();
@@ -177,77 +180,85 @@ namespace ProyectoPrototipo_1._0
                     txtFechaCaducidadEliminar.Text = productoToUpdate.fecha_caducidad.ToString();
                     txtDescuentoEliminar.Text = productoToUpdate.descuento.ToString();
 
+                    txtCodigoCrear.Text = productoToUpdate.codigo.ToString();
+                    txtNombreCrear.Text = productoToUpdate.nombre;
+                    txtTipoCrear.Text = productoToUpdate.tipo;
+                    txtCantidadCrear.Text = productoToUpdate.cantidad.ToString();
+                    txtLoteCrear.Text = productoToUpdate.lote;
+                    txtPVPCrear.Text = productoToUpdate.PVP.ToString();
+                    txtPrecioUnidadCrear.Text = productoToUpdate.precio_unitario.ToString();
+                    txtFechaCaducidadCrear.Text = productoToUpdate.fecha_caducidad.ToString();
+                    txtDescuentoCrear.Text = productoToUpdate.descuento.ToString();
+
                 }
             }
         }
 
         private void BAgregar_Click(object sender, EventArgs e)
         {
-            // Obtener los datos ingresados por el usuario
-            int codigo;
+            // Obtener los datos ingresados por el usuario y validacion de datos
+            int codigo, cantidad;
+            string nombre = txtNombreCrear.Text.Trim();
+            string lote = txtLoteCrear.Text.Trim();
+            decimal pvp, precioUnitario, descuento;
+            DateTime fechaCaducidad;
+            string tipo = txtTipoCrear.Text.Trim();
+
             if (!int.TryParse(txtCodigoCrear.Text, out codigo))
             {
                 MessageBox.Show("Ingrese un código válido.");
                 return; // Salir del método sin crear el producto
             }
 
-            int cantidad;
             if (!int.TryParse(txtCantidadCrear.Text, out cantidad))
             {
                 MessageBox.Show("Ingrese una cantidad válida.");
                 return; // Salir del método sin crear el producto
             }
 
-            string nombre = txtNombreCrear.Text.Trim();
             if (string.IsNullOrEmpty(nombre))
             {
                 MessageBox.Show("Ingrese una descripción válida.");
                 return; // Salir del método sin crear el producto
             }
 
-            string lote = txtLoteCrear.Text.Trim();
             if (string.IsNullOrEmpty(lote))
             {
                 MessageBox.Show("Ingrese un lote válido.");
                 return; // Salir del método sin crear el producto
             }
 
-            decimal pvp;
             if (!decimal.TryParse(txtPVPCrear.Text, out pvp))
             {
                 MessageBox.Show("Ingrese un PVP válido.");
                 return; // Salir del método sin crear el producto
             }
 
-            decimal precioUnitario;
             if (!decimal.TryParse(txtPrecioUnidadCrear.Text, out precioUnitario))
             {
                 MessageBox.Show("Ingrese un precio unitario válido.");
                 return; // Salir del método sin crear el producto
             }
 
-            DateTime fechaCaducidad;
             if (!DateTime.TryParse(txtFechaCaducidadCrear.Text, out fechaCaducidad))
             {
                 MessageBox.Show("Ingrese una fecha de caducidad válida.");
                 return; // Salir del método sin crear el producto
             }
 
-            decimal descuento;
             if (!decimal.TryParse(txtDescuentoCrear.Text, out descuento))
             {
                 MessageBox.Show("Ingrese un descuento válido.");
                 return; // Salir del método sin crear el producto
             }
 
-            string tipo = txtTipoCrear.Text.Trim(); ;
             if (string.IsNullOrEmpty(tipo))
             {
                 MessageBox.Show("Ingrese un tipo válido.");
                 return; // Salir del método sin crear el producto
             }
 
-            // Verificar si el código de producto ya existe en la base de datos
+            //Verificar si el código de producto ya existe en la base de datos
             /*bool codigoExists = dbContext.Producto.Any(p => p.codigo == codigo);*/
 
             bool codigoExists = inventario.productos.Any(p => p.codigo == codigo);
@@ -280,7 +291,8 @@ namespace ProyectoPrototipo_1._0
             // Actualizar el origen de datos del DataGridView con el inventario
 
             dgvTablaInventario.DataSource = inventario.productos;
-            //dgvTablaInventario.Refresh();
+            txtNumeroProductos.Text = inventario.numProductos().ToString(); //Numero de productos
+
             ClearTextBoxes();
         }
 
@@ -307,6 +319,7 @@ namespace ProyectoPrototipo_1._0
             MessageBox.Show("Producto actualizado exitosamente");
             // Actualizar el origen de datos del DataGridView con el inventario
             dgvTablaInventario.DataSource = inventario.productos;
+            txtNumeroProductos.Text = inventario.numProductos().ToString();
             ClearTextBoxes();
         }
 
@@ -331,6 +344,7 @@ namespace ProyectoPrototipo_1._0
 
                     // Actualizar el DataGridView con la lista de productos 
                     dgvTablaInventario.DataSource = inventario.productos;
+                    txtNumeroProductos.Text = inventario.numProductos().ToString();
                     ClearTextBoxes();
                 }
             }
@@ -364,7 +378,7 @@ namespace ProyectoPrototipo_1._0
             ClearTextBoxes();
         }
 
-        
+
 
         private System.Windows.Forms.Button bttAnterior;
         private System.Windows.Forms.Button bttSiguiente;
@@ -374,15 +388,15 @@ namespace ProyectoPrototipo_1._0
 
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TabPage selectedTab = tabControl2.SelectedTab;
+            TabPage selectedTab = tabControlCrud.SelectedTab;
             // Verificar si el nombre del tab seleccionado es igual a "NombreDeseado"
-            if (tabControl2.SelectedTab.Name == "tabPageLeerIndividual")
+            if (tabControlCrud.SelectedTab.Name == "tabPageLeerIndividual")
             {
                 listaDoblementeEnlazada = new ListaDoblementeEnlazada();
                 List<Class_Producto> listaAux = inventario.productos;
                 listaDoblementeEnlazada = this.inventario.ExtraerElementos(listaAux, listaDoblementeEnlazada);
 
-                tabControl2.Width = 930;
+                tabControlCrud.Width = 930;
                 this.dgvTablaInventario.Visible = false;
                 this.label5.Visible = false;
                 this.groupBox1.Visible = false;
@@ -395,7 +409,7 @@ namespace ProyectoPrototipo_1._0
                 this.dgvTablaInventario.Enabled = true;
                 this.label5.Visible = true;
                 this.groupBox1.Visible = true;
-                tabControl2.Width = 375;
+                tabControlCrud.Width = 375;
             }
         }
         private void BttAnterior_Click(object sender, EventArgs e)
