@@ -76,11 +76,7 @@ namespace ProyectoPrototipo_1._0.CLASES
             return num;
         }
 
-        public List<Class_Producto> ObtenerProductos()
-        {
-            return productos;
-        }
-
+        //Actualizar Productos
         public void ActualizarProducto(int codigo, Class_Producto productoActualizado)
         {
             Class_Producto? productoExistente = productos.FirstOrDefault(p => p.codigo == codigo);
@@ -101,8 +97,22 @@ namespace ProyectoPrototipo_1._0.CLASES
                 productos = dbContext.Producto.ToList();
             }
         }
+        //Eliminar productos
+        public void EliminarProducto(int codigo)
+        {
+            Class_Producto? producto = productos.FirstOrDefault(p => p.codigo == codigo);
 
-        public List<Class_Producto> BuscarProductoPorAtributo(string atributo, string valor) //busqueda secuencial
+            if (producto != null)
+            {
+                //productos.Remove(producto);
+                dbContext.Producto.Remove(producto);
+                dbContext.SaveChanges();
+                productos = dbContext.Producto.ToList();
+            }
+        }
+
+        //Búsqueda secuencial
+        public List<Class_Producto> BuscarProductoPorAtributo(string atributo, string valor) 
         {
             List<Class_Producto> productosEncontrados = new List<Class_Producto>();
 
@@ -155,20 +165,6 @@ namespace ProyectoPrototipo_1._0.CLASES
             }
         }
 
-
-
-        public void EliminarProducto(int codigo)
-        {
-            Class_Producto? producto = productos.FirstOrDefault(p => p.codigo == codigo);
-
-            if (producto != null)
-            {
-                //productos.Remove(producto);
-                dbContext.Producto.Remove(producto);
-                dbContext.SaveChanges();
-                productos = dbContext.Producto.ToList();
-            }
-        }
 
         //ORDENAR POR QUICKSORT
         public void OrdenarProductosPorAtributo(string atributo)

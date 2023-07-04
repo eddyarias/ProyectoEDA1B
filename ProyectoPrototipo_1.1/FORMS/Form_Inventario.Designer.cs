@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Inventario));
             dgvTablaInventario = new DataGridView();
             tabControlCrud = new TabControl();
             tabPageCrear = new TabPage();
@@ -783,10 +784,11 @@
             // txtNumeroProductos
             // 
             txtNumeroProductos.Enabled = false;
+            txtNumeroProductos.Font = new Font("Segoe UI Black", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             txtNumeroProductos.Location = new Point(152, 514);
             txtNumeroProductos.Name = "txtNumeroProductos";
             txtNumeroProductos.ReadOnly = true;
-            txtNumeroProductos.Size = new Size(27, 27);
+            txtNumeroProductos.Size = new Size(27, 30);
             txtNumeroProductos.TabIndex = 72;
             // 
             // btnBuscar
@@ -816,7 +818,7 @@
             groupBoxBuscar.Controls.Add(cmbBuscar);
             groupBoxBuscar.Controls.Add(btnBuscar);
             groupBoxBuscar.Controls.Add(btnCancelarBusqueda);
-            groupBoxBuscar.Location = new Point(536, 405);
+            groupBoxBuscar.Location = new Point(509, 405);
             groupBoxBuscar.Name = "groupBoxBuscar";
             groupBoxBuscar.Size = new Size(362, 125);
             groupBoxBuscar.TabIndex = 75;
@@ -862,7 +864,7 @@
             // 
             groupBoxOrdenar.Controls.Add(btnOrdenar);
             groupBoxOrdenar.Controls.Add(cmbOrdenar);
-            groupBoxOrdenar.Location = new Point(994, 415);
+            groupBoxOrdenar.Location = new Point(970, 415);
             groupBoxOrdenar.Name = "groupBoxOrdenar";
             groupBoxOrdenar.Size = new Size(315, 115);
             groupBoxOrdenar.TabIndex = 77;
@@ -883,6 +885,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1410, 564);
             Controls.Add(groupBoxOrdenar);
             Controls.Add(label5);

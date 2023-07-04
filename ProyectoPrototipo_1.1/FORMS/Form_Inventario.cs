@@ -287,60 +287,74 @@ namespace ProyectoPrototipo_1._0
 
         private void BActualizar_Click(object sender, EventArgs e)
         {
-            // Obtener el código del producto a actualizar
-            int codigo = int.Parse(txtCodigoActualizar.Text);
-
-            // Crear una instancia de Class_Producto con los datos actualizados
-            Class_Producto productoActualizado = new Class_Producto
+            try
             {
-                cantidad = int.Parse(txtCantidadActualizar.Text),
-                nombre = txtNombreActualizar.Text,
-                lote = txtLoteActualizar.Text,
-                PVP = decimal.Parse(txtPVPActualizar.Text),
-                precio_unitario = decimal.Parse(txtPrecioUnidadActualizar.Text),
-                fecha_caducidad = DateTime.Parse(txtFechaCaducidadActualizar.Text),
-                descuento = decimal.Parse(txtDescuentoActualizar.Text),
-                tipo = txtTipoActualizar.Text
-            };
+                // Obtener el código del producto a actualizar
+                int codigo = int.Parse(txtCodigoActualizar.Text);
 
-            // Llamar al método ActualizarProducto del inventario
-            inventario.ActualizarProducto(codigo, productoActualizado);
-            MessageBox.Show("Producto actualizado exitosamente");
-            // Actualizar el origen de datos del DataGridView con el inventario
-            dgvTablaInventario.DataSource = inventario.productos;
-            txtNumeroProductos.Text = inventario.numProductos().ToString();
-            ClearTextBoxes();
+                // Crear una instancia de Class_Producto con los datos actualizados
+                Class_Producto productoActualizado = new Class_Producto
+                {
+                    cantidad = int.Parse(txtCantidadActualizar.Text),
+                    nombre = txtNombreActualizar.Text,
+                    lote = txtLoteActualizar.Text,
+                    PVP = decimal.Parse(txtPVPActualizar.Text),
+                    precio_unitario = decimal.Parse(txtPrecioUnidadActualizar.Text),
+                    fecha_caducidad = DateTime.Parse(txtFechaCaducidadActualizar.Text),
+                    descuento = decimal.Parse(txtDescuentoActualizar.Text),
+                    tipo = txtTipoActualizar.Text
+                };
+
+                // Llamar al método ActualizarProducto del inventario
+                inventario.ActualizarProducto(codigo, productoActualizado);
+                MessageBox.Show("Producto actualizado exitosamente");
+                // Actualizar el origen de datos del DataGridView con el inventario
+                dgvTablaInventario.DataSource = inventario.productos;
+                txtNumeroProductos.Text = inventario.numProductos().ToString();
+                ClearTextBoxes();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Seleccione un producto para actualizar");
+            }
         }
 
         private void BEliminar_Click(object sender, EventArgs e)
         {
-            // Obtener el código del producto desde el TextBox
-            int codigo = Convert.ToInt32(txtCodigoEliminar.Text);
-
-            // Verificar si el código de producto existe en el inventario
-            bool codigoExists = inventario.productos.Any(p => p.codigo == codigo);
-
-            if (codigoExists)
+            try
             {
-                // Mostrar el diálogo de confirmación
-                DialogResult result = MessageBox.Show("¿Está seguro de que desea " +
-                    "eliminar el producto?", "Confirmación", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    // Eliminar el producto del inventario
-                    inventario.EliminarProducto(codigo);
-                    MessageBox.Show("Producto eliminado exitosamente");
+                // Obtener el código del producto desde el TextBox
+                int codigo = Convert.ToInt32(txtCodigoEliminar.Text);
 
-                    // Actualizar el DataGridView con la lista de productos 
-                    dgvTablaInventario.DataSource = inventario.productos;
-                    txtNumeroProductos.Text = inventario.numProductos().ToString();
+                // Verificar si el código de producto existe en el inventario
+                bool codigoExists = inventario.productos.Any(p => p.codigo == codigo);
+
+                if (codigoExists)
+                {
+                    // Mostrar el diálogo de confirmación
+                    DialogResult result = MessageBox.Show("¿Está seguro de que desea " +
+                        "eliminar el producto?", "Confirmación", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        // Eliminar el producto del inventario
+                        inventario.EliminarProducto(codigo);
+                        MessageBox.Show("Producto eliminado exitosamente");
+
+                        // Actualizar el DataGridView con la lista de productos 
+                        dgvTablaInventario.DataSource = inventario.productos;
+                        txtNumeroProductos.Text = inventario.numProductos().ToString();
+                        ClearTextBoxes();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el producto");
                     ClearTextBoxes();
                 }
             }
-            else
+            catch (FormatException)
             {
-                MessageBox.Show("No se encontró el producto");
-                ClearTextBoxes();
+                MessageBox.Show("Seleccione un producto para eliminar");
             }
         }
 
@@ -397,13 +411,12 @@ namespace ProyectoPrototipo_1._0
                 //Crea la lista doblemente enlazada
                 listaDoblementeEnlazada = new ListaDoblementeEnlazada();
                 //Extrae los elementos de la lista productos
-                listaDoblementeEnlazada = this.inventario.ExtraerElementos(inventario.productos, listaDoblementeEnlazada);               
+                listaDoblementeEnlazada = this.inventario.ExtraerElementos(inventario.productos, listaDoblementeEnlazada);
                 //Nodo actual con el primer nodo
                 actual = listaDoblementeEnlazada.ObtenerPrimerNodo();
-                
+
                 //Mostrar el nodo actual en Data Grid view
                 this.MostrarNodoEnDataGridView(actual);
-
             }
             else
             {

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Menu));
             bttModuloInventario = new Button();
-            bttModuloProveedores = new Button();
             label1 = new Label();
             label2 = new Label();
             BSalir = new Button();
@@ -42,7 +41,7 @@
             // 
             // bttModuloInventario
             // 
-            bttModuloInventario.Location = new Point(491, 50);
+            bttModuloInventario.Location = new Point(277, 52);
             bttModuloInventario.Margin = new Padding(3, 4, 3, 4);
             bttModuloInventario.Name = "bttModuloInventario";
             bttModuloInventario.Size = new Size(143, 145);
@@ -50,13 +49,6 @@
             bttModuloInventario.Text = "MÓDULO DE INVENTARIO";
             bttModuloInventario.UseVisualStyleBackColor = true;
             bttModuloInventario.Click += bttModuloInventario_Click;
-            // 
-            // bttModuloProveedores
-            // 
-            bttModuloProveedores.Location = new Point(0, 0);
-            bttModuloProveedores.Name = "bttModuloProveedores";
-            bttModuloProveedores.Size = new Size(75, 23);
-            bttModuloProveedores.TabIndex = 12;
             // 
             // label1
             // 
@@ -78,7 +70,7 @@
             // 
             // BSalir
             // 
-            BSalir.Location = new Point(1465, 891);
+            BSalir.Location = new Point(1419, 891);
             BSalir.Margin = new Padding(3, 4, 3, 4);
             BSalir.Name = "BSalir";
             BSalir.Size = new Size(88, 49);
@@ -103,11 +95,10 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(bttModuloInventario);
-            panel1.Controls.Add(bttModuloProveedores);
-            panel1.Location = new Point(12, 14);
+            panel1.Location = new Point(96, 14);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(867, 249);
+            panel1.Size = new Size(1402, 249);
             panel1.TabIndex = 13;
             // 
             // Form_Menu
@@ -124,7 +115,7 @@
             IsMdiContainer = true;
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form_Menu";
-            Text = "SISTEMA DE GESTIÓN PARA “FARMACY ECUADOR”";
+            Text = "SISTEMA DE GESTIÓN DE FARMACIAS";
             FormClosing += Form_Menu_FormClosing;
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -136,7 +127,6 @@
         #endregion
 
         private Button bttModuloInventario;
-        private Button bttModuloProveedores;
         private Label label1;
         private Label label2;
         private Button BSalir;
