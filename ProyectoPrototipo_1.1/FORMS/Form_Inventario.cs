@@ -32,7 +32,7 @@ namespace ProyectoPrototipo_1._0
             dataGridViewInventarioSelec = new DataGridView();
             dataGridViewInventarioSelec.Width = 1178; // Establecer el ancho deseado del DataGridView
             dataGridViewInventarioSelec.Height = 200; // Establecer la altura deseada del DataGridView
-
+                
             // Crear los botones
             bttAnterior = new System.Windows.Forms.Button();
             bttAnterior.Text = "ANTERIOR";

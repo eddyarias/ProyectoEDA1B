@@ -24,14 +24,6 @@ namespace ProyectoPrototipo_1._0
 
         private void BLogin_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //Form_Menu form_Menu = new Form_Menu();
-            //form_Menu.ShowDialog();
-
-
-            //Deben AUTENTICARSE porque el FarmaciaDbContext usa la conexion, debes modificar la clase Conect.cs con tus datos
-
-            //SI YA ESTA LISTO EL SQL SERVER, DESCOMENTEN ESTO Y MODIFIQUEN LA CLASE CONNECT:
 
             string usuario = TBUsername.Text;
             string pass = TBPassword.Text;
