@@ -19,7 +19,6 @@ namespace ProyectoPrototipo_1._0.CLASES
         public Class_Inventario()
         {
             dbContext = new FarmaciaDbContext();
-            //productos = new List<Class_Producto>();
             productos = dbContext.Producto.ToList();
         }
 

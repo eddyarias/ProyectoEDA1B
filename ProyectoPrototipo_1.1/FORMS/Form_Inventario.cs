@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace ProyectoPrototipo_1._0
 {
@@ -105,6 +106,27 @@ namespace ProyectoPrototipo_1._0
             txtNumeroProductos.Text = inventario.numProductos().ToString(); //Numero de productos
             cmbBuscar.SelectedIndex = 0;
             cmbOrdenar.SelectedIndex = 0;
+
+            // Cambiar el color del borde de un botón
+            bttInicio.FlatStyle = FlatStyle.Flat;
+            bttInicio.FlatAppearance.BorderColor = Color.Violet;
+            bttInicio.FlatAppearance.BorderSize = 2; // Grosor del borde
+            bttInicio.BackColor = Color.White;
+
+            bttFinal.FlatStyle = FlatStyle.Flat;
+            bttFinal.FlatAppearance.BorderColor = Color.Violet;
+            bttFinal.FlatAppearance.BorderSize = 2;
+            bttFinal.BackColor = Color.White;
+
+            bttAnterior.FlatStyle = FlatStyle.Flat;
+            bttAnterior.FlatAppearance.BorderColor = Color.SpringGreen;
+            bttAnterior.FlatAppearance.BorderSize = 2;
+            bttAnterior.BackColor = Color.White;
+
+            bttSiguiente.FlatStyle = FlatStyle.Flat;
+            bttSiguiente.FlatAppearance.BorderColor = Color.SpringGreen;
+            bttSiguiente.FlatAppearance.BorderSize = 2;
+            bttSiguiente.BackColor = Color.White;
         }
 
         private void Form_Inventario_Load(object sender, EventArgs e)

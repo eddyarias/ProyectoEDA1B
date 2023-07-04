@@ -118,6 +118,7 @@
             // 
             dgvTablaInventario.AllowUserToAddRows = false;
             dgvTablaInventario.AllowUserToDeleteRows = false;
+            dgvTablaInventario.BackgroundColor = Color.WhiteSmoke;
             dgvTablaInventario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTablaInventario.Location = new Point(434, 32);
             dgvTablaInventario.Margin = new Padding(3, 4, 3, 4);
@@ -175,12 +176,16 @@
             // 
             // btnLimpiar
             // 
+            btnLimpiar.BackColor = Color.White;
+            btnLimpiar.FlatAppearance.BorderColor = Color.FromArgb(0, 192, 0);
+            btnLimpiar.FlatAppearance.BorderSize = 2;
+            btnLimpiar.FlatStyle = FlatStyle.Flat;
             btnLimpiar.Location = new Point(185, 368);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(94, 38);
             btnLimpiar.TabIndex = 78;
             btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
             // 
             // txtTipoCrear
@@ -202,12 +207,16 @@
             // 
             // btnAgregar
             // 
+            btnAgregar.BackColor = Color.White;
+            btnAgregar.FlatAppearance.BorderColor = Color.FromArgb(128, 128, 255);
+            btnAgregar.FlatAppearance.BorderSize = 2;
+            btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.Location = new Point(61, 368);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(94, 38);
             btnAgregar.TabIndex = 63;
             btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += BAgregar_Click;
             // 
             // txtPVPCrear
@@ -532,13 +541,17 @@
             // 
             // btnActualizar
             // 
+            btnActualizar.BackColor = Color.White;
+            btnActualizar.FlatAppearance.BorderColor = Color.FromArgb(192, 192, 0);
+            btnActualizar.FlatAppearance.BorderSize = 2;
+            btnActualizar.FlatStyle = FlatStyle.Flat;
             btnActualizar.Location = new Point(129, 368);
             btnActualizar.Margin = new Padding(3, 4, 3, 4);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(84, 38);
+            btnActualizar.Size = new Size(97, 38);
             btnActualizar.TabIndex = 91;
             btnActualizar.Text = "Actualizar";
-            btnActualizar.UseVisualStyleBackColor = true;
+            btnActualizar.UseVisualStyleBackColor = false;
             btnActualizar.Click += BActualizar_Click;
             // 
             // tabPageEliminar
@@ -742,13 +755,17 @@
             // 
             // btnEliminar
             // 
+            btnEliminar.BackColor = Color.White;
+            btnEliminar.FlatAppearance.BorderColor = Color.Red;
+            btnEliminar.FlatAppearance.BorderSize = 2;
+            btnEliminar.FlatStyle = FlatStyle.Flat;
             btnEliminar.Location = new Point(134, 368);
             btnEliminar.Margin = new Padding(3, 4, 3, 4);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(80, 38);
             btnEliminar.TabIndex = 58;
             btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += BEliminar_Click;
             // 
             // tabPageLeerIndividual
@@ -763,17 +780,22 @@
             // 
             // btnCancelarBusqueda
             // 
+            btnCancelarBusqueda.BackColor = Color.White;
+            btnCancelarBusqueda.FlatAppearance.BorderColor = Color.Red;
+            btnCancelarBusqueda.FlatAppearance.BorderSize = 2;
+            btnCancelarBusqueda.FlatStyle = FlatStyle.Flat;
             btnCancelarBusqueda.Location = new Point(203, 81);
             btnCancelarBusqueda.Name = "btnCancelarBusqueda";
             btnCancelarBusqueda.Size = new Size(94, 31);
             btnCancelarBusqueda.TabIndex = 74;
             btnCancelarBusqueda.Text = "Cancelar";
-            btnCancelarBusqueda.UseVisualStyleBackColor = true;
+            btnCancelarBusqueda.UseVisualStyleBackColor = false;
             btnCancelarBusqueda.Click += BCancelar_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.White;
             label3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             label3.Location = new Point(185, 517);
             label3.Name = "label3";
@@ -783,30 +805,36 @@
             // 
             // txtNumeroProductos
             // 
+            txtNumeroProductos.BackColor = Color.White;
             txtNumeroProductos.Enabled = false;
-            txtNumeroProductos.Font = new Font("Segoe UI Black", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            txtNumeroProductos.Location = new Point(152, 514);
+            txtNumeroProductos.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            txtNumeroProductos.Location = new Point(152, 513);
             txtNumeroProductos.Name = "txtNumeroProductos";
             txtNumeroProductos.ReadOnly = true;
-            txtNumeroProductos.Size = new Size(27, 30);
+            txtNumeroProductos.Size = new Size(27, 27);
             txtNumeroProductos.TabIndex = 72;
             // 
             // btnBuscar
             // 
+            btnBuscar.BackColor = Color.White;
+            btnBuscar.FlatAppearance.BorderColor = Color.FromArgb(255, 128, 0);
+            btnBuscar.FlatAppearance.BorderSize = 2;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
             btnBuscar.Location = new Point(67, 81);
             btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(88, 31);
             btnBuscar.TabIndex = 60;
             btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += BBuscar_Click;
             // 
             // label14
             // 
             label14.AutoSize = true;
+            label14.BackColor = Color.White;
             label14.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label14.Location = new Point(30, 518);
+            label14.Location = new Point(30, 517);
             label14.Name = "label14";
             label14.Size = new Size(116, 20);
             label14.TabIndex = 3;
@@ -814,6 +842,7 @@
             // 
             // groupBoxBuscar
             // 
+            groupBoxBuscar.BackColor = Color.WhiteSmoke;
             groupBoxBuscar.Controls.Add(txtBuscar);
             groupBoxBuscar.Controls.Add(cmbBuscar);
             groupBoxBuscar.Controls.Add(btnBuscar);
@@ -844,12 +873,16 @@
             // 
             // btnOrdenar
             // 
-            btnOrdenar.Location = new Point(198, 51);
+            btnOrdenar.BackColor = Color.White;
+            btnOrdenar.FlatAppearance.BorderColor = Color.Fuchsia;
+            btnOrdenar.FlatAppearance.BorderSize = 2;
+            btnOrdenar.FlatStyle = FlatStyle.Flat;
+            btnOrdenar.Location = new Point(198, 39);
             btnOrdenar.Name = "btnOrdenar";
             btnOrdenar.Size = new Size(94, 34);
             btnOrdenar.TabIndex = 77;
             btnOrdenar.Text = "Ordenar";
-            btnOrdenar.UseVisualStyleBackColor = true;
+            btnOrdenar.UseVisualStyleBackColor = false;
             btnOrdenar.Click += btnOrdenar_Click;
             // 
             // label5
@@ -862,11 +895,12 @@
             // 
             // groupBoxOrdenar
             // 
+            groupBoxOrdenar.BackColor = Color.WhiteSmoke;
             groupBoxOrdenar.Controls.Add(btnOrdenar);
             groupBoxOrdenar.Controls.Add(cmbOrdenar);
-            groupBoxOrdenar.Location = new Point(970, 415);
+            groupBoxOrdenar.Location = new Point(970, 421);
             groupBoxOrdenar.Name = "groupBoxOrdenar";
-            groupBoxOrdenar.Size = new Size(315, 115);
+            groupBoxOrdenar.Size = new Size(315, 109);
             groupBoxOrdenar.TabIndex = 77;
             groupBoxOrdenar.TabStop = false;
             groupBoxOrdenar.Text = "Ordenar";
@@ -876,7 +910,7 @@
             cmbOrdenar.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbOrdenar.FormattingEnabled = true;
             cmbOrdenar.Items.AddRange(new object[] { "Código", "Nombre", "Tipo", "Cantidad", "Lote", "PVP", "Precio Unitario", "Fecha de Caducidad", "Descuento" });
-            cmbOrdenar.Location = new Point(19, 55);
+            cmbOrdenar.Location = new Point(19, 43);
             cmbOrdenar.Name = "cmbOrdenar";
             cmbOrdenar.Size = new Size(151, 28);
             cmbOrdenar.TabIndex = 76;
@@ -896,6 +930,8 @@
             Controls.Add(txtNumeroProductos);
             Controls.Add(dgvTablaInventario);
             Margin = new Padding(3, 4, 3, 4);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Form_Inventario";
             Text = "Inventario";
             Load += Form_Inventario_Load;

@@ -41,7 +41,10 @@
             // 
             // bttModuloInventario
             // 
-            bttModuloInventario.Location = new Point(277, 52);
+            bttModuloInventario.FlatAppearance.BorderColor = Color.LightSkyBlue;
+            bttModuloInventario.FlatAppearance.BorderSize = 2;
+            bttModuloInventario.FlatStyle = FlatStyle.Flat;
+            bttModuloInventario.Location = new Point(300, 52);
             bttModuloInventario.Margin = new Padding(3, 4, 3, 4);
             bttModuloInventario.Name = "bttModuloInventario";
             bttModuloInventario.Size = new Size(143, 145);
@@ -70,6 +73,9 @@
             // 
             // BSalir
             // 
+            BSalir.FlatAppearance.BorderColor = Color.Red;
+            BSalir.FlatAppearance.BorderSize = 2;
+            BSalir.FlatStyle = FlatStyle.Flat;
             BSalir.Location = new Point(1419, 891);
             BSalir.Margin = new Padding(3, 4, 3, 4);
             BSalir.Name = "BSalir";
@@ -81,11 +87,12 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(32, 8);
+            pictureBox1.Location = new Point(-4, -1);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(220, 228);
+            pictureBox1.Size = new Size(242, 249);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;

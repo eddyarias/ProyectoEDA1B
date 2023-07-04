@@ -42,7 +42,7 @@
             // 
             // BLogin
             // 
-            BLogin.BackColor = SystemColors.ButtonFace;
+            BLogin.BackColor = Color.White;
             BLogin.Image = (Image)resources.GetObject("BLogin.Image");
             BLogin.Location = new Point(59, 190);
             BLogin.Margin = new Padding(3, 4, 3, 4);
@@ -64,7 +64,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(15, 125);
+            label2.Location = new Point(20, 122);
             label2.Name = "label2";
             label2.Size = new Size(73, 20);
             label2.TabIndex = 2;
@@ -72,7 +72,7 @@
             // 
             // TBUsername
             // 
-            TBUsername.Location = new Point(114, 52);
+            TBUsername.Location = new Point(108, 52);
             TBUsername.Margin = new Padding(3, 4, 3, 4);
             TBUsername.Name = "TBUsername";
             TBUsername.Size = new Size(160, 27);
@@ -80,7 +80,7 @@
             // 
             // TBPassword
             // 
-            TBPassword.Location = new Point(114, 118);
+            TBPassword.Location = new Point(108, 118);
             TBPassword.Margin = new Padding(3, 4, 3, 4);
             TBPassword.Name = "TBPassword";
             TBPassword.PasswordChar = '*';
@@ -89,11 +89,12 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(3, 9);
+            pictureBox1.Location = new Point(5, 3);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(265, 299);
+            pictureBox1.Size = new Size(265, 298);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
@@ -106,10 +107,10 @@
             panel1.Controls.Add(TBPassword);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(274, 9);
+            panel1.Location = new Point(269, 3);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(297, 298);
+            panel1.Size = new Size(305, 298);
             panel1.TabIndex = 6;
             // 
             // Form_Login
@@ -117,7 +118,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(578, 318);
+            ClientSize = new Size(579, 305);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             Margin = new Padding(3, 4, 3, 4);
