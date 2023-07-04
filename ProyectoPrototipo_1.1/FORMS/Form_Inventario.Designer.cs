@@ -190,20 +190,20 @@
             // 
             // txtTipoCrear
             // 
-            txtTipoCrear.Location = new Point(127, 119);
+            txtTipoCrear.Location = new Point(127, 118);
             txtTipoCrear.Margin = new Padding(3, 4, 3, 4);
             txtTipoCrear.Name = "txtTipoCrear";
-            txtTipoCrear.Size = new Size(119, 27);
+            txtTipoCrear.Size = new Size(152, 27);
             txtTipoCrear.TabIndex = 56;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(78, 119);
+            label6.Location = new Point(79, 119);
             label6.Name = "label6";
-            label6.Size = new Size(39, 20);
+            label6.Size = new Size(42, 20);
             label6.TabIndex = 76;
-            label6.Text = "Tipo";
+            label6.Text = "Tipo:";
             // 
             // btnAgregar
             // 
@@ -224,7 +224,7 @@
             txtPVPCrear.Location = new Point(127, 212);
             txtPVPCrear.Margin = new Padding(3, 4, 3, 4);
             txtPVPCrear.Name = "txtPVPCrear";
-            txtPVPCrear.Size = new Size(119, 27);
+            txtPVPCrear.Size = new Size(152, 27);
             txtPVPCrear.TabIndex = 59;
             // 
             // label1
@@ -241,7 +241,7 @@
             txtDescuentoCrear.Location = new Point(127, 318);
             txtDescuentoCrear.Margin = new Padding(3, 4, 3, 4);
             txtDescuentoCrear.Name = "txtDescuentoCrear";
-            txtDescuentoCrear.Size = new Size(119, 27);
+            txtDescuentoCrear.Size = new Size(152, 27);
             txtDescuentoCrear.TabIndex = 62;
             // 
             // txtFechaCaducidadCrear
@@ -249,7 +249,7 @@
             txtFechaCaducidadCrear.Location = new Point(127, 282);
             txtFechaCaducidadCrear.Margin = new Padding(3, 4, 3, 4);
             txtFechaCaducidadCrear.Name = "txtFechaCaducidadCrear";
-            txtFechaCaducidadCrear.Size = new Size(119, 27);
+            txtFechaCaducidadCrear.Size = new Size(152, 27);
             txtFechaCaducidadCrear.TabIndex = 61;
             // 
             // txtPrecioUnidadCrear
@@ -257,7 +257,7 @@
             txtPrecioUnidadCrear.Location = new Point(127, 247);
             txtPrecioUnidadCrear.Margin = new Padding(3, 4, 3, 4);
             txtPrecioUnidadCrear.Name = "txtPrecioUnidadCrear";
-            txtPrecioUnidadCrear.Size = new Size(119, 27);
+            txtPrecioUnidadCrear.Size = new Size(152, 27);
             txtPrecioUnidadCrear.TabIndex = 60;
             // 
             // txtLoteCrear
@@ -265,13 +265,13 @@
             txtLoteCrear.Location = new Point(127, 175);
             txtLoteCrear.Margin = new Padding(3, 4, 3, 4);
             txtLoteCrear.Name = "txtLoteCrear";
-            txtLoteCrear.Size = new Size(119, 27);
+            txtLoteCrear.Size = new Size(152, 27);
             txtLoteCrear.TabIndex = 58;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(35, 325);
+            label8.Location = new Point(33, 320);
             label8.Name = "label8";
             label8.Size = new Size(94, 20);
             label8.TabIndex = 62;
@@ -289,7 +289,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(27, 255);
+            label2.Location = new Point(20, 254);
             label2.Name = "label2";
             label2.Size = new Size(105, 20);
             label2.TabIndex = 57;
@@ -297,10 +297,10 @@
             // 
             // txtNombreCrear
             // 
-            txtNombreCrear.Location = new Point(127, 84);
+            txtNombreCrear.Location = new Point(127, 83);
             txtNombreCrear.Margin = new Padding(3, 4, 3, 4);
             txtNombreCrear.Name = "txtNombreCrear";
-            txtNombreCrear.Size = new Size(119, 27);
+            txtNombreCrear.Size = new Size(152, 27);
             txtNombreCrear.TabIndex = 55;
             // 
             // txtCantidadCrear
@@ -308,7 +308,7 @@
             txtCantidadCrear.Location = new Point(127, 146);
             txtCantidadCrear.Margin = new Padding(3, 4, 3, 4);
             txtCantidadCrear.Name = "txtCantidadCrear";
-            txtCantidadCrear.Size = new Size(119, 27);
+            txtCantidadCrear.Size = new Size(152, 27);
             txtCantidadCrear.TabIndex = 57;
             // 
             // txtCodigoCrear
@@ -316,7 +316,7 @@
             txtCodigoCrear.Location = new Point(127, 49);
             txtCodigoCrear.Margin = new Padding(3, 4, 3, 4);
             txtCodigoCrear.Name = "txtCodigoCrear";
-            txtCodigoCrear.Size = new Size(119, 27);
+            txtCodigoCrear.Size = new Size(152, 27);
             txtCodigoCrear.TabIndex = 54;
             // 
             // label4
@@ -340,16 +340,16 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(61, 84);
+            label10.Location = new Point(54, 84);
             label10.Name = "label10";
-            label10.Size = new Size(64, 20);
+            label10.Size = new Size(67, 20);
             label10.TabIndex = 51;
-            label10.Text = "Nombre";
+            label10.Text = "Nombre:";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(51, 53);
+            label11.Location = new Point(48, 52);
             label11.Name = "label11";
             label11.Size = new Size(81, 20);
             label11.TabIndex = 50;
@@ -386,27 +386,27 @@
             // 
             // txtTipoActualizar
             // 
-            txtTipoActualizar.Location = new Point(128, 117);
+            txtTipoActualizar.Location = new Point(128, 115);
             txtTipoActualizar.Margin = new Padding(3, 4, 3, 4);
             txtTipoActualizar.Name = "txtTipoActualizar";
-            txtTipoActualizar.Size = new Size(119, 27);
+            txtTipoActualizar.Size = new Size(150, 27);
             txtTipoActualizar.TabIndex = 84;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(79, 117);
+            label12.Location = new Point(79, 120);
             label12.Name = "label12";
-            label12.Size = new Size(39, 20);
+            label12.Size = new Size(42, 20);
             label12.TabIndex = 94;
-            label12.Text = "Tipo";
+            label12.Text = "Tipo:";
             // 
             // txtPVPActualizar
             // 
             txtPVPActualizar.Location = new Point(128, 210);
             txtPVPActualizar.Margin = new Padding(3, 4, 3, 4);
             txtPVPActualizar.Name = "txtPVPActualizar";
-            txtPVPActualizar.Size = new Size(119, 27);
+            txtPVPActualizar.Size = new Size(150, 27);
             txtPVPActualizar.TabIndex = 87;
             // 
             // label13
@@ -423,7 +423,7 @@
             txtDescuentoActualizar.Location = new Point(128, 316);
             txtDescuentoActualizar.Margin = new Padding(3, 4, 3, 4);
             txtDescuentoActualizar.Name = "txtDescuentoActualizar";
-            txtDescuentoActualizar.Size = new Size(119, 27);
+            txtDescuentoActualizar.Size = new Size(150, 27);
             txtDescuentoActualizar.TabIndex = 90;
             // 
             // txtFechaCaducidadActualizar
@@ -431,7 +431,7 @@
             txtFechaCaducidadActualizar.Location = new Point(128, 280);
             txtFechaCaducidadActualizar.Margin = new Padding(3, 4, 3, 4);
             txtFechaCaducidadActualizar.Name = "txtFechaCaducidadActualizar";
-            txtFechaCaducidadActualizar.Size = new Size(119, 27);
+            txtFechaCaducidadActualizar.Size = new Size(150, 27);
             txtFechaCaducidadActualizar.TabIndex = 89;
             // 
             // txtPrecioUnidadActualizar
@@ -439,21 +439,21 @@
             txtPrecioUnidadActualizar.Location = new Point(128, 245);
             txtPrecioUnidadActualizar.Margin = new Padding(3, 4, 3, 4);
             txtPrecioUnidadActualizar.Name = "txtPrecioUnidadActualizar";
-            txtPrecioUnidadActualizar.Size = new Size(119, 27);
+            txtPrecioUnidadActualizar.Size = new Size(150, 27);
             txtPrecioUnidadActualizar.TabIndex = 88;
             // 
             // txtLoteActualizar
             // 
-            txtLoteActualizar.Location = new Point(128, 173);
+            txtLoteActualizar.Location = new Point(128, 177);
             txtLoteActualizar.Margin = new Padding(3, 4, 3, 4);
             txtLoteActualizar.Name = "txtLoteActualizar";
-            txtLoteActualizar.Size = new Size(119, 27);
+            txtLoteActualizar.Size = new Size(150, 27);
             txtLoteActualizar.TabIndex = 86;
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(36, 323);
+            label15.Location = new Point(30, 321);
             label15.Name = "label15";
             label15.Size = new Size(94, 20);
             label15.TabIndex = 87;
@@ -471,7 +471,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(28, 253);
+            label17.Location = new Point(18, 250);
             label17.Name = "label17";
             label17.Size = new Size(105, 20);
             label17.TabIndex = 85;
@@ -482,7 +482,7 @@
             txtNombreActualizar.Location = new Point(128, 82);
             txtNombreActualizar.Margin = new Padding(3, 4, 3, 4);
             txtNombreActualizar.Name = "txtNombreActualizar";
-            txtNombreActualizar.Size = new Size(119, 27);
+            txtNombreActualizar.Size = new Size(150, 27);
             txtNombreActualizar.TabIndex = 83;
             // 
             // txtCantidadActualizar
@@ -490,7 +490,7 @@
             txtCantidadActualizar.Location = new Point(128, 144);
             txtCantidadActualizar.Margin = new Padding(3, 4, 3, 4);
             txtCantidadActualizar.Name = "txtCantidadActualizar";
-            txtCantidadActualizar.Size = new Size(119, 27);
+            txtCantidadActualizar.Size = new Size(150, 27);
             txtCantidadActualizar.TabIndex = 85;
             // 
             // txtCodigoActualizar
@@ -500,13 +500,13 @@
             txtCodigoActualizar.Margin = new Padding(3, 4, 3, 4);
             txtCodigoActualizar.Name = "txtCodigoActualizar";
             txtCodigoActualizar.ReadOnly = true;
-            txtCodigoActualizar.Size = new Size(119, 27);
+            txtCodigoActualizar.Size = new Size(150, 27);
             txtCodigoActualizar.TabIndex = 82;
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(54, 151);
+            label18.Location = new Point(52, 149);
             label18.Name = "label18";
             label18.Size = new Size(72, 20);
             label18.TabIndex = 81;
@@ -524,16 +524,16 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(62, 82);
+            label20.Location = new Point(55, 82);
             label20.Name = "label20";
-            label20.Size = new Size(64, 20);
+            label20.Size = new Size(67, 20);
             label20.TabIndex = 79;
-            label20.Text = "Nombre";
+            label20.Text = "Nombre:";
             // 
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(52, 51);
+            label21.Location = new Point(52, 52);
             label21.Name = "label21";
             label21.Size = new Size(81, 20);
             label21.TabIndex = 78;
@@ -585,21 +585,21 @@
             // txtTipoEliminar
             // 
             txtTipoEliminar.Enabled = false;
-            txtTipoEliminar.Location = new Point(134, 117);
+            txtTipoEliminar.Location = new Point(134, 116);
             txtTipoEliminar.Margin = new Padding(3, 4, 3, 4);
             txtTipoEliminar.Name = "txtTipoEliminar";
             txtTipoEliminar.ReadOnly = true;
-            txtTipoEliminar.Size = new Size(119, 27);
+            txtTipoEliminar.Size = new Size(143, 27);
             txtTipoEliminar.TabIndex = 113;
             // 
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(85, 117);
+            label22.Location = new Point(84, 117);
             label22.Name = "label22";
-            label22.Size = new Size(39, 20);
+            label22.Size = new Size(42, 20);
             label22.TabIndex = 112;
-            label22.Text = "Tipo";
+            label22.Text = "Tipo:";
             // 
             // txtPVPEliminar
             // 
@@ -608,13 +608,13 @@
             txtPVPEliminar.Margin = new Padding(3, 4, 3, 4);
             txtPVPEliminar.Name = "txtPVPEliminar";
             txtPVPEliminar.ReadOnly = true;
-            txtPVPEliminar.Size = new Size(119, 27);
+            txtPVPEliminar.Size = new Size(143, 27);
             txtPVPEliminar.TabIndex = 111;
             // 
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(85, 214);
+            label23.Location = new Point(84, 214);
             label23.Name = "label23";
             label23.Size = new Size(43, 20);
             label23.TabIndex = 110;
@@ -627,7 +627,7 @@
             txtDescuentoEliminar.Margin = new Padding(3, 4, 3, 4);
             txtDescuentoEliminar.Name = "txtDescuentoEliminar";
             txtDescuentoEliminar.ReadOnly = true;
-            txtDescuentoEliminar.Size = new Size(119, 27);
+            txtDescuentoEliminar.Size = new Size(143, 27);
             txtDescuentoEliminar.TabIndex = 109;
             // 
             // txtFechaCaducidadEliminar
@@ -637,7 +637,7 @@
             txtFechaCaducidadEliminar.Margin = new Padding(3, 4, 3, 4);
             txtFechaCaducidadEliminar.Name = "txtFechaCaducidadEliminar";
             txtFechaCaducidadEliminar.ReadOnly = true;
-            txtFechaCaducidadEliminar.Size = new Size(119, 27);
+            txtFechaCaducidadEliminar.Size = new Size(143, 27);
             txtFechaCaducidadEliminar.TabIndex = 108;
             // 
             // txtPrecioUnidadEliminar
@@ -647,23 +647,23 @@
             txtPrecioUnidadEliminar.Margin = new Padding(3, 4, 3, 4);
             txtPrecioUnidadEliminar.Name = "txtPrecioUnidadEliminar";
             txtPrecioUnidadEliminar.ReadOnly = true;
-            txtPrecioUnidadEliminar.Size = new Size(119, 27);
+            txtPrecioUnidadEliminar.Size = new Size(143, 27);
             txtPrecioUnidadEliminar.TabIndex = 107;
             // 
             // txtLoteEliminar
             // 
             txtLoteEliminar.Enabled = false;
-            txtLoteEliminar.Location = new Point(134, 173);
+            txtLoteEliminar.Location = new Point(134, 174);
             txtLoteEliminar.Margin = new Padding(3, 4, 3, 4);
             txtLoteEliminar.Name = "txtLoteEliminar";
             txtLoteEliminar.ReadOnly = true;
-            txtLoteEliminar.Size = new Size(119, 27);
+            txtLoteEliminar.Size = new Size(143, 27);
             txtLoteEliminar.TabIndex = 106;
             // 
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(42, 323);
+            label24.Location = new Point(39, 321);
             label24.Name = "label24";
             label24.Size = new Size(94, 20);
             label24.TabIndex = 105;
@@ -672,7 +672,7 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(60, 287);
+            label25.Location = new Point(62, 287);
             label25.Name = "label25";
             label25.Size = new Size(68, 20);
             label25.TabIndex = 104;
@@ -681,7 +681,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(34, 253);
+            label26.Location = new Point(26, 253);
             label26.Name = "label26";
             label26.Size = new Size(105, 20);
             label26.TabIndex = 103;
@@ -694,7 +694,7 @@
             txtNombreEliminar.Margin = new Padding(3, 4, 3, 4);
             txtNombreEliminar.Name = "txtNombreEliminar";
             txtNombreEliminar.ReadOnly = true;
-            txtNombreEliminar.Size = new Size(119, 27);
+            txtNombreEliminar.Size = new Size(143, 27);
             txtNombreEliminar.TabIndex = 102;
             // 
             // txtCantidadEliminar
@@ -704,7 +704,7 @@
             txtCantidadEliminar.Margin = new Padding(3, 4, 3, 4);
             txtCantidadEliminar.Name = "txtCantidadEliminar";
             txtCantidadEliminar.ReadOnly = true;
-            txtCantidadEliminar.Size = new Size(119, 27);
+            txtCantidadEliminar.Size = new Size(143, 27);
             txtCantidadEliminar.TabIndex = 101;
             // 
             // txtCodigoEliminar
@@ -714,13 +714,13 @@
             txtCodigoEliminar.Margin = new Padding(3, 4, 3, 4);
             txtCodigoEliminar.Name = "txtCodigoEliminar";
             txtCodigoEliminar.ReadOnly = true;
-            txtCodigoEliminar.Size = new Size(119, 27);
+            txtCodigoEliminar.Size = new Size(143, 27);
             txtCodigoEliminar.TabIndex = 100;
             // 
             // label27
             // 
             label27.AutoSize = true;
-            label27.Location = new Point(60, 151);
+            label27.Location = new Point(58, 151);
             label27.Name = "label27";
             label27.Size = new Size(72, 20);
             label27.TabIndex = 99;
@@ -729,7 +729,7 @@
             // label28
             // 
             label28.AutoSize = true;
-            label28.Location = new Point(87, 180);
+            label28.Location = new Point(86, 180);
             label28.Name = "label28";
             label28.Size = new Size(41, 20);
             label28.TabIndex = 98;
@@ -738,16 +738,16 @@
             // label29
             // 
             label29.AutoSize = true;
-            label29.Location = new Point(68, 82);
+            label29.Location = new Point(65, 84);
             label29.Name = "label29";
-            label29.Size = new Size(64, 20);
+            label29.Size = new Size(67, 20);
             label29.TabIndex = 97;
-            label29.Text = "Nombre";
+            label29.Text = "Nombre:";
             // 
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(58, 51);
+            label30.Location = new Point(57, 51);
             label30.Name = "label30";
             label30.Size = new Size(81, 20);
             label30.TabIndex = 96;
