@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*HOliwis*/
+/*seal*/
 namespace ProyectoPrototipo_1._0.CLASES
 {
     public class Class_Inventario
